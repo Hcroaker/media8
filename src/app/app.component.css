@@ -1,0 +1,17 @@
+/* ADMIN PAGE */
+
+.adminPanelPage1{
+  height:100vh;
+  background: #e4e4e4e4;
+}
+
+.adminPanelPage1 .loginForm{
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  left:0;
+  right:0;
+  text-align: center;
+  margin-top: 40vh;
+  border: 1px solid black;
+}

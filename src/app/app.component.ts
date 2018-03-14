@@ -14,6 +14,7 @@ export class AppComponent {
     console.log("Opened")
   }
 
+  //ADMIN PAGE
   login(){
     console.log("Login to firebase auth")
   }
