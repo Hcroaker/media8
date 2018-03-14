@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { AngularFirestore } from 'angularfire2/firestore';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +9,12 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'app';
+
+  constructor (db: AngularFirestore){
+    console.log("Opened")
+  }
+
+  login(){
+    console.log("Login to firebase auth")
+  }
 }
