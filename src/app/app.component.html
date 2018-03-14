@@ -2,12 +2,27 @@
 <!-- ADMIN PAGE -->
 
 <!-- Page 1 -->
-<div class="container adminPanelPage1">
+<div class="container adminPanelPage1" *ngIf="adminPage">
   <div class="container loginForm">
-    <h1>Media8 Admin Panel</h1>
-    <input type="email" placeholder="Email" /> <br />
-    <input type="password" placeholder="Password" /> <br />
-    <button (click)="login()">Login</button>
+    <h1 class="adminTitle">Media8 Admin Portal</h1>
+    <input class="adminEmailInput" type="email" [(ngModel)]="adminEmail" placeholder="Email" required/> <br />
+    <input class="adminPassworkInput" type="password" [(ngModel)]="adminPassword" placeholder="Password" required/> <br />
+    <button class="loginButton" (click)="login()">Login</button>
   </div>
+
+</div>
+
+
+<div class="container adminPanelPage2" *ngIf="adminPage2">
+  <img class="media8Logo1" src="../assets/media8Logo.png" align="middle"/>
+    <div class="buttonPanelPage2">
+      <button class="addPodcastButton1">Add podcast to an existing network</button>
+      <button class="addPodcastButton2" >Add podcast to a new network</button>
+    </div>
+
+</div>
+
+
+<div class="container adminPanelPage3" *ngIf="adminPage3">
 
 </div>

@@ -12,6 +12,51 @@
   left:0;
   right:0;
   text-align: center;
-  margin-top: 40vh;
-  border: 1px solid black;
+  margin-top: 22vh;
+
+}
+
+.adminPanelPage1 .adminTitle{
+  margin-top: 3vh;
+  margin-bottom: 4vh;
+}
+
+.adminPanelPage1 input{
+  margin-top: 3%;
+
+}
+
+.loginButton{
+  margin-top: 3vh;
+  margin-bottom: 3vh;
+
+}
+
+/* PAGE 2 */
+
+.adminPanelPage2{
+  height:100vh;
+  background: #e4e4e4e4;
+}
+
+.adminPanelPage2 .media8Logo1{
+  margin-left: 35%;
+  margin-top: 8vh;
+  height: 20%;
+  width: 30%;
+}
+
+.adminPanelPage2 .addPodcastButton1, .addPodcastButton2{
+  height: 10vh;
+  width: 15%;
+  margin-top: 10vh;
+  margin-left: 23.3%;
+}
+
+
+/* PAGE 3 */
+
+.adminPanelPage3{
+  height:100vh;
+  background: #e4e4e4e4;
 }
