@@ -48,14 +48,21 @@
 
 
 <div class="container-fluid adminPanelPage3" *ngIf="adminPage3">
-  <h1>Add a new network</h1>
-  <input placeholder="Network Name"/>
-  <input placeholder="Network Bio"/>
-  <input placeholder="FB Link..."/>
-  <input placeholder="Twitter Link..."/>
-  <input placeholder="Youtube Link..."/>
-  <input placeholder="Itunes Link..."/>
-  <input placeholder="Spotify Link..."/>
+  <div class="container">
+    <h1>Add a new network</h1><br />
+    <input class="networkName" placeholder="Network Name"/><br />
+    <textarea class="networkBio" placeholder="Network Bio"></textarea><br />
+    <p>
+      Profile Picture
+    </p>
+    <input type="file"/> <br />
+    <input class="fbLink" placeholder="FB Link..."/><br />
+    <input class="twitterLink" placeholder="Twitter Link..."/><br />
+    <input class="youtubeLink" placeholder="Youtube Link..."/><br />
+    <input class="itunesLink" placeholder="Itunes Link..."/><br />
+    <input class="spotifyLink" placeholder="Spotify Link..."/><br />
+  </div>
+
 </div>
 
 <div class="container-fluid adminPanelPage4" *ngIf="adminPage4">
