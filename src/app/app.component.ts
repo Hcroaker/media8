@@ -10,6 +10,7 @@ import { Observable } from 'rxjs/Observable';
 })
 export class AppComponent {
   title = 'app';
+  authState: any;
 
   //Admin PAGE
   adminPage: boolean;
@@ -17,12 +18,31 @@ export class AppComponent {
   adminPassword: any;
 
   //Page2
-  adminPage2: any;
+  adminPage2: boolean;
+
+  //Page 3
+  adminPage3: boolean;
+
+  //Page 4
+  adminPage4: boolean;
 
   constructor (db: AngularFirestore, public afAuth: AngularFireAuth){
-    console.log("Opened")
-    this.adminPage = true;
-    this.adminPage2 = false;
+
+    //Check if the user is already logged in
+    this.afAuth.authState.subscribe((auth) => {
+          this.authState = auth
+          if(this.authState){
+            this.adminPage = false
+            this.adminPage2 = true;
+            this.adminPage3 = false;
+          }
+          else{
+            this.adminPage = true;
+            this.adminPage2 = false;
+            this.adminPage3 = false;
+          }
+    });
+
   }
 
   //ADMIN PAGE
@@ -38,6 +58,17 @@ export class AppComponent {
     })
     .catch(error => console.log(error));
 
+  }
+
+  openPage3(){
+    console.log("Hey")
+    this.adminPage2 = false;
+    this.adminPage3 = true;
+  }
+
+  openPage4(){
+    this.adminPage2 = false;
+    this.adminPage4 = true;
   }
 
 

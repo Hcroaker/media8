@@ -9,6 +9,7 @@ import { environment } from '../environments/environment';
 
 
 import { AppComponent } from './app.component';
+import { NetworkService } from './network.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
@@ -24,7 +25,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     AngularFireStorageModule,
     FormsModule
   ],
-  providers: [],
+  providers: [
+    NetworkService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {

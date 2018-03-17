@@ -1,8 +1,9 @@
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <!-- ADMIN PAGE -->
 
 <!-- Page 1 -->
-<div class="container adminPanelPage1" *ngIf="adminPage">
+<div class="container-fluid adminPanelPage1" *ngIf="adminPage">
   <div class="container loginForm">
     <h1 class="adminTitle">Media8 Admin Portal</h1>
     <input class="adminEmailInput" type="email" [(ngModel)]="adminEmail" placeholder="Email" required/> <br />
@@ -13,16 +14,51 @@
 </div>
 
 
-<div class="container adminPanelPage2" *ngIf="adminPage2">
-  <img class="media8Logo1" src="../assets/media8Logo.png" align="middle"/>
-    <div class="buttonPanelPage2">
-      <button class="addPodcastButton1">Add podcast to an existing network</button>
-      <button class="addPodcastButton2" >Add podcast to a new network</button>
-    </div>
 
+    <!-- <div class="container media8Img">
+      <img class="media8Logo1" src="../assets/media8Logo.png" align="middle"/>
+    </div> -->
+
+<div class="adminPanelPage2" *ngIf="adminPage2">
+  <div class="container-fluid" >
+    <div class="row">
+      <div class="col"></div>
+      <div class="col-6">
+        <img class="media8Logo1" src="../assets/media8Logo.png" align="middle"/>
+      </div>
+      <div class="col"></div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <div class="container-fluid bottomButtons">
+          <button class="addPodcastButton1" (click)="openPage4()">Add podcast to an existing network</button>
+          <button class="addPodcastButton2" (click)="openPage3()">Add podcast to a new network</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 
-<div class="container adminPanelPage3" *ngIf="adminPage3">
+
+    <!-- <div class="buttonPanelPage2">
+      <button class="addPodcastButton1">Add podcast to an existing network</button>
+      <button class="addPodcastButton2" >Add podcast to a new network</button>
+    </div> -->
+
+
+<div class="container-fluid adminPanelPage3" *ngIf="adminPage3">
+  <h1>Add a new network</h1>
+  <input placeholder="Network Name"/>
+  <input placeholder="Network Bio"/>
+  <input placeholder="FB Link..."/>
+  <input placeholder="Twitter Link..."/>
+  <input placeholder="Youtube Link..."/>
+  <input placeholder="Itunes Link..."/>
+  <input placeholder="Spotify Link..."/>
+</div>
+
+<div class="container-fluid adminPanelPage4" *ngIf="adminPage4">
+  Page 4 - Add podcast to an existing network
 
 </div>

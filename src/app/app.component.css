@@ -1,5 +1,9 @@
 /* ADMIN PAGE */
 
+.body{
+  width: 100%;
+}
+
 .adminPanelPage1{
   height:100vh;
   background: #e4e4e4e4;
@@ -36,21 +40,52 @@
 
 .adminPanelPage2{
   height:100vh;
+  width: 100vw;
   background: #e4e4e4e4;
 }
 
-.adminPanelPage2 .media8Logo1{
-  margin-left: 35%;
-  margin-top: 8vh;
-  height: 20%;
-  width: 30%;
+.adminPanelPage2 .container-fluid {
+  border: 1px solid black;
 }
 
-.adminPanelPage2 .addPodcastButton1, .addPodcastButton2{
+.adminPanelPage2 .container-fluid .row {
+  /* border: 1px solid black; */
+}
+
+.adminPanelPage2 .container-fluid .col {
+  border: 1px solid black;
+}
+
+.adminPanelPage2 .media8Logo1{
+  width: 100%;
+  height: 20vh;
+  object-fit: contain;
+}
+
+.adminPanelPage2 .bottomButtons{
+  border: 0.1px solid black;
+  width:50vw;
+}
+
+.adminPanelPage2 button{
+  min-width: 40%;
+  max-width: 90%;
+  margin-top: 1vh;
+  background: #aeaeae;
+  border: 1px solid black;
   height: 10vh;
-  width: 15%;
-  margin-top: 10vh;
-  margin-left: 23.3%;
+}
+
+@media (max-width: 1085px) {
+  .adminPanelPage2 button{
+    min-width: 98%;
+    max-width: 100% !important;
+    background: blue;
+  }
+}
+
+.adminPanelPage2 .addPodcastButton1{
+
 }
 
 
