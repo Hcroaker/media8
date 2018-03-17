@@ -1,5 +1,6 @@
 /* ADMIN PAGE */
 
+
 .body{
   width: 100%;
 }
@@ -94,4 +95,26 @@
 .adminPanelPage3{
   height:100vh;
   background: #e4e4e4e4;
+  text-align: center;
+}
+
+.adminPanelPage3 h1{
+  text-align: center;
+}
+
+.adminPanelPage3 input{
+  width: 300px!important;
+  border: none;
+  height: 5vh;
+  margin-top: 1vh;
+  border-radius: 2px;
+}
+
+.adminPanelPage3 textarea{
+  width: 300px;
+  border: none;
+  resize:none;
+  height: 20vh;
+  border-radius: 2px;
+  margin-top: 5vh;
 }
