@@ -93,8 +93,8 @@
 /* PAGE 3 */
 
 .adminPanelPage3{
-  height:100vh;
-  background: #e4e4e4e4;
+  height: 110vh;
+  background-color: #ededed;
   text-align: center;
 }
 
@@ -106,15 +106,23 @@
   width: 300px!important;
   border: none;
   height: 5vh;
+  padding: 3px;
   margin-top: 1vh;
   border-radius: 2px;
 }
 
 .adminPanelPage3 textarea{
   width: 300px;
+  padding: 3px;
   border: none;
   resize:none;
   height: 20vh;
   border-radius: 2px;
   margin-top: 5vh;
+}
+
+.adminPanelPage3 button{
+  margin-top: 5vh;
+  height: 5vh;
+  width: 300px;
 }

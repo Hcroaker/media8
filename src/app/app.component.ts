@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
-import { AngularFirestore } from 'angularfire2/firestore';
+import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { AngularFireAuth } from 'angularfire2/auth';
+import { Observable } from 'rxjs/Observable';
+import { NetworkService } from './network.service';
+import { Network } from './network'
 import { Observable } from 'rxjs/Observable';
 
 @Component({
@@ -8,7 +11,9 @@ import { Observable } from 'rxjs/Observable';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+
+export class AppComponent{
+
   title = 'app';
   authState: any;
 
@@ -26,7 +31,7 @@ export class AppComponent {
   //Page 4
   adminPage4: boolean;
 
-  constructor (db: AngularFirestore, public afAuth: AngularFireAuth){
+  constructor (afs: AngularFirestore, public afAuth: AngularFireAuth, public NetworkService: NetworkService){
 
     //Check if the user is already logged in
     this.afAuth.authState.subscribe((auth) => {
@@ -64,6 +69,13 @@ export class AppComponent {
     console.log("Hey")
     this.adminPage2 = false;
     this.adminPage3 = true;
+  }
+
+  submitNetwork(name,bio,profilePicture,fb,twitter,youtube,itunes,spotify){
+    let network = new Network(name.value,bio.value,profilePicture.value,fb.value,twitter.value,youtube.value,itunes.value,spotify.value)
+    console.log(network.printNetwork());
+    this.NetworkService.addNetwork(network)
+
   }
 
   openPage4(){
