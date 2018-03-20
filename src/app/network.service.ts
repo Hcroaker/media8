@@ -15,7 +15,14 @@ export class NetworkService {
   }
 
   addNetwork(network: Network) {
-    this.itemsCollection.add(network);
+    this.networksCollection.add(network).then((value) => {
+      console.log("SUCCESS")
+      return value;
+    }, (error) => {
+      //Failure
+      console.log("FAILURE")
+      return error;
+    });
   }
 
 }

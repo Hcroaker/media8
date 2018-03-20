@@ -4,7 +4,6 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { Observable } from 'rxjs/Observable';
 import { NetworkService } from './network.service';
 import { Network } from './network'
-import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-root',
@@ -74,7 +73,8 @@ export class AppComponent{
   submitNetwork(name,bio,profilePicture,fb,twitter,youtube,itunes,spotify){
     let network = new Network(name.value,bio.value,profilePicture.value,fb.value,twitter.value,youtube.value,itunes.value,spotify.value)
     console.log(network.printNetwork());
-    this.NetworkService.addNetwork(network)
+    this.NetworkService.addNetwork(<Network>network.getData());
+
 
   }
 

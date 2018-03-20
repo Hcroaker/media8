@@ -13,7 +13,7 @@ export class Network {
     networkProfilePicture: string,
     networkFB: string, networkTwitter: string,
     networkYoutube: string, networkItunes: string,
-    networkSpotify: string, db: AngularFirestore){
+    networkSpotify: string){
       this.networkName = networkName;
       this.networkBio = networkBio;
       this.networkProfilePicture = networkProfilePicture;
@@ -28,5 +28,11 @@ export class Network {
 
   printNetwork(){
     return "Name: " + this.networkName + " Bio: " + this.networkBio + " networkProfilePicture: " + this.networkProfilePicture + " FB: " + this.networkFB + " Twitter: " + this.networkTwitter + " Youtube: " + this.networkYoutube + " Itunes: " + this.networkItunes + " Spotify: " + this.networkSpotify;
+  }
+
+  getData(): object {
+        const result = {};
+        Object.keys(this).map(key => result[key] = this[key]);
+        return result;
   }
 }
