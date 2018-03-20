@@ -125,4 +125,32 @@
   margin-top: 5vh;
   height: 5vh;
   width: 300px;
+/* PAGE 4 */
+
+.adminPanelPage4 {
+  height:100vh;
+  background: #e4e4e4e4;
+  text-align: center;
+}
+
+.adminPanelPage4 h1{
+  text-align: center;
+}
+
+.adminPanelPage4 input{
+  width: 300px!important;
+  border: none;
+  height: 5vh;
+  margin-top: 1vh;
+  border-radius: 2px;
+  text-align: center;
+}
+
+.adminPanelPage4 textarea{
+  width: 300px;
+  border: none;
+  resize:none;
+  height: 20vh;
+  border-radius: 2px;
+  margin-top: 5vh;
 }

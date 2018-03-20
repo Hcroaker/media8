@@ -50,23 +50,38 @@
 <div class="container-fluid adminPanelPage3" *ngIf="adminPage3">
   <div class="container">
     <h1>Add a new network</h1><br />
-    <input class="networkName" placeholder="Network Name" [(ngModel)]="networkName" #name/><br />
-    <textarea class="networkBio" placeholder="Network Bio" [(ngModel)]="networkBio" #bio></textarea><br />
+    <input class="networkName" placeholder="Network Name" #name/><br />
+    <textarea class="networkBio" placeholder="Network Bio" #bio></textarea><br />
     <p>
       Profile Picture
     </p>
     <input type="file" [(ngModel)]="networkProfilePicture" #profilePicture/> <br />
-    <input class="fbLink" placeholder="FB Link..." [(ngModel)]="networkFB" #fb/><br />
-    <input class="twitterLink" placeholder="Twitter Link..." [(ngModel)]="networkTwitter" #twitter/><br />
-    <input class="youtubeLink" placeholder="Youtube Link..." [(ngModel)]="networkYoutube" #youtube/><br />
-    <input class="itunesLink" placeholder="Itunes Link..." [(ngModel)]="networkItunes" #itunes/><br />
-    <input class="spotifyLink" placeholder="Spotify Link..." [(ngModel)]="networkSpotify" #spotify/><br />
+    <input class="fbLink" placeholder="FB Link..." #fb/><br />
+    <input class="twitterLink" placeholder="Twitter Link..." #twitter/><br />
+    <input class="youtubeLink" placeholder="Youtube Link..." #youtube/><br />
+    <input class="itunesLink" placeholder="Itunes Link..." #itunes/><br />
+    <input class="spotifyLink" placeholder="Spotify Link..." #spotify/><br />
     <button (click)="submitNetwork(name,bio,profilePicture,fb,twitter,youtube,itunes,spotify)">Submit</button>
   </div>
 
 </div>
 
-<div class="container-fluid adminPanelPage4" *ngIf="adminPage4">
-  Page 4 - Add podcast to an existing network
+<!-- Page 4 -->
 
+<div class="container-fluid adminPanelPage4" *ngIf="adminPage4">
+  <h1>Add Podcast</h1>
+  <div class= "existingNetworkInput1">
+    <input placeholder="Network Name" />
+  </div>
+  <input placeholder="Season" />
+  <button class="newSeasonButton" (click)="createNewSeason()">New Season</button>
+  <input placeholder="Episode Number" />
+  <input placeholder="Episode Title" />
+  <input placeholder="Podcast Description" />
+  <input placeholder="Podcast Notes" />
+  <input placeholder="Category"/>
+  <input placeholder="Youtube Link"/>
+  <input placeholder="Soundcloud Link"/>
+  <input placeholder="Spotify Link"/>
+  <button class="submitButton" (click)="submitToExistingNetwork()">Submit</button>
 </div>
