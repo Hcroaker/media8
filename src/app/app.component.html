@@ -56,11 +56,17 @@
       Profile Picture
     </p>
     <input type="file" [(ngModel)]="networkProfilePicture" #profilePicture/> <br />
-    <input class="fbLink" placeholder="FB Link..." #fb/><br />
+    <i class="icon icon-facebook"></i>
+    <input class="fbLink" placeholder="Facebook Link..." #fb/><br />
+    <i class="icon icon-twitter"></i>
     <input class="twitterLink" placeholder="Twitter Link..." #twitter/><br />
+    <i class="icon icon-youtube"></i>
     <input class="youtubeLink" placeholder="Youtube Link..." #youtube/><br />
+    <i class="icon icon-itunes"></i>
     <input class="itunesLink" placeholder="Itunes Link..." #itunes/><br />
+    <i class="icon icon-spotify"></i>
     <input class="spotifyLink" placeholder="Spotify Link..." #spotify/><br />
+
     <button (click)="submitNetwork(name,bio,profilePicture,fb,twitter,youtube,itunes,spotify)">Submit</button>
   </div>
 

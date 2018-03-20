@@ -14,15 +14,24 @@ export class NetworkService {
     this.networks = this.networksCollection.valueChanges();
   }
 
-  addNetwork(network: Network) {
-    this.networksCollection.add(network).then((value) => {
-      console.log("SUCCESS")
-      return value;
-    }, (error) => {
-      //Failure
-      console.log("FAILURE")
-      return error;
-    });
+  addNetwork(network: Network): any {
+    return(
+      this.networksCollection.add(network).then((value) => {
+        console.log("SUCCESS")
+        // alert("Upload success")
+        return value;
+      }, (error) => {
+        //Failure
+        console.log("FAILURE")
+        // alert("Upload Failure" + error)
+        return error;
+
+      });
+    );
+  }
+
+  getNetworks(): any{
+    return this.networksCollection;
   }
 
 }

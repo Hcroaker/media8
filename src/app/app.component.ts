@@ -73,9 +73,11 @@ export class AppComponent{
   submitNetwork(name,bio,profilePicture,fb,twitter,youtube,itunes,spotify){
     let network = new Network(name.value,bio.value,profilePicture.value,fb.value,twitter.value,youtube.value,itunes.value,spotify.value)
     console.log(network.printNetwork());
-    this.NetworkService.addNetwork(<Network>network.getData());
-
-
+    this.NetworkService.addNetwork(<Network>network.getData()).then((value)=>{
+      console.log(value)
+    }, (error) => {
+      alert(error)
+    })
   }
 
   openPage4(){

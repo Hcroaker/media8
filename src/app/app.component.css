@@ -103,17 +103,23 @@
 }
 
 .adminPanelPage3 input{
-  width: 300px!important;
+  width: 280px!important;
   border: none;
   height: 5vh;
-  padding: 3px;
+  padding: 5px;
   margin-top: 1vh;
+  margin-left: 5px;
   border-radius: 2px;
+}
+
+.adminPanelPage3 .networkName{
+  width: 300px!important;
+  margin-left: 0px;
 }
 
 .adminPanelPage3 textarea{
   width: 300px;
-  padding: 3px;
+  padding: 5px;
   border: none;
   resize:none;
   height: 20vh;
@@ -125,6 +131,8 @@
   margin-top: 5vh;
   height: 5vh;
   width: 300px;
+}
+
 /* PAGE 4 */
 
 .adminPanelPage4 {
