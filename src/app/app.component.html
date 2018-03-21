@@ -109,7 +109,7 @@
     </option>
   </select><br />
 
-  <button class="newSeasonButton" (click)="createNewSeason()">New Season</button><br />
+  <button class="newSeasonButton" (click)="newSeason()">New Season</button><br />
 
   <input class="episodeNumber" placeholder="Episode Num" #epidsodenum/>
   <input class="episodeTitle" placeholder="Episode Title" #episodetitle/><br />
@@ -132,7 +132,7 @@
   </div>
 
 
-  <button class="submitButton" (click)="submitToExistingNetwork(network,season,category,episodenum,episodetitle,podcastdesc,podcastnotes,youtube,soundcloud,spotify)">Submit</button>
+  <button class="submitButton" (click)="submitToExistingNetwork(network,season,episodenum,episodetitle,podcastdesc,podcastnotes,category,youtube,soundcloud,spotify)">Submit</button>
 
   </div>
 </div>

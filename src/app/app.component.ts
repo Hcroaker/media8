@@ -116,6 +116,10 @@ export class AppComponent {
 
   }
 
+  // submitToExistingNetwork(network,episodenum,episodetitle,podcastdesc,podcastnotes,youtube,soundcloud,spotify){
+  //  console.log(value)
+  // }
+
   goHome(){
     this.uploadSuccess = false;
     this.adminPage3 = false;
@@ -133,12 +137,18 @@ export class AppComponent {
     this.adminPage4 = true;
   }
 
-  submitToExistingNetwork(){
-    console.log(this.existingNetworkData)
+  newSeason(){
+    console.log('New Season')
+  }
+
+  submitToExistingNetwork(network,season,category,episodenum,episodetitle,podcastdesc,podcastnotes,youtube,soundcloud,spotify){
+    console.log(network.value,season.value,category.value,episodenum.value,episodetitle.value,podcastdesc.value,podcastnotes.value,youtube.value,soundcloud.value,spotify.value)
   }
 
   existingNetworkData = {
     network : 'network',
+    season : 'season',
+    category : 'category',
     episodenum : 'episodenum',
     episodetitle:'episodetitle',
     podcastdesc: 'podcastdesc',
