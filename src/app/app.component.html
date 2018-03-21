@@ -97,13 +97,13 @@
 
   <h1>Add Podcast</h1><br />
 
-  <select class="networkSelect" name="Network">
+  <select class="networkSelect" name="Network" #network>
     <option *ngFor="let network of networks" [value]="network">
           {{network}}
     </option>
   </select><br />
 
-  <select class= "seasonSelect" name="Season">
+  <select class= "seasonSelect" name="Season" #season>
   <option *ngFor="let season of seasons" [value]="season">
           {{season}}
     </option>
@@ -117,9 +117,9 @@
   <textarea class="podcastDescription" placeholder="Podcast Description" #podcastdesc></textarea><br />
   <textarea class="podcastNotes" placeholder="Podcast Notes" #podcastnotes></textarea><br />
 
-  <select class= "categorySelect" name="Category">
-  <option *ngFor="let catagory of categories" [value]="categories">
-          {{catagory}}
+  <select class= "categorySelect" name="Category" #category>
+  <option *ngFor="let category of categories" [value]="categories">
+          {{category}}
     </option>
   </select><br />
 
@@ -132,7 +132,7 @@
   </div>
 
 
-  <button class="submitButton" (click)="submitToExistingNetwork(network,episodenum,episodetitle,podcastdesc,podcastnotes,youtube,soundcloud,spotify)">Submit</button>
+  <button class="submitButton" (click)="submitToExistingNetwork(network,season,category,episodenum,episodetitle,podcastdesc,podcastnotes,youtube,soundcloud,spotify)">Submit</button>
 
   </div>
 </div>
