@@ -75,27 +75,46 @@
 <!-- Page 4 -->
 
 <div class="container-fluid adminPanelPage4" *ngIf="adminPage4">
-  <h1>Add Podcast</h1>
-<<<<<<< HEAD
+  <div class= "container">
 
-  <div class= "existingNetworkInput1">
-    <input placeholder="Network Name" />
+  <h1>Add Podcast</h1><br />
+
+  <select class="networkSelect" name="Network">
+    <option *ngFor="let network of networks" [value]="network">
+          {{network}}
+    </option>
+  </select><br />
+
+  <select class= "seasonSelect" name="Season">
+  <option *ngFor="let season of seasons" [value]="season">
+          {{season}}
+    </option>
+  </select><br />
+
+  <button class="newSeasonButton" (click)="createNewSeason()">New Season</button><br />
+
+  <input class="episodeNumber" placeholder="Episode Num" #epidsodenum/>
+  <input class="episodeTitle" placeholder="Episode Title" #episodetitle/><br />
+
+  <textarea class="podcastDescription" placeholder="Podcast Description" #podcastdesc></textarea><br />
+  <textarea class="podcastNotes" placeholder="Podcast Notes" #podcastnotes></textarea><br />
+
+  <select class= "categorySelect" name="Category">
+  <option *ngFor="let catagory of categories" [value]="categories">
+          {{catagory}}
+    </option>
+  </select><br />
+
+  <div>
+    <form action="">
+      <input class= "linkSelector" type="radio" name="link" value="youtubelink"> <input placeholder="Youtube Link" #youtube/><br>
+      <input class= "linkSelector" type="radio" name="link" value="soundcloudlink"> <input placeholder="SoundCloud Link" #soundcloud/><br>
+      <input class= "linkSelector" type="radio" name="link" value="spotifylink"> <input placeholder="Spotify Link" #spotify/><br>
+    </form>
   </div>
 
-=======
-  <div class= "existingNetworkInput1">
-    <input placeholder="Network Name" />
+
+  <button class="submitButton" (click)="submitToExistingNetwork(network,episodenum,episodetitle,podcastdesc,podcastnotes,youtube,soundcloud,spotify)">Submit</button>
+
   </div>
->>>>>>> cbfbf7292c31071a13dabe368fa9ac2ec3e6d4b6
-  <input placeholder="Season" />
-  <button class="newSeasonButton" (click)="createNewSeason()">New Season</button>
-  <input placeholder="Episode Number" />
-  <input placeholder="Episode Title" />
-  <input placeholder="Podcast Description" />
-  <input placeholder="Podcast Notes" />
-  <input placeholder="Category"/>
-  <input placeholder="Youtube Link"/>
-  <input placeholder="Soundcloud Link"/>
-  <input placeholder="Spotify Link"/>
-  <button class="submitButton" (click)="submitToExistingNetwork()">Submit</button>
 </div>
