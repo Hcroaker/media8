@@ -9,4 +9,8 @@ export class Podcast {
   link: string;
   uploadDate: string;
   views: number;
+
+  constructor(){
+    
+  }
 }

@@ -79,8 +79,6 @@ export class AppComponent {
     this.adminPage3 = true;
   }
 
-<<<<<<< HEAD
-=======
   detectFiles(event){
     this.selectedFiles = event.target.files;
   }
@@ -130,7 +128,6 @@ export class AppComponent {
     this.adminPage4 = true;
   }
 
->>>>>>> ee26212949a01e666c9c309a83e74495d595321f
   openPage4(){
     this.adminPage2 = false;
     this.adminPage4 = true;
