@@ -149,8 +149,7 @@
   width: 280px;
   border: none;
   height: 5vh;
-  padding: 5px;
-  margin-top: 1vh;
+  /* padding: 5px; */
   border-radius: 2px;
 }
 
@@ -196,8 +195,7 @@
 .adminPanelPage4 .linkSelector{
   width: 15px !important;
   /* margin-top: -5vh; */
-  margin-bottom: -3vh;
-  display: inline-block;
+  margin-bottom: -9vh;
 }
 
 
