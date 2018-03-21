@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { AngularFirestore } from 'angularfire2/firestore';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Observable } from 'rxjs/Observable';
+import { NetworkService } from './network.service';
+import { Network } from './network';
 
 @Component({
   selector: 'app-root',
