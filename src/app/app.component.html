@@ -50,24 +50,42 @@
 <div class="container-fluid adminPanelPage3" *ngIf="adminPage3">
   <div class="container">
     <h1>Add a new network</h1><br />
+    <p style="text-decoration: underline">
+      Basic info (Required)
+    </p>
     <input class="networkName" placeholder="Network Name" #name/><br />
     <textarea class="networkBio" placeholder="Network Bio" #bio></textarea><br />
-    <p>
-      Profile Picture
+    <br /><p style="text-decoration: underline">
+      Profile Picture (Required)
     </p>
-    <input type="file" [(ngModel)]="networkProfilePicture" #profilePicture/> <br />
-    <i class="icon icon-facebook"></i>
+    <input type="file" (change)="detectFiles($event)"/> <br />
+
+    <br /><p style="text-decoration: underline">
+      Social Media Links (Optional)
+    </p>
+    <i class="icon icon-facebook" style="color: #4867AD"></i>
     <input class="fbLink" placeholder="Facebook Link..." #fb/><br />
-    <i class="icon icon-twitter"></i>
+    <i class="icon icon-twitter" style="color: #48A0EB"></i>
     <input class="twitterLink" placeholder="Twitter Link..." #twitter/><br />
-    <i class="icon icon-youtube"></i>
+    <i class="icon icon-youtube" style="color: #EB3324" ></i>
     <input class="youtubeLink" placeholder="Youtube Link..." #youtube/><br />
-    <i class="icon icon-itunes"></i>
+    <i class="icon icon-itunes" style="color: #E46976" ></i>
     <input class="itunesLink" placeholder="Itunes Link..." #itunes/><br />
-    <i class="icon icon-spotify"></i>
+    <i class="icon icon-spotify" style="color: #65D36E" ></i>
     <input class="spotifyLink" placeholder="Spotify Link..." #spotify/><br />
 
-    <button (click)="submitNetwork(name,bio,profilePicture,fb,twitter,youtube,itunes,spotify)">Submit</button>
+    <button (click)="submitNetwork(name,bio,fb,twitter,youtube,itunes,spotify)" data-toggle="modal" data-target="#exampleModalCenter">Submit</button>
+  </div>
+
+  <!-- Modal -->
+  <div class="successModal" *ngIf="uploadSuccess">
+    <div class="succesModalBackDrop"></div>
+    <div class="successModalContent">
+      <h1>Network added success!</h1>
+      <h3>Would you like to add a podcast for this network?</h3>
+      <button (click)=addPodcastFromNewNetwork()>Yes</button>
+      <button class="successModalNoBtn" (click)="goHome()">No</button>
+    </div>
   </div>
 
 </div>
