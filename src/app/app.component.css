@@ -193,8 +193,8 @@
 /* PAGE 4 */
 
 .adminPanelPage4 {
-  height:100vh;
-  background: #e4e4e4e4;
+  height:110vh;
+  background: #ededed;
   text-align: center;
 }
 
@@ -203,19 +203,61 @@
 }
 
 .adminPanelPage4 input{
-  width: 300px!important;
+  width: 280px;
   border: none;
   height: 5vh;
-  margin-top: 1vh;
+  /* padding: 5px; */
   border-radius: 2px;
-  text-align: center;
 }
 
 .adminPanelPage4 textarea{
   width: 300px;
+  padding: 5px;
   border: none;
   resize:none;
   height: 20vh;
   border-radius: 2px;
-  margin-top: 5vh;
+  margin-top: 2vh;
+}
+
+.adminPanelPage4 button{
+  margin-top: 2vh;
+  margin-bottom: 2vh;
+  height: 5vh;
+  width: 300px;
+}
+
+.adminPanelPage4 .newSeasonButton{
+  margin-top: 2vh;
+  height: 5vh;
+  width: 300px;
+}
+
+.adminPanelPage4 .episodeNumber{
+  width: 110px;
+}
+
+.adminPanelPage4 .episodeTitle{
+  width: 190px;
+}
+
+.adminPanelPage4 .podcastDescription{
+  height: 10vh;
+}
+
+.adminPanelPage4 .podcastNotes{
+  height: 10vh;
+}
+
+.adminPanelPage4 .linkSelector{
+  width: 15px !important;
+  /* margin-top: -5vh; */
+  margin-bottom: -9vh;
+}
+
+
+.adminPanelPage4 select{
+margin-top: 2vh;
+width: 300px;
+height: 5vh;
 }

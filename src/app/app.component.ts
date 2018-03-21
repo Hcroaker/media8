@@ -1,18 +1,14 @@
 import { Component } from '@angular/core';
-import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
+import { AngularFirestore } from 'angularfire2/firestore';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Observable } from 'rxjs/Observable';
-import { NetworkService } from './network.service';
-import { Network } from './network'
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-
-export class AppComponent{
-
+export class AppComponent {
   title = 'app';
   authState: any;
 
@@ -31,8 +27,17 @@ export class AppComponent{
 
   //Page 4
   adminPage4: boolean;
+  networks: any;
+  seasons: any;
+  categories: any;
+  submission: any;
 
-  constructor (afs: AngularFirestore, public afAuth: AngularFireAuth, public NetworkService: NetworkService){
+  constructor (db: AngularFirestore, public afAuth: AngularFireAuth){
+
+    this.networks = ["Media8", "RandomNetwork", "Joe Rogan Experience", "Hardcore History"]
+    this.seasons = ["Season 1", "Season 2", "Season 3", "Season 4", "Season 5", "Season 6"]
+    this.categories = ["Arts", "Comedy", "Education", "Games and Hobbies", "Politics", "Health", "Kids and Family", "News", "Spirituality and Religion", "Science and Medicine", "Society and Culture", "Sports and Rec", "Technology", "Business", "Film"]
+    this.submission = []
 
     //Check if the user is already logged in
     this.afAuth.authState.subscribe((auth) => {
@@ -74,6 +79,8 @@ export class AppComponent{
     this.adminPage3 = true;
   }
 
+<<<<<<< HEAD
+=======
   detectFiles(event){
     this.selectedFiles = event.target.files;
   }
@@ -123,11 +130,15 @@ export class AppComponent{
     this.adminPage4 = true;
   }
 
+>>>>>>> ee26212949a01e666c9c309a83e74495d595321f
   openPage4(){
     this.adminPage2 = false;
     this.adminPage4 = true;
   }
 
+  submitToExistingNetwork(){
+    console.log(this.networks)
+  }
 
 
 
