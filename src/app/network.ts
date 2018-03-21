@@ -7,6 +7,7 @@ export class Network {
   networkYoutube: string;
   networkItunes: string;
   networkSpotify: string;
+  dateJoined: string;
 
 
   constructor(networkName: string, networkBio: string,
@@ -22,6 +23,11 @@ export class Network {
       this.networkYoutube = networkYoutube;
       this.networkItunes = networkItunes;
       this.networkSpotify = networkSpotify;
+
+      var date = new Date()
+      console.log(date)
+
+      this.dateJoined = date.toString(); 
       console.log("Network Object created!")
 
   }
