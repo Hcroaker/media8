@@ -35,7 +35,7 @@ export class AppComponent {
   categories: any;
   submission: any;
 
-  constructor (db: AngularFirestore, public afAuth: AngularFireAuth){
+  constructor (db: AngularFirestore, public afAuth: AngularFireAuth, public NetworkService: NetworkService){
 
     this.networks = ["Media8", "RandomNetwork", "Joe Rogan Experience", "Hardcore History"]
     this.seasons = ["Season 1", "Season 2", "Season 3", "Season 4", "Season 5", "Season 6"]
