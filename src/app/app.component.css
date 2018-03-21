@@ -10,6 +10,7 @@
   background: #e4e4e4e4;
 }
 
+
 .adminPanelPage1 .loginForm{
   position: absolute;
   margin-left: auto;
@@ -138,7 +139,7 @@
   left:0;
   top:0;
   width: 100%;
-  height: 110vh;
+  height: 100%;
   z-index: 2;
 }
 
@@ -253,6 +254,7 @@
   width: 15px !important;
   /* margin-top: -5vh; */
   margin-bottom: -9vh;
+  height:-5vh;
 }
 
 

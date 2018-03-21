@@ -141,8 +141,8 @@ export class AppComponent {
     console.log('New Season')
   }
 
-  submitToExistingNetwork(network,season,category,episodenum,episodetitle,podcastdesc,podcastnotes,youtube,soundcloud,spotify){
-    console.log(network.value,season.value,category.value,episodenum.value,episodetitle.value,podcastdesc.value,podcastnotes.value,youtube.value,soundcloud.value,spotify.value)
+  submitToExistingNetwork(network,season,category,episodenum,episodetitle,podcastdesc,podcastnotes,link){
+    console.log(network.value,season.value,category.value,episodenum.value,episodetitle.value,podcastdesc.value,podcastnotes.value,link.value)
   }
 
   existingNetworkData = {

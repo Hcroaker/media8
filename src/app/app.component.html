@@ -117,22 +117,22 @@
   <textarea class="podcastDescription" placeholder="Podcast Description" #podcastdesc></textarea><br />
   <textarea class="podcastNotes" placeholder="Podcast Notes" #podcastnotes></textarea><br />
 
-  <select class= "categorySelect" name="Category" #category>
-  <option *ngFor="let category of categories" [value]="categories">
+  <select class= "categorySelect" name="Category">
+  <option *ngFor="let category of categories" [value]="category" #category>
           {{category}}
     </option>
   </select><br />
 
   <div>
     <form action="Link Select">
-      <input class= "linkSelector" type="radio" name="link" value="youtubelink"> <input placeholder="Youtube Link" #youtube/><br>
-      <input class= "linkSelector" type="radio" name="link" value="soundcloudlink"> <input placeholder="SoundCloud Link" #soundcloud/><br>
-      <input class= "linkSelector" type="radio" name="link" value="spotifylink"> <input placeholder="Spotify Link" #spotify/><br>
+      <input class= "linkSelector" type="radio" name="link" value="youtubelink"> <input placeholder="Youtube Link" #link/><br>
+      <input class= "linkSelector" type="radio" name="link" value="soundcloudlink"> <input placeholder="SoundCloud Link" #link/><br>
+      <input class= "linkSelector" type="radio" name="link" value="spotifylink"> <input placeholder="Spotify Link" #link/><br>
     </form>
   </div>
 
 
-  <button class="submitButton" (click)="submitToExistingNetwork(network,season,episodenum,episodetitle,podcastdesc,podcastnotes,category,youtube,soundcloud,spotify)">Submit</button>
+  <button class="submitButton" (click)="submitToExistingNetwork(network,season,episodenum,episodetitle,podcastdesc,podcastnotes,category,linky)">Submit</button>
 
   </div>
 </div>
