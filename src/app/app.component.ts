@@ -33,14 +33,13 @@ export class AppComponent {
   networks: any;
   seasons: any;
   categories: any;
-  submission: any;
 
   constructor (db: AngularFirestore, public afAuth: AngularFireAuth, public NetworkService: NetworkService){
 
     this.networks = ["Media8", "RandomNetwork", "Joe Rogan Experience", "Hardcore History"]
     this.seasons = ["Season 1", "Season 2", "Season 3", "Season 4", "Season 5", "Season 6"]
     this.categories = ["Arts", "Comedy", "Education", "Games and Hobbies", "Politics", "Health", "Kids and Family", "News", "Spirituality and Religion", "Science and Medicine", "Society and Culture", "Sports and Rec", "Technology", "Business", "Film"]
-    this.submission = []
+
 
     //Check if the user is already logged in
     this.afAuth.authState.subscribe((auth) => {
@@ -56,8 +55,6 @@ export class AppComponent {
             this.adminPage3 = false;
           }
     });
-
-    this.uploadSuccess = false;
 
   }
 
@@ -137,9 +134,20 @@ export class AppComponent {
   }
 
   submitToExistingNetwork(){
-    console.log(this.networks)
+    console.log(this.existingNetworkData)
   }
 
+  existingNetworkData = {
+    network : 'network',
+    episodenum : 'episodenum',
+    episodetitle:'episodetitle',
+    podcastdesc: 'podcastdesc',
+    podcastnotes: 'podcastnotes',
+    youtube: 'youtube',
+    soundcloud: 'soundcloud',
+    spotify: 'spotify'
+
+}
 
 
 }
