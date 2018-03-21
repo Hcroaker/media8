@@ -74,6 +74,55 @@ export class AppComponent {
     this.adminPage3 = true;
   }
 
+  detectFiles(event){
+    this.selectedFiles = event.target.files;
+  }
+
+  uploadSingle(){
+    let file = this.selectedFiles.item(0);
+    return(
+      this.NetworkService.uploadNetworkProfilePic(file).then(val=>{
+        return val
+      })
+    )
+
+  }
+
+  submitNetwork(name,bio,fb,twitter,youtube,itunes,spotify){
+    if(name.value && bio.value && this.selectedFiles){
+      this.uploadSingle().then(downloadURL =>{
+        console.log(downloadURL)
+        let network = new Network(name.value,bio.value,downloadURL,fb.value,twitter.value,youtube.value,itunes.value,spotify.value)
+        console.log(network.printNetwork());
+        this.NetworkService.addNetwork(<Network>network.getData()).then((value)=>{
+          console.log(value)
+          this.uploadSuccess = true;
+          this.NetworkService.getNetworks().subscribe(networks =>{
+            console.log(networks)
+          });
+        }, (error) => {
+          alert(error)
+        })
+      })
+
+    }else{
+      alert("You must enter the name, bio and profile picture")
+    }
+
+  }
+
+  goHome(){
+    this.uploadSuccess = false;
+    this.adminPage3 = false;
+    this.adminPage2 = true;
+  }
+
+  addPodcastFromNewNetwork(){
+    this.uploadSuccess = false;
+    this.adminPage3 = false;
+    this.adminPage4 = true;
+  }
+
   openPage4(){
     this.adminPage2 = false;
     this.adminPage4 = true;
