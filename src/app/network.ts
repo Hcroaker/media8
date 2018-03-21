@@ -27,9 +27,8 @@ export class Network {
       this.id="start"
 
       var date = new Date()
-      console.log(date)
-
-      this.dateJoined = date.toString();
+      var formatted = date.toLocaleString('en-GB', { timeZone: 'UTC' })
+      this.dateJoined = formatted.split(",")[0];
       console.log("Network Object created!")
 
   }
