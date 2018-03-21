@@ -22,6 +22,9 @@ export class AppComponent {
 
   //Page 3
   adminPage3: boolean;
+  uploadSuccess: boolean;
+  selectedFiles: any;
+
 
   //Page 4
   adminPage4: boolean;
