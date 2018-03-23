@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Fjalla+One');
+
 /* ADMIN PAGE */
 
 
@@ -193,17 +195,83 @@
 /* PAGE 4 */
 
 .adminPanelPage4 {
-  height:110vh;
+  height:100%;
   background: #ededed;
   text-align: center;
 }
 
 .adminPanelPage4 h1{
   text-align: center;
+  font-family: 'Fjalla One', sans-serif;
+  color: #aeaeae;
+}
+
+.adminPanelPage4 p{
+  color: #6C7A89;
+}
+
+.adminPanelPage4 .networkTxt{
+  margin-right: 235px;
+  text-decoration: underline;
+  display: inline;
+}
+
+.adminPanelPage4 .seasonTxt{
+  margin-right: 150px;
+  text-decoration: underline;
+  display: inline;
+}
+
+.adminPanelPage4 .episodeTxt{
+  margin-right: 30px;
+  text-decoration: underline;
+  display: inline;
+}
+
+.adminPanelPage4 .episodeTitleTxt{
+  margin-right: 200px;
+  text-decoration: underline;
+  display:inline;
+}
+
+.adminPanelPage4 .descriptionTxt{
+  margin-right: 210px;
+  text-decoration: underline;
+  display: inline;
+}
+
+.adminPanelPage4 .notesTxt{
+  margin-right: 247px;
+  text-decoration: underline;
+  display: inline;
+}
+
+.adminPanelPage4 .categoryTxt{
+  margin-right: 224px;
+  text-decoration: underline;
+  display: inline;
+}
+
+.adminPanelPage4 .linkTxt{
+  margin-right: 180px;
+  text-decoration: underline;
+  display: inline;
 }
 
 .adminPanelPage4 input{
   width: 280px;
+  border: none;
+  height: 5vh;
+  /* padding: 5px; */
+  border-radius: 2px;
+  padding: 5px;
+  box-shadow: 1px 1px 1px #aeaeae;
+}
+.adminPanelPage4 .link{
+  margin-top: 10px;
+  margin-left: 2px;
+  padding: 5px;
+  width: 300px;
   border: none;
   height: 5vh;
   /* padding: 5px; */
@@ -215,9 +283,10 @@
   padding: 5px;
   border: none;
   resize:none;
-  height: 20vh;
+  height:20vh;
   border-radius: 2px;
   margin-top: 2vh;
+  box-shadow: 1px 1px 1px #aeaeae;
 }
 
 .adminPanelPage4 button{
@@ -225,28 +294,48 @@
   margin-bottom: 2vh;
   height: 5vh;
   width: 300px;
+  border: none;
+  box-shadow: 1px 1px 1px #aeaeae;
+  background: #6C7A89;
+  color: #ffffff;
 }
 
 .adminPanelPage4 .newSeasonButton{
+  width: 198px !important;
+  margin-right: 2px;
+  border: none;
+  background: #59ABE3;
+  color: white;
+  box-shadow: 1px 1px 1px #aeaeae;
+}
+
+.adminPanelPage4 .newEpisodeButton{
   margin-top: 2vh;
+  margin-bottom: 2vh;
   height: 5vh;
-  width: 300px;
+  width: 98px;
+  margin-left: 2px;
+  border: none;
+  background: #5D8CAE;
+  color: white;
+  box-shadow: 1px 1px 1px #aeaeae;
 }
 
 .adminPanelPage4 .episodeNumber{
-  width: 110px;
+  width: 98px;
 }
 
 .adminPanelPage4 .episodeTitle{
-  width: 190px;
+  width: 300px;
+  margin-top: 20px;
 }
 
 .adminPanelPage4 .podcastDescription{
-  height: 10vh;
+  height: 25vh;
 }
 
 .adminPanelPage4 .podcastNotes{
-  height: 10vh;
+  height: 25vh;
 }
 
 .adminPanelPage4 .linkSelector{
@@ -257,7 +346,13 @@
 
 
 .adminPanelPage4 select{
-margin-top: 2vh;
-width: 300px;
-height: 5vh;
+  margin-top: 2vh;
+  width: 300px;
+  height: 5vh;
+  border: none;
+  box-shadow: 1px 1px 1px #aeaeae;
+}
+
+.adminPanelPage4 .seasonSelect{
+  width: 198px;
 }

@@ -95,44 +95,87 @@
 <div class="container-fluid adminPanelPage4" *ngIf="adminPage4">
   <div class= "container">
 
-  <h1>Add Podcast</h1><br />
+  <br /><h1>Add Podcast</h1><br />
 
-  <select class="networkSelect" name="Network" #network>
-    <option *ngFor="let network of networks" [value]="network">
-          {{network}}
+  <p class="networkTxt">
+    Network
+  </p><br />
+  <select class="networkSelect" name="Network" [(ngModel)]="network" (ngModelChange)="networkChanged($event)">
+    <option *ngFor="let network of networks" [ngValue]="network">
+          {{network.networkName}}
     </option>
-  </select><br />
+  </select><br /><br />
 
-  <select class= "seasonSelect" name="Season" #season>
-  <option *ngFor="let season of seasons" [value]="season">
-          {{season}}
+  <p class="seasonTxt">
+    Season
+  </p>
+  <p class="episodeTxt">
+    Episode
+  </p><br />
+
+  <select class="seasonSelect" name="Season" [(ngModel)]="season">
+  <option *ngFor="let season of seasons" [ngValue]="season">
+          {{season.season}}
     </option>
-  </select><br />
+  </select>
+  <input class="episodeNumber" placeholder="{{season.epCount}}" [(ngModel)]="season.epCount" readonly/><br />
 
-  <button class="newSeasonButton" (click)="newSeason()">New Season</button><br />
 
-  <input class="episodeNumber" placeholder="Episode Num" #epidsodenum/>
-  <input class="episodeTitle" placeholder="Episode Title" #episodetitle/><br />
+  <button class="newSeasonButton" (click)="newSeason(seasons)">New Season</button><button class="newEpisodeButton">New Ep</button><br /><br />
 
-  <textarea class="podcastDescription" placeholder="Podcast Description" #podcastdesc></textarea><br />
-  <textarea class="podcastNotes" placeholder="Podcast Notes" #podcastnotes></textarea><br />
+  <p class="episodeTitleTxt">
+    Episode Title
+  </p><br />
 
-  <select class= "categorySelect" name="Category" #category>
-  <option *ngFor="let category of categories" [value]="categories">
+  <input class="episodeTitle" placeholder="Episode Title" #episodetitle/><br /><br />
+
+  <p class="descriptionTxt">
+    Description
+  </p><br />
+  <textarea class="podcastDescription" placeholder="Podcast Description" #podcastdesc></textarea><br /><br />
+  <p class="notesTxt">
+    Notes
+  </p><br />
+  <textarea class="podcastNotes" placeholder="Podcast Notes" #podcastnotes></textarea><br /><br />
+
+  <p class="categoryTxt">
+    Category
+  </p><br />
+  <select class= "categorySelect" name="Category" [(ngModel)]="category">
+  <option *ngFor="let category of categories" [value]="category">
           {{category}}
     </option>
   </select><br />
 
-  <div>
+  <!-- <div>
     <form action="Link Select">
       <input class= "linkSelector" type="radio" name="link" value="youtubelink"> <input placeholder="Youtube Link" #youtube/><br>
       <input class= "linkSelector" type="radio" name="link" value="soundcloudlink"> <input placeholder="SoundCloud Link" #soundcloud/><br>
       <input class= "linkSelector" type="radio" name="link" value="spotifylink"> <input placeholder="Spotify Link" #spotify/><br>
     </form>
-  </div>
+  </div> -->
+
+  <br /><p class="linkTxt">
+    Link to podcast
+  </p><br />
+
+  <select class="networkSelect" [(ngModel)]="linkType">
+    <option [value]="'youtube'" >
+          Youtube
+    </option>
+    <option [value]="'soundcloud'">
+          SoundCloud
+    </option>
+    <option [value]="'spotify'">
+          Spotify
+    </option>
+  </select><br />
+  <input class="link" placeholder="Youtube Link..." *ngIf="linkType=='youtube'" [(ngModel)]="linkValue"/>
+  <input class="link" placeholder="SoundCloud Link..." *ngIf="linkType=='soundcloud'" [(ngModel)]="linkValue"/>
+  <input class="link" placeholder="Spotify Link..." *ngIf="linkType=='spotify'" [(ngModel)]="linkValue"/><br />
 
 
-  <button class="submitButton" (click)="submitToExistingNetwork(network,season,episodenum,episodetitle,podcastdesc,podcastnotes,category,youtube,soundcloud,spotify)">Submit</button>
+  <button class="submitButton" (click)="submitToExistingNetwork(episodenum,episodetitle,podcastdesc,podcastnotes)">Submit</button>
 
   </div>
 </div>
