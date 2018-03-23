@@ -95,49 +95,52 @@
 <div class="container-fluid adminPanelPage4" *ngIf="adminPage4">
   <div class= "container">
 
-  <h1>Add Podcast</h1><br />
+  <br /><h1>Add Podcast</h1><br />
 
-  <p>
+  <p class="networkTxt">
     Network
-  </p>
+  </p><br />
   <select class="networkSelect" name="Network" [(ngModel)]="network" (ngModelChange)="networkChanged($event)">
     <option *ngFor="let network of networks" [ngValue]="network">
           {{network.networkName}}
     </option>
-  </select><br />
+  </select><br /><br />
 
-  <p>
+  <p class="seasonTxt">
     Season
   </p>
-  <select class= "seasonSelect" name="Season" [(ngModel)]="season">
+  <p class="episodeTxt">
+    Episode
+  </p><br />
+
+  <select class="seasonSelect" name="Season" [(ngModel)]="season">
   <option *ngFor="let season of seasons" [ngValue]="season">
           {{season.season}}
     </option>
-  </select><br />
+  </select>
+  <input class="episodeNumber" placeholder="{{season.epCount}}" [(ngModel)]="season.epCount" readonly/><br />
 
-  <button class="newSeasonButton" (click)="newSeason(seasons)">New Season</button><br />
 
-  <p>
-    Episode
-  </p>
-  <p>
+  <button class="newSeasonButton" (click)="newSeason(seasons)">New Season</button><button class="newEpisodeButton">New Ep</button><br /><br />
+
+  <p class="episodeTitleTxt">
     Episode Title
-  </p>
-  <input class="episodeNumber" placeholder="{{season.epCount}}" [(ngModel)]="season.epCount"/>
-  <input class="episodeTitle" placeholder="Episode Title" #episodetitle/><br />
+  </p><br />
 
-  <p>
+  <input class="episodeTitle" placeholder="Episode Title" #episodetitle/><br /><br />
+
+  <p class="descriptionTxt">
     Description
-  </p>
-  <textarea class="podcastDescription" placeholder="Podcast Description" #podcastdesc></textarea><br />
-  <p>
+  </p><br />
+  <textarea class="podcastDescription" placeholder="Podcast Description" #podcastdesc></textarea><br /><br />
+  <p class="notesTxt">
     Notes
-  </p>
-  <textarea class="podcastNotes" placeholder="Podcast Notes" #podcastnotes></textarea><br />
+  </p><br />
+  <textarea class="podcastNotes" placeholder="Podcast Notes" #podcastnotes></textarea><br /><br />
 
-  <p>
+  <p class="categoryTxt">
     Category
-  </p>
+  </p><br />
   <select class= "categorySelect" name="Category" [(ngModel)]="category">
   <option *ngFor="let category of categories" [value]="category">
           {{category}}
@@ -152,9 +155,9 @@
     </form>
   </div> -->
 
-  <br /><p>
+  <br /><p class="linkTxt">
     Link to podcast
-  </p>
+  </p><br />
 
   <select class="networkSelect" [(ngModel)]="linkType">
     <option [value]="'youtube'" >
