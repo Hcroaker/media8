@@ -97,19 +97,19 @@
 
   <h1>Add Podcast</h1><br />
 
-  <select class="networkSelect" name="Network">
+  <select class="networkSelect" name="Network" #network>
     <option *ngFor="let network of networks" [value]="network">
           {{network}}
     </option>
   </select><br />
 
-  <select class= "seasonSelect" name="Season">
+  <select class= "seasonSelect" name="Season" #season>
   <option *ngFor="let season of seasons" [value]="season">
           {{season}}
     </option>
   </select><br />
 
-  <button class="newSeasonButton" (click)="createNewSeason()">New Season</button><br />
+  <button class="newSeasonButton" (click)="newSeason()">New Season</button><br />
 
   <input class="episodeNumber" placeholder="Episode Num" #epidsodenum/>
   <input class="episodeTitle" placeholder="Episode Title" #episodetitle/><br />
@@ -117,14 +117,14 @@
   <textarea class="podcastDescription" placeholder="Podcast Description" #podcastdesc></textarea><br />
   <textarea class="podcastNotes" placeholder="Podcast Notes" #podcastnotes></textarea><br />
 
-  <select class= "categorySelect" name="Category">
-  <option *ngFor="let catagory of categories" [value]="categories">
-          {{catagory}}
+  <select class= "categorySelect" name="Category" #category>
+  <option *ngFor="let category of categories" [value]="categories">
+          {{category}}
     </option>
   </select><br />
 
   <div>
-    <form action="">
+    <form action="Link Select">
       <input class= "linkSelector" type="radio" name="link" value="youtubelink"> <input placeholder="Youtube Link" #youtube/><br>
       <input class= "linkSelector" type="radio" name="link" value="soundcloudlink"> <input placeholder="SoundCloud Link" #soundcloud/><br>
       <input class= "linkSelector" type="radio" name="link" value="spotifylink"> <input placeholder="Spotify Link" #spotify/><br>
@@ -132,7 +132,7 @@
   </div>
 
 
-  <button class="submitButton" (click)="submitToExistingNetwork(network,episodenum,episodetitle,podcastdesc,podcastnotes,youtube,soundcloud,spotify)">Submit</button>
+  <button class="submitButton" (click)="submitToExistingNetwork(network,season,episodenum,episodetitle,podcastdesc,podcastnotes,category,youtube,soundcloud,spotify)">Submit</button>
 
   </div>
 </div>
