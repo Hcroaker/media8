@@ -31,7 +31,7 @@ export class Podcast {
   }
 
   printPodcast(){
-    console.log("Podcast is: " + "PID: " + this.podcastID + " NID: " + this.networkID + " Season: " + season + " Episode: " +
+    console.log("Podcast is: " + "PID: " + this.podcastID + " NID: " + this.networkID + " Season: " + this.season + " Episode: " +
     this.episode + " Title: " + this.title + " Description: " + this.description + " Notes: " + this.notes +
     " Category: " + this.category + " Link: " + this.link + " Upload Date: " + this.uploadDate + " Views: " + this.views)
   }
