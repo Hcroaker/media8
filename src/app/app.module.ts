@@ -10,6 +10,7 @@ import { environment } from '../environments/environment';
 
 import { AppComponent } from './app.component';
 import { NetworkService } from './network.service';
+import { PodcastService } from './podcast.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
@@ -26,7 +27,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     FormsModule
   ],
   providers: [
-    NetworkService
+    NetworkService,
+    PodcastService
   ],
   bootstrap: [AppComponent]
 })

@@ -1,5 +1,5 @@
 export class Podcast {
-  podcastID: string;
+  id?: string;
   networkID: string;
   season: number;
   episode: number;
@@ -7,13 +7,14 @@ export class Podcast {
   description: string;
   notes: string;
   category: string;
-  link: string;
+  linkType: string;
+  linkValue: string;
   uploadDate: string;
   views: number;
 
-  constructor(podcastID: string, networkID: string, season: number, episode: number, title: string,
-    description: string, notes: string, category: string, link: string){
-      this.podcastID = podcastID;
+  constructor(id: string, networkID: string, season: number, episode: number, title: string,
+    description: string, notes: string, category: string, linkType: string, linkValue: string){
+      this.id = id;
       this.networkID = networkID;
       this.season = season;
       this.episode = episode;
@@ -21,7 +22,8 @@ export class Podcast {
       this.description = description;
       this.notes = notes;
       this.category = category;
-      this.link  = link;
+      this.linkType  = linkType;
+      this.linkValue = linkValue;
 
       var date = new Date()
       var formatted = date.toLocaleString('en-GB', { timeZone: 'UTC' })
@@ -31,8 +33,8 @@ export class Podcast {
   }
 
   printPodcast(){
-    console.log("Podcast is: " + "PID: " + this.podcastID + " NID: " + this.networkID + " Season: " + this.season + " Episode: " +
+    console.log("Podcast is: " + "PID: " + this.id + " NID: " + this.networkID + " Season: " + this.season + " Episode: " +
     this.episode + " Title: " + this.title + " Description: " + this.description + " Notes: " + this.notes +
-    " Category: " + this.category + " Link: " + this.link + " Upload Date: " + this.uploadDate + " Views: " + this.views)
+    " Category: " + this.category + " LinkType: " + this.linkType + " LinkValue: " + this.linkValue + " Upload Date: " + this.uploadDate + " Views: " + this.views)
   }
 }

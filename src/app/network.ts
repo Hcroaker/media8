@@ -3,11 +3,11 @@ export class Network {
   networkName: string;
   networkBio: string;
   networkProfilePicture: any;
-  networkFB: string;
-  networkTwitter: string;
-  networkYoutube: string;
-  networkItunes: string;
-  networkSpotify: string;
+  networkFB?: string;
+  networkTwitter?: string;
+  networkYoutube?: string;
+  networkItunes?: string;
+  networkSpotify?: string;
   dateJoined: string;
 
 

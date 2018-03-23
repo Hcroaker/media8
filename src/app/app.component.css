@@ -208,6 +208,17 @@
   height: 5vh;
   /* padding: 5px; */
   border-radius: 2px;
+  padding: 5px;
+}
+.adminPanelPage4 .link{
+  margin-top: 10px;
+  margin-left: 2px;
+  padding: 5px;
+  width: 300px;
+  border: none;
+  height: 5vh;
+  /* padding: 5px; */
+  border-radius: 2px;
 }
 
 .adminPanelPage4 textarea{
@@ -234,11 +245,11 @@
 }
 
 .adminPanelPage4 .episodeNumber{
-  width: 110px;
+  width: 80px;
 }
 
 .adminPanelPage4 .episodeTitle{
-  width: 190px;
+  width: 220px;
 }
 
 .adminPanelPage4 .podcastDescription{
