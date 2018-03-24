@@ -22,21 +22,27 @@ export class PodcastService {
     });
   }
 
+  //Create a new podcastID 'networkName' + n alphanumericCharacters
+  createPodcastID(networkName: string){
+    var alphaNum = Array(15).fill(0).map(x => Math.random().toString(36).charAt(2)).join('')
+    return networkName + '_' + alphaNum;
+  }
+
   //Add a podcast for a given network
   addPodcast(podcast: Podcast): any {
-  return(
-    this.podcastsCollection.add(podcast).then((value) => {
-      console.log("SUCCESS")
-      // alert("Upload success")
-      return value;
-    }, (error) => {
-      //Failure
-      console.log("FAILURE")
-      // alert("Upload Failure" + error)
-      return error;
+    return(
+      this.podcastsCollection.doc(podcast.id).set(podcast).then((value) => {
+        console.log("SUCCESS")
+        // alert("Upload success")
+        return value;
+      }, (error) => {
+        //Failure
+        console.log("FAILURE")
+        // alert("Upload Failure" + error)
+        return error;
 
-    })
-  );
+      })
+    );
   }
 
   //Get all the podcasts
@@ -46,22 +52,14 @@ export class PodcastService {
 
   //Get Podcasts for a given network
   getNetworksPodcasts(networkID: string): any{
-    // let networksPodcasts = this.afs.collection('Podcasts', ref => ref.where('networkID', '==', networkID))
-    // let networksPodcasts2 = networksPodcasts.snapshotChanges().map(changes => {
-    //   return changes.map(a => {
-    //     const data = a.payload.doc.data() as Podcast;
-    //     data.id = a.payload.doc.id;
-    //     return data;
-    //   })
-    // });
     return(
       this.podcastsCollection.ref.where('networkID', '==', networkID).get().then(querySnapshot => {
         querySnapshot.forEach(function(doc) {
             // doc.data() is never undefined for query doc snapshots
             const data = doc.data() as Podcast;
             data.id = doc.id;
-            console.log("HEY")
-            return data;
+            console.log(data)
+            return true;
         });
       })
       .catch(function(error) {

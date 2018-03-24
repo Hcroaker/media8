@@ -200,6 +200,15 @@
   text-align: center;
 }
 
+.adminPanelPage4 .successModal {
+  position: absolute;
+  left:0;
+  top:0;
+  width: 100%;
+  height: 210vh;
+  z-index: 2;
+}
+
 .adminPanelPage4 h1{
   text-align: center;
   font-family: 'Fjalla One', sans-serif;

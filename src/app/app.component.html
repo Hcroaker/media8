@@ -1,5 +1,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<div class="container-fluid homePage1" *ngIf="homePage1">
+  <div *ngIf="podcasts?.length>0;else noPodcasts">
+    <div *ngFor="let podcast of podcasts">
+      {{podcast.title}}
+    </div>
+  </div>
+
+</div>
+
 <!-- ADMIN PAGE -->
 
 <!-- Page 1 -->
@@ -121,7 +130,7 @@
   <input class="episodeNumber" placeholder="{{season.epCount}}" [(ngModel)]="season.epCount" readonly/><br />
 
 
-  <button class="newSeasonButton" (click)="newSeason(seasons)">New Season</button><button class="newEpisodeButton">New Ep</button><br /><br />
+  <button class="newSeasonButton" (click)="newSeason(seasons)">New Season</button><button class="newEpisodeButton" (click)="addEp()">New Ep</button><br /><br />
 
   <p class="episodeTitleTxt">
     Episode Title
@@ -175,7 +184,13 @@
   <input class="link" placeholder="Spotify Link..." *ngIf="linkType=='spotify'" [(ngModel)]="linkValue"/><br />
 
 
-  <button class="submitButton" (click)="submitToExistingNetwork(episodenum,episodetitle,podcastdesc,podcastnotes)">Submit</button>
-
+  <button class="submitButton" (click)="submitToExistingNetwork(episodetitle,podcastdesc,podcastnotes)">Submit</button>
+  <div class="successModal" *ngIf="uploadSuccess">
+    <div class="succesModalBackDrop"></div>
+    <div class="successModalContent">
+      <h1>Podcast added success!</h1>
+      <button (click)=gotBackToAdminPanel()>Done</button>
+    </div>
+  </div>
   </div>
 </div>

@@ -19,6 +19,10 @@ export class AppComponent {
   title = 'app';
   authState: any;
 
+  //Home Page
+  homePage1: boolean;
+  podcasts: [Podcast];
+
   //Admin PAGE
   adminPage: boolean;
   adminEmail: any;
@@ -50,35 +54,33 @@ export class AppComponent {
 
   constructor (db: AngularFirestore, public afAuth: AngularFireAuth, public NetworkService: NetworkService, public PodcastService: PodcastService){
 
-    this.seasons = ["Season 1", "Season 2", "Season 3", "Season 4", "Season 5", "Season 6"]
     this.categories = ["Arts", "Comedy", "Education", "Games and Hobbies", "Politics", "Health", "Kids and Family", "News", "Spirituality and Religion", "Science and Medicine", "Society and Culture", "Sports and Rec", "Technology", "Business", "Film"]
 
-
-
     this.linkType="youtube";
-    this.season = this.seasons[0];
     this.category = this.categories[0];
 
     //Check if the user is already logged in
-    this.afAuth.authState.subscribe((auth) => {
-          this.authState = auth
-          if(this.authState){
-            this.adminPage = false
-            this.adminPage2 = true;
-            this.adminPage3 = false;
-          }
-          else{
-            this.adminPage = true;
-            this.adminPage2 = false;
-            this.adminPage3 = false;
-          }
-    });
+    // this.afAuth.authState.subscribe((auth) => {
+    //       this.authState = auth
+    //       if(this.authState){
+    //         this.adminPage = false
+    //         this.adminPage2 = true;
+    //         this.adminPage3 = false;
+    //       }
+    //       else{
+    //         this.adminPage = true;
+    //         this.adminPage2 = false;
+    //         this.adminPage3 = false;
+    //       }
+    // });
+
+    this.homePage1 = true;
 
     this.NetworkService.getNetworks().subscribe(networks =>{
       this.networks = networks
       this.network = this.networks[0]
       console.log(this.networks)
-      let newPodcasts = this.PodcastService.getNetworksPodcasts(this.network  .id).then(podcasts => {
+      let newPodcasts = this.PodcastService.getNetworksPodcasts(this.network.id).then(podcasts => {
         if(podcasts){
           console.log("You have some podcasts")
           var seasons = this.PodcastService.getSeasons(podcasts)
@@ -94,6 +96,11 @@ export class AppComponent {
         }
       })
     });
+
+    this.PodcastService.getPodcasts().subscribe(podcasts=>{
+      this.podcasts = podcasts
+      console.log(this.podcasts)
+    })
 
 
   }
@@ -183,7 +190,9 @@ export class AppComponent {
   }
 
   networkChanged(network){
-    let newPodcasts = this.PodcastService.getNetworksPodcasts(network.id).then(podcasts => {
+    console.log(network)
+    let newPodcasts = this.PodcastService.getNetworksPodcasts(network.id).then((podcasts) => {
+      console.log(podcasts)
       if(podcasts){
         console.log("You have some podcasts")
         var seasons = this.PodcastService.getSeasons(podcasts)
@@ -202,23 +211,38 @@ export class AppComponent {
 
   }
 
-  submitToExistingNetwork(episodenum,episodetitle,podcastdesc,podcastnotes){
-    console.log(this.network, this.season, episodenum.value, this.category,episodetitle.value,podcastdesc.value,podcastnotes.value,this.linkType,this.linkValue)
+  addEp(){
+    this.season.increaseEpCount();
   }
 
-  existingNetworkData = {
-    network : 'network',
-    season : 'season',
-    category : 'category',
-    episodenum : 'episodenum',
-    episodetitle:'episodetitle',
-    podcastdesc: 'podcastdesc',
-    podcastnotes: 'podcastnotes',
-    youtube: 'youtube',
-    soundcloud: 'soundcloud',
-    spotify: 'spotify'
+  submitToExistingNetwork(episodetitle,podcastdesc,podcastnotes){
+    if(this.network && this.season && this.category && episodetitle.value && podcastdesc.value && podcastnotes.value && this.linkType && this.linkValue){
+      // console.log(this.network, this.season, this.category,episodetitle.value,podcastdesc.value,podcastnotes.value,this.linkType,this.linkValue)
+      var newPodcastID = this.PodcastService.createPodcastID(this.network.networkName);
+      let newPodcast= new Podcast(newPodcastID, this.network.id, this.season.season, this.season.epCount, episodetitle.value, podcastdesc.value, podcastnotes.value, this.category, this.linkType, this.linkValue)
+      newPodcast.printPodcast();
+      this.PodcastService.addPodcast(<Podcast>newPodcast.getData()).then((value) => {
+        console.log(value)
+        this.uploadSuccess = true;
+        this.PodcastService.getPodcasts().subscribe(podcasts =>{
+          console.log(podcasts)
+        });
+      }, (error) => {
+        alert(error)
+      })
+      console.log(newPodcastID)
+    }else{
+      console.log("Not all filled in!")
+      alert("You must fill in all the details!")
+    }
 
-}
+  }
+
+  gotBackToAdminPanel(){
+    this.uploadSuccess = false;
+    this.adminPage4 = false;
+    this.adminPage2 = true;
+  }
 
 
 }
