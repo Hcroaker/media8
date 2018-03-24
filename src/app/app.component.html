@@ -1,20 +1,29 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <div class="container-fluid homePage1" *ngIf="homePage1">
-  <div *ngIf="podcasts?.length>0;else noPodcasts">
-    <div *ngFor="let podcast of podcasts">
-      {{podcast.title}}
+  <div class="container-fluid" *ngIf="podcasts?.length>0;else noPodcasts">
+    <div class="container">
+      <div class="row">
+          <div class="col-auto" *ngFor="let podcast of podcasts">
+            <div class="card" style="width: 20rem;">
+              <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
+              <!-- <div class="videoContain" id="iFrame" [innerHtml]="podcast.linkValue | noSanitize"></div> -->
+              <iframe [src]="sanitizer.bypassSecurityTrustResourceUrl(podcast.linkValue)"></iframe>
+              <div class="card-body">
+                <h5 class="card-title">{{podcast.title}}</h5>
+                <p class="card-seasonEp">S{{podcast.season}}EP{{podcast.episode}}</p>
+                <p class="card-text">{{podcast.desciption}}</p>
+                <p class="card-views">{{podcast.views}} views</p>
+                <p class="card-uploadDate">Posted {{podcast.uploadDate}}</p>
+              </div>
+            </div>
+          </div>
+      </div>
     </div>
   </div>
-
-  <div class="container">
-  <div class="row">
-    <div class="col" *ngFor="let podcast of podcasts">
-      {{podcast.title}}
-    </div>
 </div>
 
-</div>
+
 
 <!-- ADMIN PAGE -->
 

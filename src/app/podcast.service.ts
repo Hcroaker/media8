@@ -59,7 +59,7 @@ export class PodcastService {
             const data = doc.data() as Podcast;
             data.id = doc.id;
             console.log(data)
-            return true;
+            return data;
         });
       })
       .catch(function(error) {

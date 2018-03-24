@@ -10,7 +10,6 @@ export class Network {
   networkSpotify?: string;
   dateJoined: string;
 
-
   constructor(networkName: string, networkBio: string,
     networkProfilePicture: string,
     networkFB: string, networkTwitter: string,
