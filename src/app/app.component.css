@@ -65,6 +65,16 @@
 
 /* PAGE 2 */
 
+.adminPanelPage2 .goHomeBtn{
+  float: left;
+  width:60px;
+  height: 40px;
+  background: none;
+  box-shadow: none;
+  text-decoration: underline;
+  color: black;
+}
+
 .adminPanelPage2{
   height:100vh;
   width: 100%;
