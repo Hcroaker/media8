@@ -8,7 +8,9 @@ import { Network } from './network';
 
 import { PodcastService } from './podcast.service';
 import { Podcast } from './podcast';
-import { Season } from './season'
+import { Season } from './season';
+
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-root',
@@ -52,7 +54,7 @@ export class AppComponent {
   linkType: string;
   linkValue: string;
 
-  constructor (db: AngularFirestore, public afAuth: AngularFireAuth, public NetworkService: NetworkService, public PodcastService: PodcastService){
+  constructor (db: AngularFirestore, public afAuth: AngularFireAuth, public NetworkService: NetworkService, public PodcastService: PodcastService, public sanitizer: DomSanitizer){
 
     this.categories = ["Arts", "Comedy", "Education", "Games and Hobbies", "Politics", "Health", "Kids and Family", "News", "Spirituality and Religion", "Science and Medicine", "Society and Culture", "Sports and Rec", "Technology", "Business", "Film"]
 
@@ -108,6 +110,19 @@ export class AppComponent {
     this.PodcastService.getPodcasts().subscribe(podcasts=>{
       this.podcasts = podcasts
       console.log(this.podcasts)
+      podcasts.forEach(function(podcast){
+        // console.log(podcast)
+        var iframeString = podcast.linkValue;
+        const regex = new RegExp('src=.+?(?=")')
+        var iframeSrc = regex.exec(iframeString)[0]
+        var newregex = new RegExp('(?<=\").*')
+        var newIframeSrc = newregex.exec(iframeSrc)[0]
+        if(newIframeSrc){
+          console.log(newIframeSrc);
+          podcast.linkValue = newIframeSrc
+        }
+
+      });
     })
 
     this.uploadSuccess = true;

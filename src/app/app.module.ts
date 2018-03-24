@@ -12,11 +12,12 @@ import { AppComponent } from './app.component';
 import { NetworkService } from './network.service';
 import { PodcastService } from './podcast.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
+import { NoSanitizePipe } from './no-sanitize.pipe';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    NoSanitizePipe
   ],
   imports: [
     BrowserModule,

@@ -1,5 +1,29 @@
 @import url('https://fonts.googleapis.com/css?family=Fjalla+One');
 
+
+/* HOME PAGE */
+.homePage1 .card-uploadDate{
+  float: left;
+}
+
+.homePage1 .card-views{
+  float: right;
+}
+
+.div.videoContain{
+  width: 100px !important;
+}
+
+
+/* .homePage1 .card-season{
+  float: left;
+}
+
+.homePage1 .card-episode{
+  float: right;
+} */
+
+
 /* ADMIN PAGE */
 
 
