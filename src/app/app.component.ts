@@ -56,51 +56,61 @@ export class AppComponent {
 
     this.categories = ["Arts", "Comedy", "Education", "Games and Hobbies", "Politics", "Health", "Kids and Family", "News", "Spirituality and Religion", "Science and Medicine", "Society and Culture", "Sports and Rec", "Technology", "Business", "Film"]
 
+
     this.linkType="youtube";
     this.category = this.categories[0];
 
-    //Check if the user is already logged in
-    // this.afAuth.authState.subscribe((auth) => {
-    //       this.authState = auth
-    //       if(this.authState){
-    //         this.adminPage = false
-    //         this.adminPage2 = true;
-    //         this.adminPage3 = false;
-    //       }
-    //       else{
-    //         this.adminPage = true;
-    //         this.adminPage2 = false;
-    //         this.adminPage3 = false;
-    //       }
-    // });
+    // Check if the user is already logged in
+    this.afAuth.authState.subscribe((auth) => {
+          this.authState = auth
+          if(this.authState){
+            this.adminPage = false
+            this.adminPage2 = true;
+            this.adminPage3 = false;
+            console.log("Logged in")
+          }
+          else{
+            this.adminPage = true;
+            this.adminPage2 = false;
+            this.adminPage3 = false;
+          }
+    });
 
-    this.homePage1 = true;
+    this.homePage1 = false;
 
     this.NetworkService.getNetworks().subscribe(networks =>{
       this.networks = networks
       this.network = this.networks[0]
       console.log(this.networks)
-      let newPodcasts = this.PodcastService.getNetworksPodcasts(this.network.id).then(podcasts => {
-        if(podcasts){
-          console.log("You have some podcasts")
-          var seasons = this.PodcastService.getSeasons(podcasts)
-          console.log(seasons);
-          this.seasons = [seasons]
-          this.season = this.seasons[this.seasons.length-1]
-        }
-        else{
-          console.log("You have no podcasts")
-          var newSeason = new Season(1)
-          this.seasons = [newSeason]
-          this.season = this.seasons[this.seasons.length-1]
-        }
-      })
+      if(networks.length>0){
+        var newPodcasts = this.PodcastService.getNetworksPodcasts(this.network.id).then(podcasts => {
+          if(podcasts){
+
+            console.log("You have some podcasts")
+            var seasons = this.PodcastService.getSeasons(podcasts)
+            console.log(seasons);
+            this.seasons = [seasons]
+            this.season = this.seasons[this.seasons.length-1]
+            return podcasts;
+          }
+          else{
+            console.log("You have no podcasts")
+            var newSeason = new Season(1)
+            this.seasons = [newSeason]
+            this.season = this.seasons[this.seasons.length-1]
+            return podcasts;
+          }
+        })
+      }
+
     });
 
     this.PodcastService.getPodcasts().subscribe(podcasts=>{
       this.podcasts = podcasts
       console.log(this.podcasts)
     })
+
+    this.uploadSuccess = true;
 
 
   }
@@ -242,6 +252,13 @@ export class AppComponent {
     this.uploadSuccess = false;
     this.adminPage4 = false;
     this.adminPage2 = true;
+
+    //reset values
+    this.network = this.networks[0];
+    this.season = this.seasons[this.seasons.length-1];
+    this.category = this.categories[0];
+    this.linkType = "youtube";
+    this.linkValue = null;
   }
 
 

@@ -52,20 +52,23 @@ export class PodcastService {
 
   //Get Podcasts for a given network
   getNetworksPodcasts(networkID: string): any{
+  console.log(networkID)
     return(
       this.podcastsCollection.ref.where('networkID', '==', networkID).get().then(querySnapshot => {
         querySnapshot.forEach(function(doc) {
             // doc.data() is never undefined for query doc snapshots
-            const data = doc.data() as Podcast;
-            data.id = doc.id;
-            console.log(data)
-            return true;
+            const data2 = doc.data() as Podcast;
+            data2.id = doc.id;
+            console.log(data2)
+            return data2;
         });
       })
       .catch(function(error) {
           console.log("Error getting documents: ", error);
       })
     )
+
+
 
   }
 

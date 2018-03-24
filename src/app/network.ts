@@ -1,5 +1,5 @@
 export class Network {
-  id: any;
+  id?: string;
   networkName: string;
   networkBio: string;
   networkProfilePicture: any;

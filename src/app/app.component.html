@@ -15,6 +15,7 @@
 </div>
 
 </div>
+</div>
 
 <!-- ADMIN PAGE -->
 
@@ -37,20 +38,15 @@
 
 <div class="adminPanelPage2" *ngIf="adminPage2">
   <div class="container-fluid" >
-    <div class="row">
-      <div class="col"></div>
-      <div class="col-6">
-        <img class="media8Logo1" src="../assets/media8Logo.png" align="middle"/>
-      </div>
-      <div class="col"></div>
+    <div class="container">
+      <img class="media8Logo1" src="../assets/media8Logo.png" align="middle"/>
     </div>
-    <div class="row">
-      <div class="col">
-        <div class="container-fluid bottomButtons">
-          <button class="addPodcastButton1" (click)="openPage4()">Add podcast to an existing network</button>
-          <button class="addPodcastButton2" (click)="openPage3()">Add podcast to a new network</button>
-        </div>
+    <div class="container-fluid bottomButtons">
+      <div class="bottomButtonsContainer">
+        <button class="addPodcastButton1" (click)="openPage4()">Add podcast to an existing network</button>
+        <button class="addPodcastButton2" (click)="openPage3()">Add podcast to a new network</button>
       </div>
+
     </div>
   </div>
 </div>
