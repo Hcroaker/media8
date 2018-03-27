@@ -10,18 +10,26 @@
   float: right;
 }
 
+.homePage1 .container-fluid{
+  background-color: #24292F;
+}
+
+.homePage1 .card-body{
+  background-color: #2F3337;
+}
+
+.homePage1 h5{
+  color: #808080;
+}
+
+.homePage1 p{
+  color: #808080;
+}
+
 .div.videoContain{
   width: 100px !important;
 }
 
-
-/* .homePage1 .card-season{
-  float: left;
-}
-
-.homePage1 .card-episode{
-  float: right;
-} */
 
 
 /* ADMIN PAGE */

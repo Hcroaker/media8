@@ -12,7 +12,7 @@
               <iframe [src]="sanitizer.bypassSecurityTrustResourceUrl(podcast.linkValue)"></iframe>
               <div class="card-body">
                 <h5 class="card-title">{{podcast.title}}</h5>
-                <p class="card-seasonEp">S{{podcast.season}}EP{{podcast.episode}}</p>
+                <p class="card-seasonEp">S{{podcast.season}} EP{{podcast.episode}}</p>
                 <p class="card-text">{{podcast.desciption}}</p>
                 <p class="card-views">{{podcast.views}} views</p>
                 <p class="card-uploadDate">Posted {{podcast.uploadDate}}</p>
@@ -151,10 +151,6 @@
 
   <input class="episodeTitle" placeholder="Episode Title" #episodetitle/><br /><br />
 
-<<<<<<< HEAD
-  <select class= "categorySelect" name="Category">
-  <option *ngFor="let category of categories" [value]="category" #category>
-=======
   <p class="descriptionTxt">
     Description
   </p><br />
@@ -169,7 +165,6 @@
   </p><br />
   <select class= "categorySelect" name="Category" [(ngModel)]="category">
   <option *ngFor="let category of categories" [value]="category">
->>>>>>> 2c8192a8d9acd9774a847f6f58d448f2f450fa4f
           {{category}}
     </option>
   </select><br />
@@ -201,10 +196,7 @@
   <input class="link" placeholder="SoundCloud Link..." *ngIf="linkType=='soundcloud'" [(ngModel)]="linkValue"/>
   <input class="link" placeholder="Spotify Link..." *ngIf="linkType=='spotify'" [(ngModel)]="linkValue"/><br />
 
-<<<<<<< HEAD
   <button class="submitButton" (click)="submitToExistingNetwork(network,season,episodenum,episodetitle,podcastdesc,podcastnotes,category,link)">Submit</button>
-=======
->>>>>>> 2c8192a8d9acd9774a847f6f58d448f2f450fa4f
 
   <button class="submitButton" (click)="submitToExistingNetwork(episodetitle,podcastdesc,podcastnotes)">Submit</button>
   <div class="successModal" *ngIf="uploadSuccess">

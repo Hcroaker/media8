@@ -220,10 +220,6 @@ export class AppComponent {
     this.season = this.seasons[this.seasons.length-1]
   }
 
-<<<<<<< HEAD
-  submitToExistingNetwork(network,season,category,episodenum,episodetitle,podcastdesc,podcastnotes,link){
-    console.log(network.value,season.value,category.value,episodenum.value,episodetitle.value,podcastdesc.value,podcastnotes.value,link.value)
-=======
   networkChanged(network){
     console.log(network)
     let newPodcasts = this.PodcastService.getNetworksPodcasts(network.id).then((podcasts) => {
@@ -244,7 +240,6 @@ export class AppComponent {
     })
 
 
->>>>>>> 2c8192a8d9acd9774a847f6f58d448f2f450fa4f
   }
 
   addEp(){
