@@ -2,6 +2,42 @@
 
 
 /* HOME PAGE */
+
+/* nav bar */
+.homePage1 .topnav{
+padding-top: 3vh;
+margin-bottom: 12vh;
+}
+
+.homePage1 a{
+  color: #808080;
+  margin-left: 4vh;
+}
+
+.homePage1 .searchBar{
+  float: left;
+  margin-left: 4vh;
+  padding-left: 1vh;
+  padding-right: 65vh;
+  padding-top: 1vh;
+  padding-bottom:1vh;
+  background-color: #24292F;
+  color: #808080;
+  border-radius:4px;
+}
+
+.homePage1 .sortByDrop{
+  float: right;
+  padding-right: 10vh;
+  padding-top: 1vh;
+  padding-bottom:1vh;
+  margin-right: 16vh;
+  background-color: #24292F;
+  color: #808080;
+  border-radius:4px;
+}
+
+/* cards */
 .homePage1 .card-uploadDate{
   float: left;
 }
@@ -10,6 +46,11 @@
   float: right;
 }
 
+.homePage1 .card{
+  margin-bottom: 5vh;
+}
+
+/* color theme */
 .homePage1 .container-fluid{
   background-color: #24292F;
 }

@@ -3,24 +3,40 @@
 
 <div class="container-fluid homePage1" *ngIf="homePage1">
   <div class="container-fluid" *ngIf="podcasts?.length>0;else noPodcasts">
-    <div class="container">
-      <div class="row">
-          <div class="col-auto" *ngFor="let podcast of podcasts">
-            <div class="card" style="width: 20rem;">
-              <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
-              <!-- <div class="videoContain" id="iFrame" [innerHtml]="podcast.linkValue | noSanitize"></div> -->
-              <iframe [src]="sanitizer.bypassSecurityTrustResourceUrl(podcast.linkValue)"></iframe>
-              <div class="card-body">
-                <h5 class="card-title">{{podcast.title}}</h5>
-                <p class="card-seasonEp">S{{podcast.season}} EP{{podcast.episode}}</p>
-                <p class="card-text">{{podcast.desciption}}</p>
-                <p class="card-views">{{podcast.views}} views</p>
-                <p class="card-uploadDate">Posted {{podcast.uploadDate}}</p>
+    <!-- nav bar -->
+    <div class="topnav">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a><br/><br/>
+    <!-- search bar -->
+      <input class="searchBar" placeholder="Search Media8...">
+    <!-- sort by drop down -->
+      <select class="sortByDrop" name="Sort by..">
+        <option value="sortBy">Sort by..</option>
+        <option value="popularity">Popularity</option>
+        <option value="uploadDate">Upload Date</option>
+        <option value="viewCount">View Count</option>
+      </select>
+    </div>
+    <!-- grid -->
+      <div class="container">
+        <div class="row">
+            <div class="col-auto" *ngFor="let podcast of podcasts">
+              <div class="card" style="width: 20rem;">
+                <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
+                <!-- <div class="videoContain" id="iFrame" [innerHtml]="podcast.linkValue | noSanitize"></div> -->
+                <iframe [src]="sanitizer.bypassSecurityTrustResourceUrl(podcast.linkValue)"></iframe>
+                <div class="card-body">
+                  <h5 class="card-title">{{podcast.title}}</h5>
+                  <p class="card-seasonEp">S{{podcast.season}} EP{{podcast.episode}}</p>
+                  <p class="card-text">{{podcast.desciption}}</p>
+                  <p class="card-views">{{podcast.views}} views</p>
+                  <p class="card-uploadDate">Posted {{podcast.uploadDate}}</p>
+                </div>
               </div>
             </div>
-          </div>
+        </div>
       </div>
-    </div>
   </div>
 </div>
 
