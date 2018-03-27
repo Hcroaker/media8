@@ -1,4 +1,30 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<ng4-loading-spinner> </ng4-loading-spinner>
+
+<div class="container-fluid homePage1" *ngIf="homePage1">
+  <div class="container-fluid" *ngIf="podcasts?.length>0;else noPodcasts">
+    <div class="container">
+      <div class="row">
+          <div class="col-auto" *ngFor="let podcast of podcasts">
+            <div class="card" style="width: 20rem;">
+              <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
+              <!-- <div class="videoContain" id="iFrame" [innerHtml]="podcast.linkValue | noSanitize"></div> -->
+              <iframe [src]="sanitizer.bypassSecurityTrustResourceUrl(podcast.linkValue)"></iframe>
+              <div class="card-body">
+                <h5 class="card-title">{{podcast.title}}</h5>
+                <p class="card-seasonEp">S{{podcast.season}}EP{{podcast.episode}}</p>
+                <p class="card-text">{{podcast.desciption}}</p>
+                <p class="card-views">{{podcast.views}} views</p>
+                <p class="card-uploadDate">Posted {{podcast.uploadDate}}</p>
+              </div>
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 
 <!-- ADMIN PAGE -->
 
@@ -21,20 +47,16 @@
 
 <div class="adminPanelPage2" *ngIf="adminPage2">
   <div class="container-fluid" >
-    <div class="row">
-      <div class="col"></div>
-      <div class="col-6">
-        <img class="media8Logo1" src="../assets/media8Logo.png" align="middle"/>
-      </div>
-      <div class="col"></div>
+    <button class="goHomeBtn" (click)="goHomeFromAdmin()">Home</button>
+    <div class="container">
+      <img class="media8Logo1" src="../assets/media8Logo.png" align="middle"/>
     </div>
-    <div class="row">
-      <div class="col">
-        <div class="container-fluid bottomButtons">
-          <button class="addPodcastButton1" (click)="openPage4()">Add podcast to an existing network</button>
-          <button class="addPodcastButton2" (click)="openPage3()">Add podcast to a new network</button>
-        </div>
+    <div class="container-fluid bottomButtons">
+      <div class="bottomButtonsContainer">
+        <button class="addPodcastButton1" (click)="openPage4()">Add podcast to an existing network</button>
+        <button class="addPodcastButton2" (click)="openPage3()">Add podcast to a new network</button>
       </div>
+
     </div>
   </div>
 </div>
@@ -95,44 +117,102 @@
 <div class="container-fluid adminPanelPage4" *ngIf="adminPage4">
   <div class= "container">
 
-  <h1>Add Podcast</h1><br />
+  <br /><h1>Add Podcast</h1><br />
 
-  <select class="networkSelect" name="Network" #network>
-    <option *ngFor="let network of networks" [value]="network">
-          {{network}}
+  <p class="networkTxt">
+    Network
+  </p><br />
+  <select class="networkSelect" name="Network" [(ngModel)]="network" (ngModelChange)="networkChanged($event)">
+    <option *ngFor="let network of networks" [ngValue]="network">
+          {{network.networkName}}
     </option>
-  </select><br />
+  </select><br /><br />
 
-  <select class= "seasonSelect" name="Season" #season>
-  <option *ngFor="let season of seasons" [value]="season">
-          {{season}}
+  <p class="seasonTxt">
+    Season
+  </p>
+  <p class="episodeTxt">
+    Episode
+  </p><br />
+
+  <select class="seasonSelect" name="Season" [(ngModel)]="season">
+  <option *ngFor="let season of seasons" [ngValue]="season">
+          {{season.season}}
     </option>
-  </select><br />
+  </select>
+  <input class="episodeNumber" placeholder="{{season.epCount}}" [(ngModel)]="season.epCount" readonly/><br />
 
-  <button class="newSeasonButton" (click)="newSeason()">New Season</button><br />
 
-  <input class="episodeNumber" placeholder="Episode Num" #epidsodenum/>
-  <input class="episodeTitle" placeholder="Episode Title" #episodetitle/><br />
+  <button class="newSeasonButton" (click)="newSeason(seasons)">New Season</button><button class="newEpisodeButton" (click)="addEp()">New Ep</button><br /><br />
 
-  <textarea class="podcastDescription" placeholder="Podcast Description" #podcastdesc></textarea><br />
-  <textarea class="podcastNotes" placeholder="Podcast Notes" #podcastnotes></textarea><br />
+  <p class="episodeTitleTxt">
+    Episode Title
+  </p><br />
 
+  <input class="episodeTitle" placeholder="Episode Title" #episodetitle/><br /><br />
+
+<<<<<<< HEAD
   <select class= "categorySelect" name="Category">
   <option *ngFor="let category of categories" [value]="category" #category>
+=======
+  <p class="descriptionTxt">
+    Description
+  </p><br />
+  <textarea class="podcastDescription" placeholder="Podcast Description" #podcastdesc></textarea><br /><br />
+  <p class="notesTxt">
+    Notes
+  </p><br />
+  <textarea class="podcastNotes" placeholder="Podcast Notes" #podcastnotes></textarea><br /><br />
+
+  <p class="categoryTxt">
+    Category
+  </p><br />
+  <select class= "categorySelect" name="Category" [(ngModel)]="category">
+  <option *ngFor="let category of categories" [value]="category">
+>>>>>>> 2c8192a8d9acd9774a847f6f58d448f2f450fa4f
           {{category}}
     </option>
   </select><br />
 
-  <div>
+  <!-- <div>
     <form action="Link Select">
       <input class= "linkSelector" type="radio" name="link" value="youtubelink"> <input placeholder="Youtube Link" #link/><br>
       <input class= "linkSelector" type="radio" name="link" value="soundcloudlink"> <input placeholder="SoundCloud Link" #link/><br>
       <input class= "linkSelector" type="radio" name="link" value="spotifylink"> <input placeholder="Spotify Link" #link/><br>
     </form>
-  </div>
+  </div> -->
 
+  <br /><p class="linkTxt">
+    Link to podcast
+  </p><br />
 
+  <select class="networkSelect" [(ngModel)]="linkType">
+    <option [value]="'youtube'" >
+          Youtube
+    </option>
+    <option [value]="'soundcloud'">
+          SoundCloud
+    </option>
+    <option [value]="'spotify'">
+          Spotify
+    </option>
+  </select><br />
+  <input class="link" placeholder="Youtube Link..." *ngIf="linkType=='youtube'" [(ngModel)]="linkValue"/>
+  <input class="link" placeholder="SoundCloud Link..." *ngIf="linkType=='soundcloud'" [(ngModel)]="linkValue"/>
+  <input class="link" placeholder="Spotify Link..." *ngIf="linkType=='spotify'" [(ngModel)]="linkValue"/><br />
+
+<<<<<<< HEAD
   <button class="submitButton" (click)="submitToExistingNetwork(network,season,episodenum,episodetitle,podcastdesc,podcastnotes,category,link)">Submit</button>
+=======
+>>>>>>> 2c8192a8d9acd9774a847f6f58d448f2f450fa4f
 
+  <button class="submitButton" (click)="submitToExistingNetwork(episodetitle,podcastdesc,podcastnotes)">Submit</button>
+  <div class="successModal" *ngIf="uploadSuccess">
+    <div class="succesModalBackDrop"></div>
+    <div class="successModalContent">
+      <h1>Podcast added success!</h1>
+      <button (click)=gotBackToAdminPanel()>Done</button>
+    </div>
+  </div>
   </div>
 </div>
