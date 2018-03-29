@@ -18,7 +18,7 @@ margin-bottom: 12vh;
   float: left;
   margin-left: 4vh;
   padding-left: 1vh;
-  padding-right: 65vh;
+  padding-right: 45vw;
   padding-top: 1vh;
   padding-bottom:1vh;
   background-color: #1C2022;
@@ -477,4 +477,11 @@ margin-bottom: 12vh;
 
 .adminPanelPage4 .seasonSelect{
   width: 198px;
+}
+
+/* media query */
+@media screen and (max-width:1000px){
+  .homePage1 .searchbar{
+    padding-right: 50%;
+  }
 }
