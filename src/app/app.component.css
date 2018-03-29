@@ -20,11 +20,16 @@
 
 .navbar{
   background: #191919!important;
-  border-bottom: 1px solid #ededed;
+  box-shadow:  5px 2px -2px #191919;
 }
 
 .nav-link{
   color: white!important;
+}
+
+.navbar .navbarLogo{
+  width: 11%;
+  margin-right: 1vw;
 }
 .homePage1 .topnav{
   padding-top: 3vh;
@@ -71,6 +76,7 @@
 
 .homePage1 iframe{
   border: none;
+
 }
 
 /* cards */
@@ -82,9 +88,14 @@
   float: right;
 }
 
+/* .homePage1 .card-category{
+  float: right;
+} */
+
 .homePage1 .card{
   margin-bottom: 5vh;
   border:none;
+  box-shadow: 2px 2px 10px #141414;
 }
 
 /* color theme */

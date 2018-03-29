@@ -102,19 +102,6 @@ export class AppComponent {
     this.PodcastService.getPodcasts().subscribe(podcasts=>{
       this.podcasts = podcasts
       console.log(this.podcasts)
-      podcasts.forEach(function(podcast){
-        // console.log(podcast)
-        var iframeString = podcast.linkValue;
-        const regex = new RegExp('src=.+?(?=")')
-        var iframeSrc = regex.exec(iframeString)[0]
-        var newregex = new RegExp('(?<=\").*')
-        var newIframeSrc = newregex.exec(iframeSrc)[0]
-        if(newIframeSrc){
-          console.log(newIframeSrc);
-          podcast.linkValue = newIframeSrc
-        }
-
-      });
     })
 
   }
@@ -236,7 +223,7 @@ export class AppComponent {
       // console.log(this.network, this.season, this.category,episodetitle.value,podcastdesc.value,podcastnotes.value,this.linkType,this.linkValue)
       this.spinnerService.show();
       var newPodcastID = this.PodcastService.createPodcastID(this.network.networkName);
-      let newPodcast= new Podcast(newPodcastID, this.network.id, this.season.season, this.season.epCount, episodetitle.value, podcastdesc.value, podcastnotes.value, this.category, this.linkType, this.linkValue)
+      let newPodcast= new Podcast(newPodcastID, this.network.id, this.network.networkName, this.season.season, this.season.epCount, episodetitle.value, podcastdesc.value, podcastnotes.value, this.category, this.linkType, this.linkValue)
       newPodcast.printPodcast();
       this.PodcastService.addPodcast(<Podcast>newPodcast.getData()).then((value) => {
         console.log(value)
@@ -280,8 +267,16 @@ export class AppComponent {
       console.log(filteredPodcasts)
       this.podcasts = filteredPodcasts
     })
+  }
+  increaseViews(podcastClicked: Podcast) {
+    console.log(podcastClicked)
+    console.log("podcast clicked")
+    this.PodcastService.increaseViews(podcastClicked)
 
   }
 
+  openNav() {
+    document.getElementById("mySidenav").style.width = "250px";
+  }
 
 }

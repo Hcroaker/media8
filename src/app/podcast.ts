@@ -1,6 +1,7 @@
 export class Podcast {
   id?: string;
   networkID: string;
+  networkName: string;
   season: number;
   episode: number;
   title: string;
@@ -8,14 +9,15 @@ export class Podcast {
   notes: string;
   category: string;
   linkType: string;
-  linkValue: string;
+  linkValue?: string;
   uploadDate: string;
   views: number;
 
-  constructor(id: string, networkID: string, season: number, episode: number, title: string,
+  constructor(id: string, networkID: string, networkName: string, season: number, episode: number, title: string,
     description: string, notes: string, category: string, linkType: string, linkValue: string){
       this.id = id;
       this.networkID = networkID;
+      this.networkName = networkName;
       this.season = season;
       this.episode = episode;
       this.title = title;
@@ -23,7 +25,20 @@ export class Podcast {
       this.notes = notes;
       this.category = category;
       this.linkType  = linkType;
-      this.linkValue = linkValue;
+
+      var iframeString = linkValue;
+      const regex = new RegExp('src=.+?(?=")')
+      var iframeSrc = regex.exec(iframeString)[0]
+      var newregex = new RegExp('(?<=\").*')
+      var newIframeSrc = newregex.exec(iframeSrc)[0]
+      if(newIframeSrc){
+        console.log(newIframeSrc);
+        this.linkValue = linkValue;
+      }
+      else{
+        this.linkValue = null
+      }
+
 
       var date = new Date()
       var formatted = date.toLocaleString('en-GB', { timeZone: 'UTC' })
@@ -45,4 +60,5 @@ export class Podcast {
         Object.keys(this).map(key => result[key] = this[key]);
         return result;
   }
+
 }
