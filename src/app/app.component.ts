@@ -11,6 +11,7 @@ import { Podcast } from './podcast';
 import { Season } from './season';
 
 import { DomSanitizer } from '@angular/platform-browser';
+import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
 
 @Component({
   selector: 'app-root',
@@ -54,7 +55,7 @@ export class AppComponent {
   linkType: string;
   linkValue: string;
 
-  constructor (db: AngularFirestore, public afAuth: AngularFireAuth, public NetworkService: NetworkService, public PodcastService: PodcastService, public sanitizer: DomSanitizer){
+  constructor (db: AngularFirestore, public afAuth: AngularFireAuth, public NetworkService: NetworkService, public PodcastService: PodcastService, public sanitizer: DomSanitizer, private spinnerService: Ng4LoadingSpinnerService){
 
     this.categories = ["Arts", "Comedy", "Education", "Games and Hobbies", "Politics", "Health", "Kids and Family", "News", "Spirituality and Religion", "Science and Medicine", "Society and Culture", "Sports and Rec", "Technology", "Business", "Film"]
 
@@ -125,9 +126,6 @@ export class AppComponent {
       });
     })
 
-    this.uploadSuccess = true;
-
-
   }
 
   //ADMIN PAGE
@@ -143,6 +141,11 @@ export class AppComponent {
     })
     .catch(error => console.log(error));
 
+  }
+
+  goHomeFromAdmin(){
+    this.adminPage2 = false;
+    this.homePage1 = true;
   }
 
   openPage3(){
@@ -167,17 +170,20 @@ export class AppComponent {
 
   submitNetwork(name,bio,fb,twitter,youtube,itunes,spotify){
     if(name.value && bio.value && this.selectedFiles){
+      this.spinnerService.show();
       this.uploadSingle().then(downloadURL =>{
         console.log(downloadURL)
         let network = new Network(name.value,bio.value,downloadURL,fb.value,twitter.value,youtube.value,itunes.value,spotify.value)
         console.log(network.printNetwork());
         this.NetworkService.addNetwork(<Network>network.getData()).then((value)=>{
           console.log(value)
+          this.spinnerService.hide();
           this.uploadSuccess = true;
           this.NetworkService.getNetworks().subscribe(networks =>{
             console.log(networks)
           });
         }, (error) => {
+          this.spinnerService.hide();
           alert(error)
         })
       })
@@ -243,16 +249,19 @@ export class AppComponent {
   submitToExistingNetwork(episodetitle,podcastdesc,podcastnotes){
     if(this.network && this.season && this.category && episodetitle.value && podcastdesc.value && podcastnotes.value && this.linkType && this.linkValue){
       // console.log(this.network, this.season, this.category,episodetitle.value,podcastdesc.value,podcastnotes.value,this.linkType,this.linkValue)
+      this.spinnerService.show();
       var newPodcastID = this.PodcastService.createPodcastID(this.network.networkName);
       let newPodcast= new Podcast(newPodcastID, this.network.id, this.season.season, this.season.epCount, episodetitle.value, podcastdesc.value, podcastnotes.value, this.category, this.linkType, this.linkValue)
       newPodcast.printPodcast();
       this.PodcastService.addPodcast(<Podcast>newPodcast.getData()).then((value) => {
         console.log(value)
+        this.spinnerService.hide();
         this.uploadSuccess = true;
         this.PodcastService.getPodcasts().subscribe(podcasts =>{
           console.log(podcasts)
         });
       }, (error) => {
+        this.spinnerService.hide();
         alert(error)
       })
       console.log(newPodcastID)

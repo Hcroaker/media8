@@ -1,25 +1,42 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<ng4-loading-spinner> </ng4-loading-spinner>
 
 <div class="container-fluid homePage1" *ngIf="homePage1">
   <div class="container-fluid" *ngIf="podcasts?.length>0;else noPodcasts">
-    <div class="container">
-      <div class="row">
-          <div class="col-auto" *ngFor="let podcast of podcasts">
-            <div class="card" style="width: 20rem;">
-              <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
-              <!-- <div class="videoContain" id="iFrame" [innerHtml]="podcast.linkValue | noSanitize"></div> -->
-              <iframe [src]="sanitizer.bypassSecurityTrustResourceUrl(podcast.linkValue)"></iframe>
-              <div class="card-body">
-                <h5 class="card-title">{{podcast.title}}</h5>
-                <p class="card-seasonEp">S{{podcast.season}}EP{{podcast.episode}}</p>
-                <p class="card-text">{{podcast.desciption}}</p>
-                <p class="card-views">{{podcast.views}} views</p>
-                <p class="card-uploadDate">Posted {{podcast.uploadDate}}</p>
+    <!-- nav bar -->
+    <div class="topnav">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a><br/><br/>
+    <!-- search bar -->
+      <input class="searchBar" placeholder="Search Media8...">
+    <!-- sort by drop down -->
+      <select class="sortByDrop" name="Sort by..">
+        <option value="sortBy">Sort by..</option>
+        <option value="popularity">Popularity</option>
+        <option value="uploadDate">Upload Date</option>
+        <option value="viewCount">View Count</option>
+      </select>
+    </div>
+    <!-- grid -->
+      <div class="container">
+        <div class="row">
+            <div class="col-auto" *ngFor="let podcast of podcasts">
+              <div class="card" style="width: 20rem;">
+                <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
+                <!-- <div class="videoContain" id="iFrame" [innerHtml]="podcast.linkValue | noSanitize"></div> -->
+                <iframe [src]="sanitizer.bypassSecurityTrustResourceUrl(podcast.linkValue)"></iframe>
+                <div class="card-body">
+                  <h5 class="card-title">{{podcast.title}}</h5>
+                  <p class="card-seasonEp">S{{podcast.season}} EP{{podcast.episode}}</p>
+                  <p class="card-text">{{podcast.desciption}}</p>
+                  <p class="card-views">{{podcast.views}} views</p>
+                  <p class="card-uploadDate">Posted {{podcast.uploadDate}}</p>
+                </div>
               </div>
             </div>
-          </div>
+        </div>
       </div>
-    </div>
   </div>
 </div>
 
@@ -46,6 +63,7 @@
 
 <div class="adminPanelPage2" *ngIf="adminPage2">
   <div class="container-fluid" >
+    <button class="goHomeBtn" (click)="goHomeFromAdmin()">Home</button>
     <div class="container">
       <img class="media8Logo1" src="../assets/media8Logo.png" align="middle"/>
     </div>
@@ -169,9 +187,9 @@
 
   <!-- <div>
     <form action="Link Select">
-      <input class= "linkSelector" type="radio" name="link" value="youtubelink"> <input placeholder="Youtube Link" #youtube/><br>
-      <input class= "linkSelector" type="radio" name="link" value="soundcloudlink"> <input placeholder="SoundCloud Link" #soundcloud/><br>
-      <input class= "linkSelector" type="radio" name="link" value="spotifylink"> <input placeholder="Spotify Link" #spotify/><br>
+      <input class= "linkSelector" type="radio" name="link" value="youtubelink"> <input placeholder="Youtube Link" #link/><br>
+      <input class= "linkSelector" type="radio" name="link" value="soundcloudlink"> <input placeholder="SoundCloud Link" #link/><br>
+      <input class= "linkSelector" type="radio" name="link" value="spotifylink"> <input placeholder="Spotify Link" #link/><br>
     </form>
   </div> -->
 
@@ -194,6 +212,7 @@
   <input class="link" placeholder="SoundCloud Link..." *ngIf="linkType=='soundcloud'" [(ngModel)]="linkValue"/>
   <input class="link" placeholder="Spotify Link..." *ngIf="linkType=='spotify'" [(ngModel)]="linkValue"/><br />
 
+  <button class="submitButton" (click)="submitToExistingNetwork(network,season,episodenum,episodetitle,podcastdesc,podcastnotes,category,link)">Submit</button>
 
   <button class="submitButton" (click)="submitToExistingNetwork(episodetitle,podcastdesc,podcastnotes)">Submit</button>
   <div class="successModal" *ngIf="uploadSuccess">

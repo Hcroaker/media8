@@ -13,6 +13,7 @@ import { NetworkService } from './network.service';
 import { PodcastService } from './podcast.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NoSanitizePipe } from './no-sanitize.pipe';
+import { Ng4LoadingSpinnerModule } from 'ng4-loading-spinner';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { NoSanitizePipe } from './no-sanitize.pipe';
     AngularFirestoreModule, // imports firebase/firestore, only needed for database features
     AngularFireAuthModule, // imports firebase/auth, only needed for auth features,
     AngularFireStorageModule,
-    FormsModule
+    FormsModule,
+    Ng4LoadingSpinnerModule.forRoot()
   ],
   providers: [
     NetworkService,
