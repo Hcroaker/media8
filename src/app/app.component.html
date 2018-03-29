@@ -1,7 +1,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <ng4-loading-spinner> </ng4-loading-spinner>
 
-<div class="container-fluid homePage1" *ngIf="homePage1">
+<div class="container-fluid homePage1" *ngIf="page=='homePage'">
   <div class="container-fluid" *ngIf="podcasts?.length>0;else noPodcasts">
     <!-- nav bar -->
     <div class="topnav">
@@ -40,12 +40,17 @@
   </div>
 </div>
 
+<div class="container-fluid viewPodcast" *ngIf="page=='viewPodcast'">
+
+
+</div>
+
 
 
 <!-- ADMIN PAGE -->
 
 <!-- Page 1 -->
-<div class="container-fluid adminPanelPage1" *ngIf="adminPage">
+<div class="container-fluid adminPanelPage1" *ngIf="page=='adminPage1'">
   <div class="container loginForm">
     <h1 class="adminTitle">Media8 Admin Portal</h1>
     <input class="adminEmailInput" type="email" [(ngModel)]="adminEmail" placeholder="Email" required/> <br />
@@ -61,7 +66,7 @@
       <img class="media8Logo1" src="../assets/media8Logo.png" align="middle"/>
     </div> -->
 
-<div class="adminPanelPage2" *ngIf="adminPage2">
+<div class="adminPanelPage2" *ngIf="page=='adminPage2'">
   <div class="container-fluid" >
     <button class="goHomeBtn" (click)="goHomeFromAdmin()">Home</button>
     <div class="container">
@@ -85,7 +90,7 @@
     </div> -->
 
 
-<div class="container-fluid adminPanelPage3" *ngIf="adminPage3">
+<div class="container-fluid adminPanelPage3" *ngIf="page=='adminPage3'">
   <div class="container">
     <h1>Add a new network</h1><br />
     <p style="text-decoration: underline">
@@ -130,7 +135,7 @@
 
 <!-- Page 4 -->
 
-<div class="container-fluid adminPanelPage4" *ngIf="adminPage4">
+<div class="container-fluid adminPanelPage4" *ngIf="page=='adminPage4'">
   <div class= "container">
 
   <br /><h1>Add Podcast</h1><br />

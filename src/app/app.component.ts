@@ -21,28 +21,22 @@ import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
 export class AppComponent {
   title = 'app';
   authState: any;
+  page: string;
 
   //Home Page
-  homePage1: boolean;
   podcasts: [Podcast];
 
   //Admin PAGE
-  adminPage: boolean;
   adminEmail: any;
   adminPassword: any;
 
   //Page2
-  adminPage2: boolean;
 
   //Page 3
-  adminPage3: boolean;
   uploadSuccess: boolean;
   selectedFiles: any;
 
-
   //Page 4
-  adminPage4: boolean;
-
   networks: [Network];
   network: Network;
 
@@ -67,19 +61,13 @@ export class AppComponent {
     this.afAuth.authState.subscribe((auth) => {
           this.authState = auth
           if(this.authState){
-            this.adminPage = false
-            this.adminPage2 = true;
-            this.adminPage3 = false;
+            this.page = "adminPage2"
             console.log("Logged in")
           }
           else{
-            this.adminPage = true;
-            this.adminPage2 = false;
-            this.adminPage3 = false;
+            this.page = "homePage"
           }
     });
-
-    this.homePage1 = false;
 
     this.NetworkService.getNetworks().subscribe(networks =>{
       this.networks = networks
@@ -136,22 +124,19 @@ export class AppComponent {
 
     this.afAuth.auth.signInWithEmailAndPassword(this.adminEmail, this.adminPassword)
     .then(() => {
-      this.adminPage = false;
-      this.adminPage2 = true;
+      this.page="adminPage2"
     })
     .catch(error => console.log(error));
 
   }
 
   goHomeFromAdmin(){
-    this.adminPage2 = false;
-    this.homePage1 = true;
+    this.page="homePage"
   }
 
   openPage3(){
     console.log("Hey")
-    this.adminPage2 = false;
-    this.adminPage3 = true;
+    this.page="adminPage3"
   }
 
   detectFiles(event){
@@ -196,21 +181,18 @@ export class AppComponent {
 
   goHome(){
     this.uploadSuccess = false;
-    this.adminPage3 = false;
-    this.adminPage2 = true;
+    this.page = "adminPage2"
   }
 
   addPodcastFromNewNetwork(){
     this.uploadSuccess = false;
-    this.adminPage3 = false;
-    this.adminPage4 = true;
+    this.page="adminPage4"
   }
 
   //Admin Page 4
 
   openPage4(){
-    this.adminPage2 = false;
-    this.adminPage4 = true;
+    this.page="adminPage4"
   }
 
   newSeason(seasons){
@@ -274,8 +256,7 @@ export class AppComponent {
 
   gotBackToAdminPanel(){
     this.uploadSuccess = false;
-    this.adminPage4 = false;
-    this.adminPage2 = true;
+    this.page="adminPage2"
 
     //reset values
     this.network = this.networks[0];
