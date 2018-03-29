@@ -91,4 +91,17 @@ export class PodcastService {
     return seasons
   }
 
+  increaseViews(podcast: Podcast){
+
+    var databasePodcast = this.afs.doc<Podcast>('Podcasts/' + podcast.id)
+    var newViews = podcast.views+1
+    console.log(databasePodcast)
+    console.log(newViews)
+    var data = {
+      views: newViews
+    }
+    databasePodcast.update(data)
+
+  }
+
 }

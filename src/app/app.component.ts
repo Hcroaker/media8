@@ -13,9 +13,6 @@ import { Season } from './season';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
 
-declare var jquery:any;
-declare var $ :any;
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -102,19 +99,6 @@ export class AppComponent {
     this.PodcastService.getPodcasts().subscribe(podcasts=>{
       this.podcasts = podcasts
       console.log(this.podcasts)
-      podcasts.forEach(function(podcast){
-        // console.log(podcast)
-        var iframeString = podcast.linkValue;
-        const regex = new RegExp('src=.+?(?=")')
-        var iframeSrc = regex.exec(iframeString)[0]
-        var newregex = new RegExp('(?<=\").*')
-        var newIframeSrc = newregex.exec(iframeSrc)[0]
-        if(newIframeSrc){
-          console.log(newIframeSrc);
-          podcast.linkValue = newIframeSrc
-        }
-
-      });
     })
 
   }
@@ -267,6 +251,13 @@ export class AppComponent {
     this.category = this.categories[0];
     this.linkType = "youtube";
     this.linkValue = null;
+  }
+
+  increaseViews(podcastClicked: Podcast) {
+    console.log(podcastClicked)
+    console.log("podcast clicked")
+    this.PodcastService.increaseViews(podcastClicked)
+
   }
 
   openNav() {
