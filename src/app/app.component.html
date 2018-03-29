@@ -27,7 +27,8 @@
 </nav> -->
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">Media8 Logo</a>
+  <img class="navbarLogo" src="../assets/media8Logo.png" />
+  <!-- <a class="navbar-brand" href="#">Media8 Logo</a> -->
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -71,7 +72,8 @@
             <iframe [src]="sanitizer.bypassSecurityTrustResourceUrl(podcast.linkValue)"></iframe>
             <div class="card-body">
               <h5 class="card-title">{{podcast.title}}</h5>
-              <p class="card-seasonEp">S{{podcast.season}} EP{{podcast.episode}}</p>
+              <p class="card-seasonEp">{{podcast.networkName}}, S{{podcast.season}} EP{{podcast.episode}}</p>
+              <p class="card-category">{{podcast.category}}</p>
               <p class="card-text">{{podcast.desciption}}</p>
               <p class="card-views">{{podcast.views}} views</p>
               <p class="card-uploadDate">Posted {{podcast.uploadDate}}</p>
@@ -259,7 +261,7 @@
   <input class="link" placeholder="SoundCloud Link..." *ngIf="linkType=='soundcloud'" [(ngModel)]="linkValue"/>
   <input class="link" placeholder="Spotify Link..." *ngIf="linkType=='spotify'" [(ngModel)]="linkValue"/><br />
 
-  <button class="submitButton" (click)="submitToExistingNetwork(network,season,episodenum,episodetitle,podcastdesc,podcastnotes,category,link)">Submit</button>
+  <!-- <button class="submitButton" (click)="submitToExistingNetwork(network,season,episodenum,episodetitle,podcastdesc,podcastnotes,category,link)">Submit</button> -->
 
   <button class="submitButton" (click)="submitToExistingNetwork(episodetitle,podcastdesc,podcastnotes)">Submit</button>
   <div class="successModal" *ngIf="uploadSuccess">

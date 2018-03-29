@@ -1,6 +1,7 @@
 export class Podcast {
   id?: string;
   networkID: string;
+  networkName: string;
   season: number;
   episode: number;
   title: string;
@@ -12,10 +13,11 @@ export class Podcast {
   uploadDate: string;
   views: number;
 
-  constructor(id: string, networkID: string, season: number, episode: number, title: string,
+  constructor(id: string, networkID: string, networkName: string, season: number, episode: number, title: string,
     description: string, notes: string, category: string, linkType: string, linkValue: string){
       this.id = id;
       this.networkID = networkID;
+      this.networkName = networkName;
       this.season = season;
       this.episode = episode;
       this.title = title;

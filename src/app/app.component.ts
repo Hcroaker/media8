@@ -236,7 +236,7 @@ export class AppComponent {
       // console.log(this.network, this.season, this.category,episodetitle.value,podcastdesc.value,podcastnotes.value,this.linkType,this.linkValue)
       this.spinnerService.show();
       var newPodcastID = this.PodcastService.createPodcastID(this.network.networkName);
-      let newPodcast= new Podcast(newPodcastID, this.network.id, this.season.season, this.season.epCount, episodetitle.value, podcastdesc.value, podcastnotes.value, this.category, this.linkType, this.linkValue)
+      let newPodcast= new Podcast(newPodcastID, this.network.id, this.network.networkName, this.season.season, this.season.epCount, episodetitle.value, podcastdesc.value, podcastnotes.value, this.category, this.linkType, this.linkValue)
       newPodcast.printPodcast();
       this.PodcastService.addPodcast(<Podcast>newPodcast.getData()).then((value) => {
         console.log(value)
