@@ -269,12 +269,18 @@ export class AppComponent {
     this.linkValue = null;
   }
 
-  openNav() {
-    document.getElementById("mySidenav").style.width = "250px";
-  }
+  /////////////////////////////////////////////////////////////////
+  ///////////////////////    Home Page   /////////////////////////
 
-  closeNav() {
-    document.getElementById("mySidenav").style.width = "0";
+  filterByCategory(category){
+
+    console.log(category)
+    $('#exampleModalCenter').modal('hide')
+    this.PodcastService.filterByCategory(category).then(filteredPodcasts=>{
+      console.log(filteredPodcasts)
+      this.podcasts = filteredPodcasts
+    })
+
   }
 
 
