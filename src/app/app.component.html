@@ -2,41 +2,83 @@
 <ng4-loading-spinner> </ng4-loading-spinner>
 
 <div class="container-fluid homePage1" *ngIf="homePage1">
-  <div class="container-fluid" *ngIf="podcasts?.length>0;else noPodcasts">
-    <!-- nav bar -->
-    <div class="topnav">
-      <a href="#home">Home</a>
-      <a href="#about">About</a>
-      <a href="#contact">Contact</a><br/><br/>
-    <!-- search bar -->
-      <input class="searchBar" placeholder="Search Media8...">
-    <!-- sort by drop down -->
-      <select class="sortByDrop" name="Sort by..">
-        <option value="sortBy">Sort by..</option>
-        <option value="popularity">Popularity</option>
-        <option value="uploadDate">Upload Date</option>
-        <option value="viewCount">View Count</option>
-      </select>
-    </div>
-    <!-- grid -->
-      <div class="container">
-        <div class="row">
-            <div class="col-auto" *ngFor="let podcast of podcasts">
-              <div class="card" style="width: 20rem;">
-                <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
-                <!-- <div class="videoContain" id="iFrame" [innerHtml]="podcast.linkValue | noSanitize"></div> -->
-                <iframe [src]="sanitizer.bypassSecurityTrustResourceUrl(podcast.linkValue)"></iframe>
-                <div class="card-body">
-                  <h5 class="card-title">{{podcast.title}}</h5>
-                  <p class="card-seasonEp">S{{podcast.season}} EP{{podcast.episode}}</p>
-                  <p class="card-text">{{podcast.desciption}}</p>
-                  <p class="card-views">{{podcast.views}} views</p>
-                  <p class="card-uploadDate">Posted {{podcast.uploadDate}}</p>
-                </div>
-              </div>
-            </div>
+  <!-- <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">Media8 logo</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">About</a>
+      </li>
+      <li class="nav-item contact">
+        <a class="nav-link" href="#">Contact</a>
+      </li>
+      <li class="nav-item search">
+
+    </ul>
+
+  </div>
+</nav> -->
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">Media8 Logo</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">About</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Contact</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Sort By
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#">Category</a>
+          <a class="dropdown-item" href="#">Latest</a>
+          <a class="dropdown-item" href="#">Most Popular</a>
         </div>
-      </div>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
+    </form>
+  </div>
+</nav>
+  <div class="container-fluid podcasts" *ngIf="podcasts?.length>0;else noPodcasts">
+
+    <!-- grid -->
+    <div class="row">
+        <div class="col-auto" *ngFor="let podcast of podcasts">
+          <div class="card" style="width: 20rem;">
+            <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
+            <!-- <div class="videoContain" id="iFrame" [innerHtml]="podcast.linkValue | noSanitize"></div> -->
+            <iframe [src]="sanitizer.bypassSecurityTrustResourceUrl(podcast.linkValue)"></iframe>
+            <div class="card-body">
+              <h5 class="card-title">{{podcast.title}}</h5>
+              <p class="card-seasonEp">S{{podcast.season}} EP{{podcast.episode}}</p>
+              <p class="card-text">{{podcast.desciption}}</p>
+              <p class="card-views">{{podcast.views}} views</p>
+              <p class="card-uploadDate">Posted {{podcast.uploadDate}}</p>
+            </div>
+          </div>
+        </div>
+    </div>
   </div>
 </div>
 

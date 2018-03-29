@@ -13,6 +13,9 @@ import { Season } from './season';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
 
+declare var jquery:any;
+declare var $ :any;
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -283,6 +286,14 @@ export class AppComponent {
     this.category = this.categories[0];
     this.linkType = "youtube";
     this.linkValue = null;
+  }
+
+  openNav() {
+    document.getElementById("mySidenav").style.width = "250px";
+  }
+
+  closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
   }
 
 
