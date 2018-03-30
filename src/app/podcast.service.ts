@@ -55,13 +55,18 @@ export class PodcastService {
   console.log(networkID)
     return(
       this.podcastsCollection.ref.where('networkID', '==', networkID).get().then(querySnapshot => {
+
+        var newPodcasts = Array<Podcast>();
+
         querySnapshot.forEach(function(doc) {
             // doc.data() is never undefined for query doc snapshots
             const data2 = doc.data() as Podcast;
             data2.id = doc.id;
             console.log(data2)
-            return data2;
+            newPodcasts.push(data2)
         });
+
+        return newPodcasts
       })
       .catch(function(error) {
           console.log("Error getting documents: ", error);
@@ -91,6 +96,29 @@ export class PodcastService {
     return seasons
   }
 
+  filterByCategory(category: string): any{
+    return(
+      this.podcastsCollection.ref.where('category', '==', category).get().then(querySnapshot => {
+
+          var newPodcasts = Array<Podcast>();
+
+          querySnapshot.forEach(function(doc) {
+              // doc.data() is never undefined for query doc snapshots
+              const data2 = doc.data() as Podcast;
+              data2.id = doc.id;
+              console.log(data2)
+              newPodcasts.push(data2)
+          })
+
+          return newPodcasts
+
+      })
+      .catch(function(error) {
+          console.log("Error getting documents: ", error);
+      })
+    )
+  }
+  
   increaseViews(podcast: Podcast){
 
     var databasePodcast = this.afs.doc<Podcast>('Podcasts/' + podcast.id)

@@ -28,7 +28,11 @@
 }
 
 .navbar .navbarLogo{
+<<<<<<< HEAD
   width: 100px;
+=======
+  width: 100px !important
+>>>>>>> b3528662675a0425f6f532e89e7dae0f211ee1a0
 }
 .homePage1 .topnav{
   padding-top: 3vh;

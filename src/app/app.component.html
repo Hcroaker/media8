@@ -27,7 +27,7 @@
 </nav> -->
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <img class="navbarLogo" src="../assets/media8Logo.png" />
+  <a class="navbar-brand" href="#"><img class="navbarLogo" src="../assets/media8Logo.png" /></a>
   <!-- <a class="navbar-brand" href="#">Media8 Logo</a> -->
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -49,7 +49,7 @@
           Sort By
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Category</a>
+          <a class="dropdown-item" data-toggle="modal" data-target="#exampleModalCenter" href="#">Category</a>
           <a class="dropdown-item" href="#">Latest</a>
           <a class="dropdown-item" href="#">Most Popular</a>
         </div>
@@ -61,6 +61,24 @@
     </form>
   </div>
 </nav>
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Sort by Category</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="list-group">
+            <a href="#" class="list-group-item list-group-item-action" *ngFor="let category of categories" (click)="filterByCategory(category)">{{category}}</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
   <div class="container-fluid podcasts" *ngIf="podcasts?.length>0;else noPodcasts">
 
     <!-- grid -->
@@ -69,7 +87,7 @@
           <div class="card" style="width: 20rem;" (click)="increaseViews(podcast)">
             <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
             <!-- <div class="videoContain" id="iFrame" [innerHtml]="podcast.linkValue | noSanitize"></div> -->
-            <iframe [src]="sanitizer.bypassSecurityTrustResourceUrl(podcast.linkValue)"></iframe>
+            <iframe [src]="podcast.linkValue"></iframe>
             <div class="card-body">
               <h5 class="card-title">{{podcast.title}}</h5>
               <p class="card-seasonEp">{{podcast.networkName}}, S{{podcast.season}} EP{{podcast.episode}}</p>

@@ -13,6 +13,9 @@ import { Season } from './season';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
 
+declare var jquery:any;
+declare var $ :any;
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -253,6 +256,18 @@ export class AppComponent {
     this.linkValue = null;
   }
 
+  /////////////////////////////////////////////////////////////////
+  ///////////////////////    Home Page   /////////////////////////
+
+  filterByCategory(category){
+
+    console.log(category)
+    $('#exampleModalCenter').modal('hide')
+    this.PodcastService.filterByCategory(category).then(filteredPodcasts=>{
+      console.log(filteredPodcasts)
+      this.podcasts = filteredPodcasts
+    })
+  }
   increaseViews(podcastClicked: Podcast) {
     console.log(podcastClicked)
     console.log("podcast clicked")
@@ -263,10 +278,5 @@ export class AppComponent {
   openNav() {
     document.getElementById("mySidenav").style.width = "250px";
   }
-
-  closeNav() {
-    document.getElementById("mySidenav").style.width = "0";
-  }
-
 
 }
