@@ -5,6 +5,29 @@
   padding-right:0!important;
 }
 
+/* VIEW PODCAST PAGE */
+.viewPodcastPage{
+  height: 100vh;
+  background-color:#303337;
+}
+
+.viewPodcastPage h5{
+  color: #626466;
+}
+
+.viewPodcastPage p{
+  color: #626466;
+}
+
+.viewPodcastPage .podcastContainer{
+  margin-left: 4vw;
+}
+
+.viewPodcastPage .podcastViewer{
+  width: 45vw;
+  height: 40vh;
+  margin-top:6vh;
+}
 
 /* HOME PAGE */
 
@@ -28,11 +51,7 @@
 }
 
 .navbar .navbarLogo{
-<<<<<<< HEAD
-  width: 100px;
-=======
   width: 100px !important
->>>>>>> b3528662675a0425f6f532e89e7dae0f211ee1a0
 }
 .homePage1 .topnav{
   padding-top: 3vh;
