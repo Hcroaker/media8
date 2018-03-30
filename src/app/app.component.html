@@ -27,7 +27,7 @@
 </nav> -->
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <img class="navbarLogo" src="../assets/media8Logo.png" />
+  <a class="navbar-brand" href="#"><img class="navbarLogo" src="../assets/media8Logo.png" /></a>
   <!-- <a class="navbar-brand" href="#">Media8 Logo</a> -->
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -87,7 +87,7 @@
           <div class="card" style="width: 20rem;" (click)="increaseViews(podcast)">
             <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
             <!-- <div class="videoContain" id="iFrame" [innerHtml]="podcast.linkValue | noSanitize"></div> -->
-            <iframe [src]="sanitizer.bypassSecurityTrustResourceUrl(podcast.linkValue)"></iframe>
+            <iframe [src]="podcast.linkValue"></iframe>
             <div class="card-body">
               <h5 class="card-title">{{podcast.title}}</h5>
               <p class="card-seasonEp">{{podcast.networkName}}, S{{podcast.season}} EP{{podcast.episode}}</p>
