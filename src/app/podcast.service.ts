@@ -1,21 +1,30 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
+import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
 import { AngularFireStorage } from 'angularfire2/storage';
 import { Observable } from 'rxjs/Observable';
 import { Podcast } from './podcast'
 import { Season } from './season'
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Injectable()
 export class PodcastService {
 
   private podcastsCollection: AngularFirestoreCollection<Podcast>;
   podcasts: Observable<Podcast[]>;
+  podcastDoc: AngularFirestoreDocument<Podcast>;
 
-  constructor(public afs: AngularFirestore, private storage: AngularFireStorage) {
-    this.podcastsCollection = afs.collection<Podcast>('Podcasts');
+  constructor(public afs: AngularFirestore, private storage: AngularFireStorage,  public sanitizer: DomSanitizer) {
+    this.podcastsCollection = afs.collection<Podcast>('Podcasts', ref => ref.orderBy('uploadDate', 'desc'));
     this.podcasts = this.podcastsCollection.snapshotChanges().map(changes => {
       return changes.map(a => {
+        console.log("BIG CHANGE")
+        console.log(changes)
+        console.log(a)
         const data = a.payload.doc.data() as Podcast;
+        // if(typeof(data.linkValue)!='object'){
+        //   console.log("Not santized")
+        //   data.linkValue = this.cleanUrl(data.linkValue)
+        // }
         data.id = a.payload.doc.id;
         return data;
       })
@@ -118,18 +127,21 @@ export class PodcastService {
       })
     )
   }
-  
+
   increaseViews(podcast: Podcast){
 
-    var databasePodcast = this.afs.doc<Podcast>('Podcasts/' + podcast.id)
-    var newViews = podcast.views+1
-    console.log(databasePodcast)
-    console.log(newViews)
+    this.podcastDoc = this.afs.doc(`Podcasts/${podcast.id}`)
     var data = {
-      views: newViews
+      views: podcast.views+1
     }
-    databasePodcast.update(data)
+    this.podcastDoc.update(data)
+    console.log(this.podcastDoc)
 
+  }
+
+  cleanUrl(url){
+    console.log(url)
+    return this.sanitizer.bypassSecurityTrustResourceUrl(url);
   }
 
 }

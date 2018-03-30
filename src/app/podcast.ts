@@ -9,7 +9,7 @@ export class Podcast {
   notes: string;
   category: string;
   linkType: string;
-  linkValue?: string;
+  linkValue?: any;
   uploadDate: string;
   views: number;
 
@@ -33,7 +33,7 @@ export class Podcast {
       var newIframeSrc = newregex.exec(iframeSrc)[0]
       if(newIframeSrc){
         console.log(newIframeSrc);
-        this.linkValue = linkValue;
+        this.linkValue = newIframeSrc;
       }
       else{
         this.linkValue = null

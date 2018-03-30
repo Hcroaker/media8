@@ -79,35 +79,34 @@
       </div>
     </div>
   </div>
-  <div class="container-fluid podcasts" *ngIf="podcasts?.length>0;else noPodcasts">
+  <div class="container-fluid podcasts">
 
     <!-- grid -->
     <div class="row">
-        <div class="col-auto" *ngFor="let podcast of podcasts">
-          <div class="card" style="width: 20rem;" (click)="increaseViews(podcast)">
+        <div class="col-auto" *ngFor="let podcast1 of podcasts | async; trackBy: trackByFn">
+          <div class="card" style="width: 20rem;" (click)="increaseViews(podcast1)">
             <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
             <!-- <div class="videoContain" id="iFrame" [innerHtml]="podcast.linkValue | noSanitize"></div> -->
-            <iframe [src]="podcast.linkValue"></iframe>
+            <iframe [src]="podcast1.linkValue | noSanitize"></iframe>
+
             <div class="card-body">
-              <h5 class="card-title">{{podcast.title}}</h5>
-              <p class="card-seasonEp">{{podcast.networkName}}, S{{podcast.season}} EP{{podcast.episode}}</p>
-              <p class="card-category">{{podcast.category}}</p>
-              <p class="card-text">{{podcast.desciption}}</p>
-              <p class="card-views">{{podcast.views}} views</p>
-              <p class="card-uploadDate">Posted {{podcast.uploadDate}}</p>
+              <h5 class="card-title">{{podcast1.title}}</h5>
+              <p class="card-seasonEp">{{podcast1.networkName}}, S{{podcast1.season}} EP{{podcast1.episode}}</p>
+              <p class="card-category">{{podcast1.category}}</p>
+              <p class="card-text">{{podcast1.desciption}}</p>
+              <p class="card-views">{{podcast1.views}} views</p>
+              <p class="card-uploadDate">Posted {{podcast1.uploadDate}}</p>
             </div>
           </div>
         </div>
     </div>
   </div>
+
+  <ng-template #noPodcasts>
+    <hr />
+    <h5>There are no Podcasts</h5>
+  </ng-template>
 </div>
-
-<div class="container-fluid viewPodcast" *ngIf="page=='viewPodcast'">
-
-
-</div>
-
-
 
 <!-- ADMIN PAGE -->
 

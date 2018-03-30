@@ -25,9 +25,10 @@ export class AppComponent {
   title = 'app';
   authState: any;
   page: string;
+  started: boolean = false;
 
   //Home Page
-  podcasts: [Podcast];
+  podcasts: Observable<Array<Podcast>>;
 
   //Admin PAGE
   adminEmail: any;
@@ -56,6 +57,7 @@ export class AppComponent {
 
     this.categories = ["Arts", "Comedy", "Education", "Games and Hobbies", "Politics", "Health", "Kids and Family", "News", "Spirituality and Religion", "Science and Medicine", "Society and Culture", "Sports and Rec", "Technology", "Business", "Film"]
 
+    console.log("Hey")
 
     this.linkType="youtube";
     this.category = this.categories[0];
@@ -99,11 +101,16 @@ export class AppComponent {
 
     });
 
-    this.PodcastService.getPodcasts().subscribe(podcasts=>{
-      this.podcasts = podcasts
-      console.log(this.podcasts)
-    })
+    this.podcasts = this.PodcastService.podcasts
 
+  }
+
+  trackByFn(index, item) {
+    return index; // or item.id
+  }
+
+  iframeLoaded(){
+    console.log("Iframe loaded  ")
   }
 
   //ADMIN PAGE
@@ -278,5 +285,11 @@ export class AppComponent {
   openNav() {
     document.getElementById("mySidenav").style.width = "250px";
   }
+
+  cleanUrl(url){
+    console.log(url)
+    return this.sanitizer.bypassSecurityTrustResourceUrl(url);
+  }
+
 
 }

@@ -49,6 +49,28 @@ export class NetworkService {
     )
   }
 
+  getNetworkWithID(networkID: string): any{
+    return(
+      this.networksCollection.ref.where('networkID', '==', networkID).get().then(querySnapshot => {
+
+        var newNetwork = Array<Network>();
+
+        querySnapshot.forEach(function(doc) {
+            // doc.data() is never undefined for query doc snapshots
+            const data2 = doc.data() as Network;
+            data2.id = doc.id;
+            console.log(data2)
+            newNetwork.push(data2)
+        });
+
+        return newNetwork
+      })
+      .catch(function(error) {
+          console.log("Error getting documents: ", error);
+      })
+    )
+  }
+
   getNetworks(): any{
     return this.networks;
   }
