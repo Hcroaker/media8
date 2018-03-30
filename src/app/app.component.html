@@ -3,16 +3,21 @@
 
 <!-- VIEW PODCAST PAGE -->
 <div class="container-fluid viewPodcastPage" *ngIf="page=='viewPodcast'">
-  <div class="podcastContainer">
-    <h5>Podcast clicked</h5>
-    <iframe class="podcastViewer" [src]="podcastViewed.linkValue"></iframe>
-    <h5 class="podcastTitle">{{podcastViewed.title}}</h5>
-    <p class="card-seasonEp">{{podcastViewed.networkName}}, S{{podcastViewed.season}} EP{{podcastViewed.episode}}</p>
-    <p class="card-category">{{podcastViewed.category}}</p>
-    <p class="card-text">{{podcastViewed.desciption}}</p>
-    <p class="card-views">{{podcastViewed.views}} views</p>
-    <p class="card-uploadDate">Posted {{podcastViewed.uploadDate}}</p>
+  <div class="viewPodcastPageSidenav">
+    <img class="sidenavLogo" src="../assets/media8Logo.png"/><br/>
+    <button class="goHomeBtn2" (click)="goHomeFromAdmin()">Home</button>
   </div>
+  <div class="podcastContainer">
+    <iframe class="podcastViewer" [src]="podcastViewed.linkValue"></iframe>
+  </div>
+    <div class="infoContainer">
+      <h5 class="podcastTitle">{{podcastViewed.title}}</h5>
+      <p class="card-seasonEp">{{podcastViewed.networkName}}, S{{podcastViewed.season}}-EP{{podcastViewed.episode}}</p>
+      <p class="card-category">{{podcastViewed.category}}</p>
+      <p class="card-text">{{podcastViewed.desciption}}</p>
+      <p class="card-views">{{podcastViewed.views}} views</p>
+      <p class="card-uploadDate">Posted {{podcastViewed.uploadDate}}</p>
+    </div>
 </div>
 
 <!-- HOME PAGE-->
@@ -80,7 +85,7 @@
             <iframe [src]="podcast.linkValue"></iframe>
             <div class="card-body">
               <h5 class="card-title">{{podcast.title}}</h5>
-              <p class="card-seasonEp">{{podcast.networkName}}, S{{podcast.season}} EP{{podcast.episode}}</p>
+              <p class="card-seasonEp">{{podcast.networkName}}, S{{podcast.season}}-EP{{podcast.episode}}</p>
               <p class="card-category">{{podcast.category}}</p>
               <p class="card-text">{{podcast.desciption}}</p>
               <p class="card-views">{{podcast.views}} views</p>

@@ -20,13 +20,51 @@
 }
 
 .viewPodcastPage .podcastContainer{
-  margin-left: 4vw;
+  margin-left: 13vw;
+  margin-bottom: 10vh;
 }
 
 .viewPodcastPage .podcastViewer{
-  width: 45vw;
-  height: 40vh;
-  margin-top:6vh;
+  width: 50vw;
+  height: 45vh;
+  margin-top:8vh;
+}
+
+/* PAGE INFOCONTAINER */
+.viewPodcastPage .infoContainer{
+  margin-left: 10vw;
+  padding-left: 3vw;
+  padding-top:5vh;
+  height:36.5vh;
+  box-shadow: 0px 2px 2px #191919;
+  background-color: #25292E;
+}
+
+/* PAGE SIDENAV */
+.viewPodcastPage .viewPodcastPageSidenav{
+  height:100%;
+  width:11vw;
+  background-color: #1D2022;
+  position:fixed;
+  z-index: 1;
+  top: 0;
+  left:0;
+  overflow-x: hidden;
+  padding-top: 2vh;
+  box-shadow: 0px 2px 2px #191919;
+}
+
+.viewPodcastPage .goHomeBtn2{
+  background-color: #1D2022;
+  border: none;
+  color:#626466;
+  margin-left: 0.9vw;
+  width:120px;
+}
+
+.viewPodcastPageSidenav .sidenavLogo{
+  width:120px;
+  margin-left: 0.9vw;
 }
 
 /* HOME PAGE */
