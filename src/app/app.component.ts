@@ -53,6 +53,10 @@ export class AppComponent {
   linkType: string;
   linkValue: string;
 
+
+  //Page 5
+  podcastViewed: Podcast;
+
   constructor (db: AngularFirestore, public afAuth: AngularFireAuth, public NetworkService: NetworkService, public PodcastService: PodcastService, public sanitizer: DomSanitizer, private spinnerService: Ng4LoadingSpinnerService){
 
     this.categories = ["Arts", "Comedy", "Education", "Games and Hobbies", "Politics", "Health", "Kids and Family", "News", "Spirituality and Religion", "Science and Medicine", "Society and Culture", "Sports and Rec", "Technology", "Business", "Film"]
@@ -275,10 +279,13 @@ export class AppComponent {
       this.podcasts = filteredPodcasts
     })
   }
+
   increaseViews(podcastClicked: Podcast) {
     console.log(podcastClicked)
     console.log("podcast clicked")
     this.PodcastService.increaseViews(podcastClicked)
+    this.page="viewPodcast"
+    this.podcastViewed=podcastClicked
 
   }
 
