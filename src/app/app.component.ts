@@ -56,6 +56,8 @@ export class AppComponent {
 
   //Page 5
   podcastViewed: Podcast;
+  networkAssociated: Network;
+  relatedPodcasts: Array<Podcast>;
 
   constructor (db: AngularFirestore, public afAuth: AngularFireAuth, public NetworkService: NetworkService, public PodcastService: PodcastService, public sanitizer: DomSanitizer, private spinnerService: Ng4LoadingSpinnerService){
 
@@ -320,10 +322,23 @@ export class AppComponent {
 
   //A function that is called when a podcast is clicked
   increaseViews(podcastClicked: Podcast) {
+    console.log("PODCAST CLICKED")
     console.log(podcastClicked)
+
     this.PodcastService.increaseViews(podcastClicked)
     this.podcastViewed=podcastClicked
     this.page="viewPodcast"
+
+    this.NetworkService.getNetworkWithID(podcastClicked.networkID).then(network =>{
+      this.networkAssociated = network
+      console.log(this.networkAssociated)
+    })
+
+    this.PodcastService.getCurrentSeasonForNetwork(podcastClicked.networkID, podcastClicked.season).then(relatedPods =>{
+      console.log(relatedPods)
+      this.relatedPodcasts = relatedPods
+    })
+
   }
 
   /*

@@ -125,6 +125,29 @@ export class PodcastService {
     )
   }
 
+  getCurrentSeasonForNetwork(networkID:string, season: number){
+    return(
+      this.podcastsCollection.ref.where('networkID', '==', networkID).where('season', '==', season).orderBy('episode', 'asc').get().then(querySnapshot => {
+
+          var networksPodcasts = Array<Podcast>();
+
+          querySnapshot.forEach(function(doc) {
+              // doc.data() is never undefined for query doc snapshots
+              const data2 = doc.data() as Podcast;
+              data2.id = doc.id;
+              console.log(data2)
+              networksPodcasts.push(data2)
+          })
+
+          return networksPodcasts
+
+      })
+      .catch(function(error) {
+          console.log("Error getting documents: ", error);
+      })
+    )
+  }
+
   increaseViews(podcast: Podcast){
     this.podcastDoc = this.afs.doc(`Podcasts/${podcast.id}`)
     var data = {
