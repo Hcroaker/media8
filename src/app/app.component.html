@@ -8,7 +8,7 @@
     <button class="goHomeBtn2" (click)="goHomeFromAdmin()">Home</button>
   </div>
   <div class="podcastContainer">
-    <iframe class="podcastViewer" [src]="podcastViewed.linkValue"></iframe>
+    <iframe class="podcastViewer" [src]="podcastViewed.linkValue | noSanitize"></iframe>
   </div>
     <div class="infoContainer">
       <h1 class="podcastTitle">{{podcastViewed.title}}</h1>
