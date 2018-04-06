@@ -9,14 +9,26 @@
   </div>
   <div class="podcastContainer">
     <iframe class="podcastViewer" [src]="podcastViewed.linkValue | noSanitize"></iframe>
+    <p class="infoSeasonEp">S{{podcastViewed.season}}-EP{{podcastViewed.episode}}</p>
+    <p class="infoUploadDate">Posted {{podcastViewed.uploadDate}}</p>
+    <div class="seasonContainer">
+      <h3>Season {{podcastViewed.season}}</h3>
+
+
+      <ul class="list-group" *ngFor="let relatedPodcast of relatedPodcasts; trackBy: trackByFn">
+        <li class="list-group-item" *ngIf="relatedPodcast.episode!=podcastViewed.episode">
+          <iframe class="listItemIframe" [src]="relatedPodcast.linkValue | noSanitize"></iframe>
+          <p class="listItemInfo">Season{{relatedPodcast.season}} Episode{{relatedPodcast.episode}} </p>
+        </li>
+      </ul>
+    </div>
   </div>
     <div class="infoContainer">
       <h1 class="podcastTitle">{{podcastViewed.title}}</h1>
-      <p class="card-seasonEp">{{podcastViewed.networkName}}, S{{podcastViewed.season}}-EP{{podcastViewed.episode}}</p>
       <p class="card-category">{{podcastViewed.category}}</p>
       <p class="card-text">{{podcastViewed.desciption}}</p>
-      <p class="card-views">{{podcastViewed.views}} views</p>
-      <p class="card-uploadDate">Posted {{podcastViewed.uploadDate}}</p>
+      <h2 class="card-views">{{podcastViewed.views}} views</h2>
+      <img src={{podcastViewed.networkProfilePicture}} />
     </div>
 </div>
 
