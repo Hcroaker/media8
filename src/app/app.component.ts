@@ -78,6 +78,7 @@ export class AppComponent {
           }
     });
 
+    // GET ALL THE NETWORKS
     this.NetworkService.getNetworks().subscribe(networks =>{
       this.networks = networks
       this.network = this.networks[0]
@@ -105,19 +106,26 @@ export class AppComponent {
 
     });
 
-    this.podcasts = this.PodcastService.podcasts
+    this.PodcastService.getPodcasts().subscribe(pods =>{
+      this.podcasts = pods
+    });
 
   }
 
-  trackByFn(index, item) {
-    return index; // or item.id
+
+
+  /*
+  ADMIN PAGE
+
+  This includes all the functions for the admin page, including adding a new network and adding a Podcast
+  */
+
+  //A function that directs the admin to the home page
+  goHomeFromAdmin(){
+    this.page="homePage"
   }
 
-  iframeLoaded(){
-    console.log("Iframe loaded  ")
-  }
-
-  //ADMIN PAGE
+  //A login function if a admin has not yet logged in
   login(){
     console.log("Login to firebase auth")
     console.log(this.adminEmail);
@@ -131,19 +139,25 @@ export class AppComponent {
 
   }
 
-  goHomeFromAdmin(){
-    this.page="homePage"
-  }
-
+  //This opens up the add a new network page
   openPage3(){
     console.log("Hey")
     this.page="adminPage3"
   }
 
+
+  /*
+
+  This is the functions for adding a networks
+
+  */
+
+  //This detects the files for upload a profile picture
   detectFiles(event){
     this.selectedFiles = event.target.files;
   }
 
+  //Accesses the network service to upload a profile picutre and returns the firebase download url
   uploadSingle(){
     let file = this.selectedFiles.item(0);
     return(
@@ -154,6 +168,7 @@ export class AppComponent {
 
   }
 
+  //Sumbits a network and adds it to the firebase
   submitNetwork(name,bio,fb,twitter,youtube,itunes,spotify){
     if(name.value && bio.value && this.selectedFiles){
       this.spinnerService.show();
@@ -180,22 +195,31 @@ export class AppComponent {
 
   }
 
+  //Goes back to the admin panel home page
   goHome(){
     this.uploadSuccess = false;
     this.page = "adminPage2"
   }
 
+  //Goes to the add podcast page
   addPodcastFromNewNetwork(){
     this.uploadSuccess = false;
     this.page="adminPage4"
   }
 
-  //Admin Page 4
 
+  /*
+  Upload podcast PAGE
+
+  */
+
+  //Opens the add podcast page for an admin
   openPage4(){
     this.page="adminPage4"
   }
 
+
+  //Creates a new season object
   newSeason(seasons){
     console.log('New Season')
     var newSeason = new Season(seasons.length + 1)
@@ -203,6 +227,7 @@ export class AppComponent {
     this.season = this.seasons[this.seasons.length-1]
   }
 
+  //Gets the podcasts for the current selected network
   networkChanged(network){
     console.log(network)
     let newPodcasts = this.PodcastService.getNetworksPodcasts(network.id).then((podcasts) => {
@@ -225,10 +250,12 @@ export class AppComponent {
 
   }
 
+  //Creates a new episode within the current season
   addEp(){
     this.season.increaseEpCount();
   }
 
+  //Submits the podcast and uploads it to the firebase
   submitToExistingNetwork(episodetitle,podcastdesc,podcastnotes){
     if(this.network && this.season && this.category && episodetitle.value && podcastdesc.value && podcastnotes.value && this.linkType && this.linkValue){
       // console.log(this.network, this.season, this.category,episodetitle.value,podcastdesc.value,podcastnotes.value,this.linkType,this.linkValue)
@@ -255,6 +282,7 @@ export class AppComponent {
 
   }
 
+  //Goes back to the admin panel home page
   gotBackToAdminPanel(){
     this.uploadSuccess = false;
     this.page="adminPage2"
@@ -267,9 +295,19 @@ export class AppComponent {
     this.linkValue = null;
   }
 
-  /////////////////////////////////////////////////////////////////
-  ///////////////////////    Home Page   /////////////////////////
 
+  /*
+  HOME PAGE
+
+  This includes all the functions for the home page, including filtering, viewing a podcats and more
+  */
+
+  trackByFn(index, item){
+    console.log("hey")
+    return index;
+  }
+
+  //A function to filter the podcasts by a certain category
   filterByCategory(category){
 
     console.log(category)
@@ -280,23 +318,21 @@ export class AppComponent {
     })
   }
 
+  //A function that is called when a podcast is clicked
   increaseViews(podcastClicked: Podcast) {
     console.log(podcastClicked)
-    console.log("podcast clicked")
     this.PodcastService.increaseViews(podcastClicked)
-    this.page="viewPodcast"
     this.podcastViewed=podcastClicked
-
+    this.page="viewPodcast"
   }
 
-  openNav() {
-    document.getElementById("mySidenav").style.width = "250px";
-  }
+  /*
+  View Podcast PAGE
 
-  cleanUrl(url){
-    console.log(url)
-    return this.sanitizer.bypassSecurityTrustResourceUrl(url);
-  }
+  */
 
+  goToHomePage(){
+    this.page="homePage"
+  }
 
 }
