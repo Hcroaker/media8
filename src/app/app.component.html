@@ -9,14 +9,18 @@
   </div>
   <div class="podcastContainer">
     <iframe class="podcastViewer" [src]="podcastViewed.linkValue"></iframe>
+    <p class="infoSeasonEp">S{{podcastViewed.season}}-EP{{podcastViewed.episode}}</p>
+    <p class="infoUploadDate">Posted {{podcastViewed.uploadDate}}</p>
+    <div class="seasonContainer">
+      <p>{{podcastViewed.title}}</p>
+      <p>Season container</p>
+    </div>
   </div>
     <div class="infoContainer">
       <h1 class="podcastTitle">{{podcastViewed.title}}</h1>
-      <p class="card-seasonEp">{{podcastViewed.networkName}}, S{{podcastViewed.season}}-EP{{podcastViewed.episode}}</p>
       <p class="card-category">{{podcastViewed.category}}</p>
       <p class="card-text">{{podcastViewed.desciption}}</p>
-      <p class="card-views">{{podcastViewed.views}} views</p>
-      <p class="card-uploadDate">Posted {{podcastViewed.uploadDate}}</p>
+      <h2 class="card-views">{{podcastViewed.views}} views</h2>
     </div>
 </div>
 

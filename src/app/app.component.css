@@ -11,7 +11,16 @@
   background-color:#303337;
 }
 
+.viewPodcastPage .iFrame{
+  border: none;
+}
+
 .viewPodcastPage h1{
+  color: #626466;
+  size:110%;
+}
+
+.viewPodcastPage h2{
   color: #626466;
 }
 
@@ -28,6 +37,30 @@
   width: 50vw;
   height: 45vh;
   margin-top:8vh;
+}
+
+.viewPodcastPage .infoSeasonEp{
+  width: 4vw;
+  border-radius: 8px;
+  background-color: black;
+  margin-top: 3vh;
+  margin-bottom: -3vh;
+}
+
+.viewPodcastPage .infoUploadDate{
+  margin-left: 40vw;
+  margin-top:-3vh;
+}
+
+/* PAGE SEASON CONTAINER */
+.viewPodcastPage .seasonContainer{
+  color:#25292E;
+  background-color: #25292E;
+  width:30vw;
+  height:54vh;
+  margin-left: 55vw;
+  margin-top: -54vh;
+
 }
 
 /* PAGE INFOCONTAINER */
