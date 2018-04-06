@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
 import { AngularFireStorage } from 'angularfire2/storage';
 import { Observable } from 'rxjs/Observable';
-import { Podcast } from './podcast'
-import { Season } from './season'
+import { Podcast } from '../classes/podcast'
+import { Season } from '../classes/season'
 import { DomSanitizer } from '@angular/platform-browser';
 
 @Injectable()
