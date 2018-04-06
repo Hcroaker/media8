@@ -3,12 +3,12 @@ import { AngularFirestore } from 'angularfire2/firestore';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Observable } from 'rxjs/Observable';
 
-import { NetworkService } from './network.service';
-import { Network } from './network';
+import { NetworkService } from './services/network.service';
+import { Network } from './classes/network';
 
-import { PodcastService } from './podcast.service';
-import { Podcast } from './podcast';
-import { Season } from './season';
+import { PodcastService } from './services/podcast.service';
+import { Podcast } from './classes/podcast';
+import { Season } from './classes/season';
 
 import { DomSanitizer } from '@angular/platform-browser';
 import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';

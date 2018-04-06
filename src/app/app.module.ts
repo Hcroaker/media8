@@ -9,8 +9,8 @@ import { environment } from '../environments/environment';
 
 
 import { AppComponent } from './app.component';
-import { NetworkService } from './network.service';
-import { PodcastService } from './podcast.service';
+import { NetworkService } from './services/network.service';
+import { PodcastService } from './services/podcast.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NoSanitizePipe } from './no-sanitize.pipe';
 import { Ng4LoadingSpinnerModule } from 'ng4-loading-spinner';
