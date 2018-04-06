@@ -5,10 +5,10 @@
 <div class="container-fluid viewPodcastPage" *ngIf="page=='viewPodcast'">
   <div class="viewPodcastPageSidenav">
     <img class="sidenavLogo" src="../assets/media8Logo.png"/><br/>
-    <button class="goHomeBtn2" (click)="goHomeFromAdmin()">Home</button>
+    <button class="goHomeBtn2" (click)="goToHomePage()">Home</button>
   </div>
   <div class="podcastContainer">
-    <iframe class="podcastViewer" [src]="podcastViewed.linkValue"></iframe>
+    <iframe class="podcastViewer" [src]="podcastViewed.linkValue | noSanitize"></iframe>
     <p class="infoSeasonEp">S{{podcastViewed.season}}-EP{{podcastViewed.episode}}</p>
     <p class="infoUploadDate">Posted {{podcastViewed.uploadDate}}</p>
     <div class="seasonContainer">
@@ -60,6 +60,8 @@
     </form>
   </div>
 </nav>
+
+
   <!-- Modal -->
   <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
@@ -78,14 +80,14 @@
       </div>
     </div>
   </div>
+
+
   <div class="container-fluid podcasts">
 
     <!-- grid -->
     <div class="row">
-        <div class="col-auto" *ngFor="let podcast1 of podcasts | async; trackBy: trackByFn">
-          <div class="card" style="width: 20rem;" (click)="increaseViews(podcast1)">
-            <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
-            <!-- <div class="videoContain" id="iFrame" [innerHtml]="podcast.linkValue | noSanitize"></div> -->
+        <div class="col" *ngFor="let podcast1 of podcasts; trackBy: trackByFn">
+          <div class="card" (click)="increaseViews(podcast1)">
             <iframe [src]="podcast1.linkValue | noSanitize"></iframe>
 
             <div class="card-body">
