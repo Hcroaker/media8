@@ -318,6 +318,23 @@ export class AppComponent {
     })
   }
 
+  //A function to filter by the latest
+  sortbyLatest(){
+    console.log("Latest")
+    this.PodcastService.getLatest().then(podcasts=>{
+      console.log(podcasts)
+      this.podcasts = podcasts
+    })
+  }
+
+  //A function to filter by the most viewed
+  sortByPopularity(){
+    this.PodcastService.getMostPopular().then(podcasts=>{
+      console.log(podcasts)
+      this.podcasts = podcasts
+    })
+  }
+
   //A function that is called when a podcast is clicked
   increaseViews(podcastClicked: Podcast) {
     console.log(podcastClicked)

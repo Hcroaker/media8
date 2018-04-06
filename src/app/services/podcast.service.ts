@@ -125,6 +125,52 @@ export class PodcastService {
     )
   }
 
+  getLatest(): any{
+    return(
+      this.podcastsCollection.ref.orderBy('uploadDate','desc').get().then(querySnapshot => {
+
+          var newPodcasts = Array<Podcast>();
+
+          querySnapshot.forEach(function(doc) {
+              // doc.data() is never undefined for query doc snapshots
+              const data2 = doc.data() as Podcast;
+              data2.id = doc.id;
+              console.log(data2)
+              newPodcasts.push(data2)
+          })
+
+          return newPodcasts
+
+      })
+      .catch(function(error) {
+          console.log("Error getting documents: ", error);
+      })
+    )
+  }
+
+  getMostPopular(): any{
+    return(
+      this.podcastsCollection.ref.orderBy('views','desc').get().then(querySnapshot => {
+
+          var newPodcasts = Array<Podcast>();
+
+          querySnapshot.forEach(function(doc) {
+              // doc.data() is never undefined for query doc snapshots
+              const data2 = doc.data() as Podcast;
+              data2.id = doc.id;
+              console.log(data2)
+              newPodcasts.push(data2)
+          })
+
+          return newPodcasts
+
+      })
+      .catch(function(error) {
+          console.log("Error getting documents: ", error);
+      })
+    )
+  }
+
   increaseViews(podcast: Podcast){
     this.podcastDoc = this.afs.doc(`Podcasts/${podcast.id}`)
     var data = {
