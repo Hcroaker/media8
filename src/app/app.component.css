@@ -12,7 +12,7 @@
 
 /* VIEW PODCAST PAGE */
 .viewPodcastPage{
-  height: 100vh;
+  height: 100%;
   background-color:#303337;
 }
 
@@ -41,22 +41,23 @@
 }
 
 .viewPodcastPage .podcastContainer{
-  margin-left: 13vw;
-  margin-bottom: 6vh;
+
 }
 
 .viewPodcastPage .podcastViewer{
-  width: 50vw;
+  margin-left: 5%;
+  margin-top: 75px;
+  width: 600px;
   height: 45vh;
-  margin-top:8vh;
 }
 
 .viewPodcastPage .infoSeasonEp{
-  width: 4.5vw;
+  margin-left: 5%;
+  margin-top:25px;
+  width: 85px;
   border-radius: 8px;
   background-color: black;
   text-align: center;
-  margin-top: 4vh;
   color: #9A9999;
   border: 0.5px solid #aeaeae;
 }
@@ -73,27 +74,26 @@
 }
 
 .viewPodcastPage .infoUploadDate{
-  margin-left: 40vw;
-  margin-top:-5.5vh;
+  float: right;
+  margin-top: -40px;
 }
 
 /* PAGE SEASON CONTAINER */
 .viewPodcastPage .seasonContainer{
   color:#25292E;
   background-color: #25292E;
-  width:30vw;
-  height:54vh;
-  margin-left: 55vw;
-  margin-top: -54.5vh;
+  width:400px;
+  height:400px;
   z-index: 0;
   display: flex;
   flex-direction: column;
   overflow-y: scroll;
   box-shadow: 2px 2px 10px #141414;
+  margin-top: 75px;
+  margin-left: 25%;
 }
 
 .viewPodcastPage .networkPicture{
-  margin-top: 20%;
   width:70px;
   height:70px;
   object-fit: cover;
@@ -102,16 +102,19 @@
 }
 
 .viewPodcastPage .networkName{
-  margin-top: 8%;
   text-align: center;
   text-decoration: underline;
 }
 
 .viewPodcastPage .detailsContainer{
   float: left;
-  width: 1055px;
+  margin-left:15px;
+  padding-bottom: 145px;
 }
 
+.viewPodcastPage .details{
+  background: #25292E;
+}
 
 .viewPodcastPage h3{
   color: #626466;
@@ -125,34 +128,31 @@
 
 .viewPodcastPage .listItemInfo{
   float: right;
-  margin-top: 3vh;
-  margin-right: 8vw;
   color: #9A9999
 }
 
 
 /* PAGE INFOCONTAINER */
 .viewPodcastPage .infoContainer{
-  margin-left: 10vw;
-  padding-left: 3vw;
-  padding-top:5vh;
-  height:36.5vh;
+  height:250px;
+  width:95%;
   box-shadow: 0px 2px 2px #191919;
   background-color: #25292E;
-  z-index: 1;
+  z-index: 0;
+  margin-left: 100px;
+  margin-top: 50px;
 }
 
 /* PAGE SIDENAV */
 .viewPodcastPage .viewPodcastPageSidenav{
   height:100%;
-  width:11vw;
+  width:10%;
   background-color: #1D2022;
-  position:fixed;
+  position: absolute;
   z-index: 1;
   top: 0;
   left:0;
   overflow-x: hidden;
-  padding-top: 2vh;
   box-shadow: 0px 2px 2px #191919;
   text-align: center;
 }
@@ -161,12 +161,32 @@
   background-color: #1D2022;
   border: none;
   color:#626466;
-  margin-left: 0.9vw;
   width:120px;
 }
 
 .viewPodcastPageSidenav .sidenavLogo{
-  width:120px;
+  width:20px;
+}
+
+.viewPodcastPage .viewPodcastGrid{
+  margin-left: 10vw;
+  width: 90vw !important;
+}
+
+.viewPodcastPage .viewPodcastGrid .row{
+  border: 1px solid white;
+}
+
+.viewPodcastPage .viewPodcastGrid .col{
+  border: 1px solid white;
+}
+
+.viewPodcastPage .viewPodcastGrid .col{
+  border: 1px solid white;
+}
+
+.viewPodcastPage .viewPodcastGrid .col-25{
+  border: 1px solid white;
 }
 
 /* HOME PAGE */
@@ -795,4 +815,59 @@
 
 .scrolling-wrapper &::-webkit-scrollbar {
   display: none;
+}
+
+
+/* MEDIA QUERIES */
+
+/* smart phones */
+@media only screen and (max-width: 1024px){
+
+.viewPodcastPage .podcastContainer{
+  width: 75vw;
+}
+
+.viewPodcastPage .podcastContainer iframe{
+  width:75vw !important;
+  height:30vh !important;
+}
+
+
+.viewPodcastPage .seasonContainer{
+  width: 85vw;
+  margin-left: 0%;
+  margin-top: 0%;
+}
+
+.viewPodcastPage .list-group-item{
+  margin-bottom: 1px;
+
+}
+
+
+.viewPodcastPage .viewPodcastPageSidenav{
+  height:190%;
+  width:15vw;
+}
+
+.viewPodcastPage .btn-dark{
+  width:25vw;
+}
+
+}
+
+/* ipads and tablets */
+@media only screen and (min-width: 768px){
+.viewPodcastPage .seasonContainer{
+  width: 85vw;
+  margin-left: 2%;
+  margin-top: 0%;
+}
+
+.viewPodcastPage .viewPodcastPageSidenav{
+  height:110%;
+  width:15vw;
+}
+
+
 }
