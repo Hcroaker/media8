@@ -2,9 +2,9 @@ export class Season {
   season: number;
   epCount: number;
 
-  constructor(season: number){
+  constructor(season: number, episode: number){
     this.season = season;
-    this.epCount = 1;
+    this.epCount = episode;
   }
 
   increaseEpCount(){

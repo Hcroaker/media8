@@ -61,6 +61,8 @@ export class AppComponent {
 
   constructor (db: AngularFirestore, public afAuth: AngularFireAuth, public NetworkService: NetworkService, public PodcastService: PodcastService, public sanitizer: DomSanitizer, private spinnerService: Ng4LoadingSpinnerService){
 
+    this.spinnerService.show()
+
     this.categories = ["Arts", "Comedy", "Education", "Games and Hobbies", "Politics", "Health", "Kids and Family", "News", "Spirituality and Religion", "Science and Medicine", "Society and Culture", "Sports and Rec", "Technology", "Business", "Film"]
 
     console.log("Hey")
@@ -82,6 +84,7 @@ export class AppComponent {
 
     // GET ALL THE NETWORKS
     this.NetworkService.getNetworks().subscribe(networks =>{
+
       this.networks = networks
       this.network = this.networks[0]
       console.log(this.networks)
@@ -92,25 +95,31 @@ export class AppComponent {
             console.log("You have some podcasts")
             var seasons = this.PodcastService.getSeasons(podcasts)
             console.log(seasons);
-            this.seasons = [seasons]
+            this.seasons = seasons
             this.season = this.seasons[this.seasons.length-1]
-            return podcasts;
+            return;
           }
           else{
             console.log("You have no podcasts")
-            var newSeason = new Season(1)
+            var newSeason = new Season(1,1)
             this.seasons = [newSeason]
             this.season = this.seasons[this.seasons.length-1]
-            return podcasts;
+            // return podcasts;
           }
         })
       }
+
+      this.spinnerService.hide()
 
     });
 
     this.PodcastService.getPodcasts().subscribe(pods =>{
       this.podcasts = pods
+
+
     });
+
+
 
   }
 
@@ -224,7 +233,7 @@ export class AppComponent {
   //Creates a new season object
   newSeason(seasons){
     console.log('New Season')
-    var newSeason = new Season(seasons.length + 1)
+    var newSeason = new Season(seasons.length + 1,1)
     this.seasons.push(newSeason)
     this.season = this.seasons[this.seasons.length-1]
   }
@@ -238,12 +247,12 @@ export class AppComponent {
         console.log("You have some podcasts")
         var seasons = this.PodcastService.getSeasons(podcasts)
         console.log(seasons);
-        this.seasons = [seasons]
+        this.seasons = seasons
         this.season = this.seasons[this.seasons.length-1]
       }
       else{
         console.log("You have no podcasts")
-        var newSeason = new Season(1)
+        var newSeason = new Season(1,1)
         this.seasons = [newSeason]
         this.season = this.seasons[this.seasons.length-1]
       }
@@ -348,7 +357,6 @@ export class AppComponent {
 
     this.NetworkService.getNetworkWithID(podcastClicked.networkID).then(network =>{
       this.networkAssociated = network
-      console.log(this.networkAssociated)
     })
 
     this.PodcastService.getCurrentSeasonForNetwork(podcastClicked.networkID, podcastClicked.season).then(relatedPods =>{

@@ -83,20 +83,38 @@ export class PodcastService {
   }
 
   //Returns the seasons and number of episodes for each season given a networks podcasts
-  getSeasons(podcasts: any){
+  getSeasons(podcasts: any): any{
+    console.log(podcasts)
 
+    //search through each podcast
     var seasons = new Array<Season>();
     podcasts.forEach(function(podcast) {
+      console.log(podcast)
+
+      var foundSeason = false;
+
+      //check if its season already exists
       for(var i=0; i<seasons.length; i+=1){
         if(seasons[i].season == podcast.season){
           seasons[i].increaseEpCount()
-        }
-        else{
-          var newSeason = new Season(podcast.season)
-          seasons.push(newSeason)
+          foundSeason = true;
+          break
         }
       }
+
+      //else, create a newseason
+      if(!foundSeason){
+        var newSeason = new Season(podcast.season, 0)
+        seasons.push(newSeason)
+      }
+
     })
+
+    seasons.forEach(function(season){
+      season.increaseEpCount()
+    })
+    console.log("SEASONS")
+    console.log(seasons)
 
     return seasons
   }
@@ -171,7 +189,7 @@ export class PodcastService {
     )
   }
 
-  getCurrentSeasonForNetwork(networkID:string, season: number){
+  getCurrentSeasonForNetwork(networkID:string, season: number): any{
     return(
       this.podcastsCollection.ref.where('networkID', '==', networkID).where('season', '==', season).orderBy('episode', 'asc').get().then(querySnapshot => {
 
