@@ -27,20 +27,17 @@ export class AppComponent {
   page: string;
   started: boolean = false;
 
-  //Home Page
-  podcasts: Observable<Array<Podcast>>;
-
-  //Admin PAGE
+  //PAGE 1 - Admin Login
   adminEmail: any;
   adminPassword: any;
 
   //Page2
 
-  //Page 3
+  //Page 3 - Upload Network
   uploadSuccess: boolean;
   selectedFiles: any;
 
-  //Page 4
+  //Page 4 - Upload Podcast
   networks: [Network];
   network: Network;
 
@@ -53,11 +50,19 @@ export class AppComponent {
   linkType: string;
   linkValue: string;
 
+  //Page 5 - Home Page
+  podcasts: Observable<Array<Podcast>>;
 
-  //Page 5
+
+  //Page 6 - View Podcast
   podcastViewed: Podcast;
   networkAssociated: Network;
   relatedPodcasts: Array<Podcast>;
+
+  //Page 7 - View NETWORK
+  networkViewing: Network;
+  networkViewingTotalViews: number;
+
 
   constructor (db: AngularFirestore, public afAuth: AngularFireAuth, public NetworkService: NetworkService, public PodcastService: PodcastService, public sanitizer: DomSanitizer, private spinnerService: Ng4LoadingSpinnerService){
 
@@ -373,6 +378,25 @@ export class AppComponent {
 
   goToHomePage(){
     this.page="homePage"
+  }
+
+  viewNetwork(networkAssociated){
+    this.page='viewNetwork';
+    this.beginViewNetworkPage(networkAssociated)
+  }
+
+
+  /*
+  View Network Page
+
+  */
+
+  beginViewNetworkPage(network){
+    this.networkViewing = network;
+
+    this.PodcastService.getTotalViewsForNetwork(network.id).then(result=>{
+      this.networkViewingTotalViews = result
+    });
   }
 
 }

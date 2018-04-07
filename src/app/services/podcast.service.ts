@@ -222,4 +222,24 @@ export class PodcastService {
 
   }
 
+  getTotalViewsForNetwork(networkID: string): any{
+
+    return(
+      this.podcastsCollection.ref.where('networkID', '==', networkID).get().then(querySnapshot => {
+
+        var totalPodcastViews:number = 0;
+        querySnapshot.forEach(function(doc) {
+          const data3 = doc.data() as Podcast;
+          totalPodcastViews += data3.views;
+        })
+
+        return totalPodcastViews;
+
+      })
+      .catch(function(error) {
+          console.log("Error getting documents: ", error);
+      })
+    )
+
+  }
 }

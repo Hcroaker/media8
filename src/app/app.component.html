@@ -2,12 +2,75 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 
+<!-- View Network Page
+
+A page that showcases all the details for a given network.
+
+-->
+
+<div class="container-fluid viewNetworkPage" *ngIf="page=='viewNetwork'">
+
+  <div class="networkGrid">
+    <div class="row">
+        <div class="col-md-auto">
+          <div class="container coverImage" id="coverImage">
+            <img  class="networkImage" [src]="networkViewing.networkProfilePicture" />
+          </div>
+        </div>
+        <div class="col-sm">
+          <div class="container details">
+            <h1 class="networkName">{{networkViewing.networkName}}</h1>
+            <h4 class="bio">{{networkViewing.networkBio}}</h4>
+          </div>
+        </div>
+    </div>
+
+    <div class="row">
+
+      <div class="col-md-auto">
+        <div class="container socialMedia" id="socialMedia">
+          <div *ngIf="networkViewing.networkFB"><i class="icon icon-facebook"></i>       <a href="{{networkViewing.networkFB}}"><p>{{networkViewing.networkFB}}</p>      </a> <br /></div>
+          <div *ngIf="networkViewing.networkYoutube"><i class="icon icon-youtube"></i>   <a href="{{networkViewing.networkFB}}"><p>{{networkViewing.networkYoutube}}</p> </a><br /></div>
+          <div *ngIf="networkViewing.networkSpotify"><i class="icon icon-spotify"></i>   <a href="{{networkViewing.networkFB}}"><p>{{networkViewing.networkSpotify}}</p> </a><br /></div>
+          <div *ngIf="networkViewing.networkSpotify"><i class="icon icon-twitter"></i>   <a href="{{networkViewing.networkFB}}"><p>{{networkViewing.networkTwitter}}</p> </a><br /></div>
+          <div *ngIf="networkViewing.networkItunes"><i class="icon icon-itunes"></i>     <a href="{{networkViewing.networkFB}}"><p>{{networkViewing.networkItunes}}</p>  </a><br /></div>
+
+        </div>
+      </div>
+
+      <div class="col-sm">
+        <div class="container totalViews">
+          <h5>Total Views: {{networkViewingTotalViews}}</h5>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="row">
+      <div class="col-sm">
+        <div class="scrolling-wrapper-flexbox">
+          <div class="card"><h2>Card</h2></div>
+          <div class="card"><h2>Card</h2></div>
+          <div class="card"><h2>Card</h2></div>
+          <div class="card"><h2>Card</h2></div>
+          <div class="card"><h2>Card</h2></div>
+          <div class="card"><h2>Card</h2></div>
+          <div class="card"><h2>Card</h2></div>
+          <div class="card"><h2>Card</h2></div>
+          <div class="card"><h2>Card</h2></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
 <!-- VIEW PODCAST PAGE -->
 <div class="container-fluid viewPodcastPage" *ngIf="page=='viewPodcast'" href="#viewPodcast">
   <div class="viewPodcastPageSidenav">
     <img class="sidenavLogo" src="../assets/media8Logo.png" (click)="goToHomePage()"/><br/>
-    <img class="networkPicture" [src]=networkAssociated.networkProfilePicture/>
-    <p class="networkName">
+    <img class="networkPicture" [src]="networkAssociated.networkProfilePicture" (click)="viewNetwork(networkAssociated)"/>
+    <p class="networkName" (click)="viewNetwork(networkAssociated)">
       {{networkAssociated.networkName}}
     </p>
     <!-- <button class="goHomeBtn2" (click)="goToHomePage()">Home</button> -->

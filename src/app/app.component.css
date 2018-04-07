@@ -401,7 +401,7 @@
 }
 
 
-/* PAGE 3 */
+/* PAGE 3 - Add a new network */
 
 .adminPanelPage3{
   height: 110vh;
@@ -501,7 +501,7 @@
 }
 
 
-/* PAGE 4 */
+/* PAGE 4 - Add a podcast */
 
 .adminPanelPage4 {
   height:100%;
@@ -694,4 +694,105 @@
 
 .adminPanelPage4 .seasonSelect{
   width: 198px;
+}
+
+
+/* Page 7 - View Network */
+
+.viewNetworkPage{
+  color: #ededed;
+}
+
+.viewNetworkPage .networkGrid{
+  margin-top: 10vh;
+}
+
+.viewNetworkPage .networkImage{
+  width: 100% !important;
+  height:100%;
+  border-radius: 1px;
+  object-fit: contain;
+}
+
+.viewNetworkPage .coverImage{
+  /* border: 1px solid white; */
+  text-align: center;
+  height:30vh;
+  box-shadow: 2px 2px 10px #141414;
+  padding-right: none !important;
+  padding-left: none !important;
+}
+
+.viewNetworkPage .details{
+  /* border: 1px solid white; */
+  box-shadow: 2px 2px 10px #141414;
+  height: 30vh;
+  border-radius: 1px;
+  padding-left: 25px;
+  padding-right: 25px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.viewNetworkPage .networkName{
+  text-decoration: underline;
+}
+
+.viewNetworkPage .socialMedia{
+  /* border: 1px solid white; */
+  box-shadow: 2px 2px 10px #141414;
+  border-radius: 1px;
+
+}
+
+.viewNetworkPage .socialMedia i{
+  display: inline;
+  margin-right: 20px;
+}
+
+.viewNetworkPage .socialMedia p{
+  display: inline;
+}
+
+/* Icon colours */
+.icon-facebook{
+  color:#4267B2;
+}
+
+.icon-youtube{
+  color: #FF0000
+}
+
+.icon-spotify{
+  color: #1ED760
+}
+
+.icon-twitter{
+  color: #1DA1F2;
+}
+
+.icon-itunes{
+  color: #D276B9;
+}
+
+.viewNetworkPage .totalViews h5{
+  float: right;
+}
+
+.scrolling-wrapper-flexbox {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+}
+
+.card {
+  flex: 0 0 auto;
+}
+
+.scrolling-wrapper {
+  -webkit-overflow-scrolling: touch;
+}
+
+.scrolling-wrapper &::-webkit-scrollbar {
+  display: none;
 }
