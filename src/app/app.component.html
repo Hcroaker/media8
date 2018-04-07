@@ -12,49 +12,74 @@
     </p>
     <!-- <button class="goHomeBtn2" (click)="goToHomePage()">Home</button> -->
   </div>
-  <div class="podcastContainer">
-    <iframe class="podcastViewer" [src]="podcastViewed.linkValue | noSanitize"></iframe>
-    <p class="infoSeasonEp">S{{podcastViewed.season}}-EP{{podcastViewed.episode}}</p>
-    <p class="infoUploadDate">Posted {{podcastViewed.uploadDate}}</p>
-    <div class="seasonContainer">
-      <h3>Season {{podcastViewed.season}}</h3>
 
 
-      <ul class="list-group" *ngFor="let relatedPodcast of relatedPodcasts; trackBy: trackByFn">
-        <li class="list-group-item" *ngIf="relatedPodcast.episode!=podcastViewed.episode">
-          <iframe class="listItemIframe" [src]="relatedPodcast.linkValue | noSanitize"></iframe>
-          <p class="listItemInfo">Season {{relatedPodcast.season}}, Episode {{relatedPodcast.episode}} </p>
-        </li>
-      </ul>
-    </div>
-  </div>
-    <div class="infoContainer">
-      <div class="container detailsContainer">
-        <h1 class="podcastTitle">{{podcastViewed.title}}</h1>
-        <h2 class="card-views">{{podcastViewed.views}} views</h2>
-        <p class="card-category">{{podcastViewed.category}}</p>
-      </div>
+  <div class="viewPodcastGrid">
 
-      <div class="container descriptionContainer">
-        <p>
-          {{podcastViewed.description}}
-        </p>
-      </div>
+    <div class="row">
 
-      <div class="container notesContainer">
-        <button class="btn btn-dark" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-          Notes
-        </button>
-        <div class="collapse" id="collapseExample">
-          <div class="card card-body">
-            <p>
-              {{podcastViewed.notes}}
-            </p>
-          </div>
+      <div class="col">
+        <div class="podcastContainer">
+          <iframe class="podcastViewer" [src]="podcastViewed.linkValue | noSanitize"></iframe>
+          <p class="infoSeasonEp">S{{podcastViewed.season}}-EP{{podcastViewed.episode}}</p>
+          <p class="infoUploadDate">Posted {{podcastViewed.uploadDate}}</p>
         </div>
       </div>
 
+      <div class="col">
+        <div class="container seasonContainer">
+          <h3>Season {{podcastViewed.season}}</h3>
+              <ul class="list-group" *ngFor="let relatedPodcast of relatedPodcasts; trackBy: trackByFn">
+              <li class="list-group-item" *ngIf="relatedPodcast.episode!=podcastViewed.episode">
+              <iframe class="listItemIframe" [src]="relatedPodcast.linkValue | noSanitize"></iframe>
+              <p class="listItemInfo">Season {{relatedPodcast.season}}, Episode {{relatedPodcast.episode}} </p>
+            </li>
+            </ul>
+       </div>
+      </div>
+
     </div>
+
+    <div class="row details">
+      <div class="col">
+          <div class="container detailsContainer">
+            <h1 class="podcastTitle">{{podcastViewed.title}}</h1>
+            <h2 class="card-views">{{podcastViewed.views}} views</h2>
+            <p class="card-category">{{podcastViewed.category}}</p>
+          </div>
+      </div>
+
+       <div class="col">
+        <div class="container descriptionContainer">
+          <p>
+            {{podcastViewed.description}}
+          </p>
+
+        </div>
+
+          <div class="container notesContainer">
+            <button class="btn btn-dark" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+              Notes
+            </button>
+            <div class="collapse" id="collapseExample">
+              <div class="card card-body">
+                <p>
+                  {{podcastViewed.notes}}
+                </p>
+              </div>
+            </div>
+          </div>
+      </div>
+
+
+
+    </div>
+
+  </div>
+
+
+
+
 </div>
 
 <!-- HOME PAGE-->
