@@ -45,14 +45,14 @@
 }
 
 .viewPodcastPage .podcastViewer{
-  margin-left: 5%;
+  /* margin-left: 5%; */
   margin-top: 75px;
-  width: 600px;
+  width: 800px;
   height: 45vh;
 }
 
 .viewPodcastPage .infoSeasonEp{
-  margin-left: 5%;
+  /* margin-left: 5%; */
   margin-top:25px;
   width: 85px;
   border-radius: 8px;
@@ -165,7 +165,7 @@
 }
 
 .viewPodcastPageSidenav .sidenavLogo{
-  width:20px;
+  width:120px;
 }
 
 .viewPodcastPage .viewPodcastGrid{
@@ -200,7 +200,7 @@
   margin-right: auto;
   left:0;
   right:0;
-  width:98%;
+  width:99%;
 }
 
 /* nav bar */
@@ -818,13 +818,15 @@
 }
 
 
-/* MEDIA QUERIES */
+/* MEDIA QUERIES  */
 
 /* smart phones */
-@media only screen and (max-width: 1024px){
+ @media only screen and (max-width: 1024px){
 
 .viewPodcastPage .podcastContainer{
-  width: 75vw;
+  width: 85vw;
+  margin-top: 4vh;
+  margin-left: 7.5vw;
 }
 
 .viewPodcastPage .podcastContainer iframe{
@@ -834,7 +836,7 @@
 
 
 .viewPodcastPage .seasonContainer{
-  width: 85vw;
+  width: 100vw;
   margin-left: 0%;
   margin-top: 0%;
 }
@@ -846,28 +848,57 @@
 
 
 .viewPodcastPage .viewPodcastPageSidenav{
-  height:190%;
-  width:15vw;
+  height:110px;
+  width:100%;
+}
+
+.viewPodcastPage .viewPodcastGrid{
+  margin-left: 0vw;
+  width: 100vw !important;
+  margin-top: 4vh;
 }
 
 .viewPodcastPage .btn-dark{
-  width:25vw;
+  width:40vw;
+  margin-bottom: 4vh;
+  margin-right: 10vw;
+}
+
+.viewPodcastPage .networkPicture{
+  width:35px;
+  height:35px;
+}
+
+.viewPodcastPage .networkName{
+  margin-bottom: 0vh;
 }
 
 }
 
 /* ipads and tablets */
-@media only screen and (min-width: 768px){
-.viewPodcastPage .seasonContainer{
-  width: 85vw;
-  margin-left: 2%;
-  margin-top: 0%;
-}
+/* @media only screen and (max-width: 768px){
 
 .viewPodcastPage .viewPodcastPageSidenav{
-  height:110%;
-  width:15vw;
+  height:10%;
+  width:100%;
 }
+} */
 
 
-}
+/* iphone x */
+/* @media only screen and (max-height: 812px){
+  .viewPodcastPage .viewPodcastPageSidenav{
+  height:20%;
+  width:100%;
+
+  }
+} */
+
+/* iphone 5 */
+/* @media only screen and (max-height: 568px){
+  .viewPodcastPage .viewPodcastPageSidenav{
+  height:25%;
+  width:100%;
+
+  }
+} */
