@@ -189,46 +189,46 @@
   border: 1px solid white;
 }
 
-/* CONTACT PAGE */
-.contactPage .contactPageGrid .row{
+/* SUBMIT PAGE */
+.submitPage .submitPageGrid .row{
   border: 1px solid white;
 }
 
-.contactPage .contactPageGrid .col{
+.submitPage .submitPageGrid .col{
   border: 1px solid white;
 }
 
-.contactPage .contactLogo{
+.submitPage .submitLogo{
   margin-left:30%;
   width:40%;
 }
 
-.contactPage h1{
+.submitPage h1{
   color: white;
   margin-top: 1vh;
   padding-right: 30vw;
 }
 
-.contactPage h3{
+.submitPage h3{
   color: white;
   margin-top: 5vh;
 }
 
-.contactPage p{
+.submitPage p{
   color: white;
 }
 
-/* CONTACT PAGE NAVBAR */
-.contactpage a{
+/* SUBMIT PAGE NAVBAR */
+.submitpage a{
     color: #808080;
     margin-right: 2vw;
 }
 
-.contactPage .nav-link{
+.submitPage .nav-link{
   margin-right: 2vw;
 }
 
-.contactPage .navbarLogo{
+.submitPage .navbarLogo{
   margin-right: 1.2vw;
 }
 

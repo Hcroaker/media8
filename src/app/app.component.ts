@@ -405,10 +405,11 @@ export class AppComponent {
     this.page="aboutPage"
   }
 
-  // VIEW CONTACT PAGE
 
-  goToContactPage(){
-    this.page="contactPage"
+  // VIEW SUBMIT PAGE
+
+  goToSubmitPage(){
+    this.page="submitPage"
   }
 
 
