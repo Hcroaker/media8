@@ -399,4 +399,17 @@ export class AppComponent {
     });
   }
 
+  // VIEW ABOUT PAGE
+
+  goToAboutPage(){
+    this.page="aboutPage"
+  }
+
+  // VIEW CONTACT PAGE
+
+  goToContactPage(){
+    this.page="contactPage"
+  }
+
+
 }

@@ -189,6 +189,98 @@
   border: 1px solid white;
 }
 
+/* CONTACT PAGE */
+.contactPage .contactPageGrid .row{
+  border: 1px solid white;
+}
+
+.contactPage .contactPageGrid .col{
+  border: 1px solid white;
+}
+
+.contactPage .contactLogo{
+  margin-left:30%;
+  width:40%;
+}
+
+.contactPage h1{
+  color: white;
+  margin-top: 1vh;
+  padding-right: 30vw;
+}
+
+.contactPage h3{
+  color: white;
+  margin-top: 5vh;
+}
+
+.contactPage p{
+  color: white;
+}
+
+/* CONTACT PAGE NAVBAR */
+.contactpage a{
+    color: #808080;
+    margin-right: 2vw;
+}
+
+.contactPage .nav-link{
+  margin-right: 2vw;
+}
+
+.contactPage .navbarLogo{
+  margin-right: 1.2vw;
+}
+
+/* ABOUT PAGE */
+.aboutPage .aboutPageGrid .row{
+  border: 1px solid white;
+}
+
+.aboutPage .aboutPageGrid .col{
+  border: 1px solid white;
+}
+
+.aboutPage .aboutLogo{
+  margin-left:30%;
+  width:40%;
+}
+
+.aboutPage h1{
+  color: white;
+  margin-top: 1vh;
+  padding-left: 35%
+}
+
+.aboutPage h3{
+  color: white;
+  margin-top: 5vh;
+  padding-left: 30%
+}
+
+.aboutPage p{
+  color: white;
+}
+
+.aboutPage .profilePic{
+  width:15%;
+  float:right;
+}
+
+/* ABOUT PAGE NAVBAR */
+.aboutpage a{
+    color: #808080;
+    margin-right: 2vw;
+}
+
+.aboutPage .nav-link{
+  margin-right: 2vw;
+}
+
+.aboutPage .navbarLogo{
+  margin-right: 1.2vw;
+}
+
 /* HOME PAGE */
 
 .resultsTxt{
