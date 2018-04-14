@@ -59,7 +59,7 @@ export class PodcastService {
   getNetworksPodcasts(networkID: string): any{
   console.log(networkID)
     return(
-      this.podcastsCollection.ref.where('networkID', '==', networkID).get().then(querySnapshot => {
+      this.podcastsCollection.ref.where('networkID', '==', networkID).orderBy('season', 'asc').orderBy('episode', 'asc').get().then(querySnapshot => {
 
         var newPodcasts = Array<Podcast>();
 

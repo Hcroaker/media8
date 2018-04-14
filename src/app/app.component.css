@@ -5,6 +5,14 @@
   background-repeat: no-repeat;
 } */
 
+.nav-link{
+  margin-right: 2vw;
+}
+
+.navbarLogo{
+  margin-right: 1.2vw;
+}
+
 .container-fluid{
   padding-left:0!important;
   padding-right:0!important;
@@ -850,6 +858,11 @@
   text-decoration: underline;
 }
 
+.viewNetworkPage .bio{
+  color:#44484f;
+  height: 15vh;
+}
+
 .viewNetworkPage .socialMedia{
   /* border: 1px solid white; */
   box-shadow: 2px 2px 10px #141414;
@@ -864,6 +877,12 @@
 
 .viewNetworkPage .socialMedia p{
   display: inline;
+}
+
+.viewNetworkPage .media8Logo2{
+  width: 120px;
+  object-fit: contain;
+  padding-top: none;
 }
 
 /* Icon colours */
@@ -887,9 +906,13 @@
   color: #D276B9;
 }
 
-.viewNetworkPage .totalViews h5{
-  float: right;
+.viewNetworkPage .totalViews{
+  text-align: right;
+  margin-right: 10px;
+  padding-bottom: 10px;
+  color: #32363d
 }
+
 
 .scrolling-wrapper-flexbox {
   display: flex;
@@ -897,8 +920,81 @@
   overflow-x: auto;
 }
 
-.card {
+.scrolling-wrapper-flexbox .card {
   flex: 0 0 auto;
+  width: 275px;
+  height:25vh;
+  margin-right: 10px;
+  border: none;
+  border-radius: 6px;
+}
+
+.scrolling-wrapper-flexbox .card iframe{
+  border: none;
+  width: 100%;
+  height:100%;
+  pointer-events: none;
+  border-radius: 6px;
+}
+
+.scrolling-wrapper-flexbox {
+  height: 27vh;
+}
+
+.scrolling-wrapper-flexbox .card .details{
+  display: none;
+  border-radius: 6px;
+  border: none;
+  height: 25vh;
+}
+.scrolling-wrapper-flexbox .card:hover .details{
+  display : block;
+}
+.scrolling-wrapper-flexbox .card:hover .card{
+  transform: scale(5);
+}
+.scrolling-wrapper-flexbox .card:hover iframe{
+  display : none;
+}
+
+.scrolling-wrapper-flexbox .card{
+  background:#363a3f;
+  box-shadow: 2px 2px 10px #141414;
+}
+
+.scrolling-wrapper-flexbox .card .details .title{
+  text-align: left;
+  color: #ededed;
+  text-decoration: underline;
+  display: inline;
+}
+
+.scrolling-wrapper-flexbox .card .details .seasonEp{
+  float: right;
+  text-align: right;
+  color: #ededed;
+  display: inline;
+}
+
+.scrolling-wrapper-flexbox .card .details .description{
+  float: left;
+  text-align: left;
+  color: #666666;
+  height: 11vh;
+  width: 100%;
+}
+
+.scrolling-wrapper-flexbox .card .details .category{
+  float: left;
+  text-align: left;
+  color: #666666;
+}
+
+.scrolling-wrapper-flexbox .card .details .views{
+  float: right;
+  text-align: right;
+  color: #666666;
+  display: inline;
 }
 
 .scrolling-wrapper {

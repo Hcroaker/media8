@@ -9,6 +9,7 @@ import { Network } from './classes/network';
 import { PodcastService } from './services/podcast.service';
 import { Podcast } from './classes/podcast';
 import { Season } from './classes/season';
+import { SeasonStorage } from './classes/seasonStorage';
 
 import { DomSanitizer } from '@angular/platform-browser';
 import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
@@ -62,6 +63,7 @@ export class AppComponent {
   //Page 7 - View NETWORK
   networkViewing: Network;
   networkViewingTotalViews: number;
+  seasonedPodcasts: Array<SeasonStorage>;
 
 
   constructor (db: AngularFirestore, public afAuth: AngularFireAuth, public NetworkService: NetworkService, public PodcastService: PodcastService, public sanitizer: DomSanitizer, private spinnerService: Ng4LoadingSpinnerService){
@@ -397,6 +399,26 @@ export class AppComponent {
     this.PodcastService.getTotalViewsForNetwork(network.id).then(result=>{
       this.networkViewingTotalViews = result
     });
+
+    this.PodcastService.getNetworksPodcasts(network.id).then(result=>{
+      console.log(result);
+      var seasons: Array<SeasonStorage> = [];
+      result.forEach(function(pod){
+        var found = false
+        for(var i=0; i<seasons.length; i+=1){
+          if(seasons[i].seasonNum==pod.season){
+            seasons[i].addPodcast(pod)
+            found = true
+          }
+        }
+        if(found==false){
+          var newSeason = new SeasonStorage(pod.season, pod);
+          seasons.push(newSeason)
+        }
+      })
+      this.seasonedPodcasts = seasons
+      console.log(this.seasonedPodcasts)
+    })
   }
 
   // VIEW ABOUT PAGE

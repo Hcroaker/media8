@@ -10,55 +10,79 @@ A page that showcases all the details for a given network.
 
 <div class="container-fluid viewNetworkPage" *ngIf="page=='viewNetwork'">
 
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#Home"><img (click)="goToHomePage()" class="navbarLogo" src="../assets/media8Logo.png" /></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="#Home" (click)="goToHomePage()">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#About" (click)="goToAboutPage()">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#Submit" (click)="goToSubmitPage()">Submit</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
   <div class="networkGrid">
     <div class="row">
         <div class="col-md-auto">
           <div class="container coverImage" id="coverImage">
-            <img  class="networkImage" [src]="networkViewing.networkProfilePicture" />
+            <img  class="networkImage" [src]="networkViewing.networkProfilePicture" src="../assets/earth.gif"/>
           </div>
         </div>
         <div class="col-sm">
           <div class="container details">
             <h1 class="networkName">{{networkViewing.networkName}}</h1>
             <h4 class="bio">{{networkViewing.networkBio}}</h4>
+            <h5 class="totalViews">Total Views: {{networkViewingTotalViews}}</h5>
           </div>
         </div>
     </div>
-
+    <br />
     <div class="row">
 
-      <div class="col-md-auto">
-        <div class="container socialMedia" id="socialMedia">
+      <div class="col">
+        <div class="container-fluid socialMedia" id="socialMedia">
           <div *ngIf="networkViewing.networkFB"><i class="icon icon-facebook"></i>       <a href="{{networkViewing.networkFB}}"><p>{{networkViewing.networkFB}}</p>      </a> <br /></div>
           <div *ngIf="networkViewing.networkYoutube"><i class="icon icon-youtube"></i>   <a href="{{networkViewing.networkFB}}"><p>{{networkViewing.networkYoutube}}</p> </a><br /></div>
           <div *ngIf="networkViewing.networkSpotify"><i class="icon icon-spotify"></i>   <a href="{{networkViewing.networkFB}}"><p>{{networkViewing.networkSpotify}}</p> </a><br /></div>
           <div *ngIf="networkViewing.networkSpotify"><i class="icon icon-twitter"></i>   <a href="{{networkViewing.networkFB}}"><p>{{networkViewing.networkTwitter}}</p> </a><br /></div>
           <div *ngIf="networkViewing.networkItunes"><i class="icon icon-itunes"></i>     <a href="{{networkViewing.networkFB}}"><p>{{networkViewing.networkItunes}}</p>  </a><br /></div>
-
-        </div>
-      </div>
-
-      <div class="col-sm">
-        <div class="container totalViews">
-          <h5>Total Views: {{networkViewingTotalViews}}</h5>
         </div>
       </div>
 
     </div>
-
-    <div class="row">
+    <br />
+    <div class="row podcastsForNetwork">
       <div class="col-sm">
-        <div class="scrolling-wrapper-flexbox">
-          <div class="card"><h2>Card</h2></div>
-          <div class="card"><h2>Card</h2></div>
-          <div class="card"><h2>Card</h2></div>
-          <div class="card"><h2>Card</h2></div>
-          <div class="card"><h2>Card</h2></div>
-          <div class="card"><h2>Card</h2></div>
-          <div class="card"><h2>Card</h2></div>
-          <div class="card"><h2>Card</h2></div>
-          <div class="card"><h2>Card</h2></div>
+        <div *ngFor="let season of seasonedPodcasts">
+          <p class="seasonNum">
+            Season {{season.seasonNum}}
+          </p>
+          <div class="scrolling-wrapper-flexbox" >
+            <div class="animated fadeIn card" *ngFor="let podcast of season.podcasts" (click)="increaseViews(podcast)">
+              <iframe class="animated fadeIn"[src]="podcast.linkValue | noSanitize" src="../assets/load.png"></iframe>
+              <div class="details">
+                <h6 class="title">{{podcast.title}}</h6> <p class="seasonEp">E{{podcast.episode}}</p><br />
+                <p class="description">
+                  {{podcast.description}}
+                </p><br />
+                <p class="category">{{podcast.category}},</p>
+                <p class="views">{{podcast.views}} Views</p>
+              </div>
+            </div>
+          </div>
+          <br />
         </div>
+
       </div>
     </div>
 
@@ -69,7 +93,7 @@ A page that showcases all the details for a given network.
 <div class="container-fluid viewPodcastPage" *ngIf="page=='viewPodcast'" href="#viewPodcast">
   <div class="viewPodcastPageSidenav">
     <img class="sidenavLogo" src="../assets/media8Logo.png" (click)="goToHomePage()"/><br/>
-    <img class="networkPicture" [src]="networkAssociated.networkProfilePicture" (click)="viewNetwork(networkAssociated)"/>
+    <img class="networkPicture" [src]="networkAssociated.networkProfilePicture" src="../assets/earth.gif" (click)="viewNetwork(networkAssociated)"/>
     <p class="networkName" (click)="viewNetwork(networkAssociated)">
       {{networkAssociated.networkName}}
     </p>
@@ -82,19 +106,19 @@ A page that showcases all the details for a given network.
     <div class="row">
 
       <div class="col">
-        <div class="podcastContainer">
-          <iframe class="podcastViewer" [src]="podcastViewed.linkValue | noSanitize"></iframe>
+        <div class="animated fadeIn podcastContainer">
+          <iframe class="podcastViewer" [src]="podcastViewed.linkValue | noSanitize" src="../assets/load.png" ></iframe>
           <p class="infoSeasonEp">S{{podcastViewed.season}}-EP{{podcastViewed.episode}}</p>
           <p class="infoUploadDate">Posted {{podcastViewed.uploadDate}}</p>
         </div>
       </div>
 
       <div class="col">
-        <div class="container seasonContainer">
+        <div class="animated fadeIn container seasonContainer">
           <h3>Season {{podcastViewed.season}}</h3>
               <ul class="list-group" *ngFor="let relatedPodcast of relatedPodcasts; trackBy: trackByFn">
               <li class="list-group-item" *ngIf="relatedPodcast.episode!=podcastViewed.episode">
-              <iframe class="listItemIframe" [src]="relatedPodcast.linkValue | noSanitize"></iframe>
+              <iframe class="listItemIframe" [src]="relatedPodcast.linkValue | noSanitize" src="../assets/load.png"></iframe>
               <p class="listItemInfo">Season {{relatedPodcast.season}}, Episode {{relatedPodcast.episode}} </p>
             </li>
             </ul>
@@ -105,22 +129,22 @@ A page that showcases all the details for a given network.
 
     <div class="row details">
       <div class="col">
-          <div class="container detailsContainer">
+          <div class="animated fadeIn container detailsContainer">
             <h1 class="podcastTitle">{{podcastViewed.title}}</h1>
-            <h2 class="card-views">{{podcastViewed.views}} views</h2>
             <p class="card-category">{{podcastViewed.category}}</p>
+            <h2 class="card-views">{{podcastViewed.views}} views</h2>
           </div>
       </div>
 
        <div class="col">
-        <div class="container descriptionContainer">
+        <div class="animated fadeIn container descriptionContainer">
           <p>
             {{podcastViewed.description}}
           </p>
 
         </div>
 
-          <div class="container notesContainer">
+          <div class="animated fadeIn container notesContainer">
             <button class="btn btn-dark" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
               Notes
             </button>
@@ -365,7 +389,7 @@ A page that showcases all the details for a given network.
         <div class="col-xs-6 col-sm-4 col-lg-3" *ngFor="let podcast1 of podcasts; trackBy: trackByFn">
           <a href="#viewPodcast">
           <div class="animated fadeIn card" (click)="increaseViews(podcast1)">
-            <iframe [src]="podcast1.linkValue | noSanitize" ></iframe>
+            <iframe [src]="podcast1.linkValue | noSanitize" src="../assets/load.png"></iframe>
 
             <div class="card-body">
               <h5 class="card-title">{{podcast1.title}}</h5>
