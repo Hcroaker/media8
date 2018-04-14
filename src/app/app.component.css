@@ -47,7 +47,7 @@
 .viewPodcastPage .podcastViewer{
   /* margin-left: 5%; */
   margin-top: 75px;
-  width: 800px;
+  width: 750px;
   height: 45vh;
 }
 
@@ -90,7 +90,7 @@
   overflow-y: scroll;
   box-shadow: 2px 2px 10px #141414;
   margin-top: 75px;
-  margin-left: 25%;
+  /* margin-left: 25%; */
 }
 
 .viewPodcastPage .networkPicture{
@@ -199,14 +199,20 @@
 }
 
 .submitPage .submitLogo{
-  margin-left:30%;
-  width:40%;
+  margin-left:35%;
+  width:30%;
+  height:15%;
 }
 
 .submitPage h1{
   color: white;
   margin-top: 1vh;
-  padding-right: 30vw;
+  padding-right: 25vw;
+}
+
+.submitPage h2{
+  color: white;
+  margin-top: 2vh;
 }
 
 .submitPage h3{
@@ -216,6 +222,26 @@
 
 .submitPage p{
   color: white;
+}
+
+.submitPage .textLine{
+  width:40vw;
+  border-radius: 8px;
+  margin-bottom: 2vh;
+}
+
+.submitPage .descTextArea{
+  width:40vw;
+  height:15vh;
+  margin-bottom: 2vh;
+  border-radius: 8px;
+}
+
+.submitPage .submitPageButton{
+  margin-bottom: 5vh;
+  border-radius: 8px;
+  margin-left: 0.5vw;
+  width:6vw;
 }
 
 /* SUBMIT PAGE NAVBAR */
@@ -242,20 +268,21 @@
 }
 
 .aboutPage .aboutLogo{
-  margin-left:30%;
-  width:40%;
+  margin-left:35%;
+  width:30%;
+  height:15%;
 }
 
 .aboutPage h1{
   color: white;
   margin-top: 1vh;
-  padding-left: 35%
+  /* padding-left: 10%; */
+  text-align:center;
 }
 
 .aboutPage h3{
   color: white;
   margin-top: 5vh;
-  padding-left: 30%
 }
 
 .aboutPage p{
@@ -263,7 +290,7 @@
 }
 
 .aboutPage .profilePic{
-  width:15%;
+  width:20%;
   float:right;
 }
 
@@ -964,12 +991,22 @@
   margin-bottom: 0vh;
 }
 
-<<<<<<< HEAD
-.viewPodcastPage .viewPodcastPageSidenav{
-  height:150%;
-  width:15vw;
-=======
->>>>>>> 3d614ab42fcccf593b5fb8827c01180da84d1591
+
+.submitPage .textLine{
+  width:80vw;
+}
+
+.submitPage .descTextArea{
+  width:80vw;
+}
+
+.submitPage .submitPageButton{
+  width:16vw;
+}
+
+.aboutPage h3{
+  padding-right: 90vw;
+}
 }
 
 /* ipads and tablets */
