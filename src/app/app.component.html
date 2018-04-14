@@ -97,6 +97,7 @@ A page that showcases all the details for a given network.
     <p class="networkName" (click)="viewNetwork(networkAssociated)">
       {{networkAssociated.networkName}}
     </p>
+    <button class="btn btn-dark viewNetworkBtn" (click)="viewNetwork(networkAssociated)">View Network</button>
     <!-- <button class="goHomeBtn2" (click)="goToHomePage()">Home</button> -->
   </div>
 
@@ -117,7 +118,7 @@ A page that showcases all the details for a given network.
         <div class="animated fadeIn container seasonContainer">
           <h3>Season {{podcastViewed.season}}</h3>
               <ul class="list-group" *ngFor="let relatedPodcast of relatedPodcasts; trackBy: trackByFn">
-              <li class="list-group-item" *ngIf="relatedPodcast.episode!=podcastViewed.episode">
+              <li class="list-group-item" *ngIf="relatedPodcast.episode!=podcastViewed.episode" (click)="increaseViews(relatedPodcast)"> 
               <iframe class="listItemIframe" [src]="relatedPodcast.linkValue | noSanitize" src="../assets/load.png"></iframe>
               <p class="listItemInfo">Season {{relatedPodcast.season}}, Episode {{relatedPodcast.episode}} </p>
             </li>
