@@ -141,7 +141,7 @@ A page that showcases all the details for a given network.
 <!-- ABOUTPAGE -->
 <div class="container-fluid aboutPage" *ngIf="page=='aboutPage'" href="#About">
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#Home"><img class="navbarLogo" src="../assets/media8Logo.png" /></a>
+    <a class="navbar-brand" href="#Home"><img class="navbarLogo" src="../assets/media8Logo.png" (click)="goToHomePage()" /></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -162,9 +162,6 @@ A page that showcases all the details for a given network.
   </nav>
 
   <div class="aboutPageGrid">
-    <div class="row">
-      <img class="aboutLogo" src="../assets/media8Logo.png">
-    </div>
 
     <div class="row">
     <div class="col">
@@ -219,12 +216,7 @@ A page that showcases all the details for a given network.
         Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
         Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
     </div>
-
     </div>
-
-    </div>
-    <div class="row">
-      <img class="aboutLogo" src="../assets/media8Logo.png">
     </div>
   </div>
 </div>
@@ -233,7 +225,7 @@ A page that showcases all the details for a given network.
 
 <div class="container-fluid submitPage" *ngIf="page=='submitPage'" href="#Submit">
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#Home"><img class="navbarLogo" src="../assets/media8Logo.png" /></a>
+    <a class="navbar-brand" href="#Home"><img class="navbarLogo" src="../assets/media8Logo.png" (click)="goToHomePage()" /></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -255,46 +247,53 @@ A page that showcases all the details for a given network.
 
   <div class="submitPageGrid">
     <div class="row">
-      <img class="submitLogo" src="../assets/media8Logo.png">
-    </div>
+    <div class="col">
+      <h1>Contact Us</h1><br/>
 
-    <div class="row">
-      <div class="col">
-      <h1>Contact us</h1><br/>
-      <p><b>Email</b></p>
-      <p>media8@gmail.com</p>
-      <p><b>Phone</b></p>
-      <p>+61 404 404 404</p>
+      <p><b>Network name:</b></p>
+      <input class="textLine" [(ngModel)]="contactNetworkName"><br>
+      <p><b>Target Audience:</b></p>
+      <input class="textLine" [(ngModel)]="targetAudienceInput"><br>
+      <p><b>Network/Company Email:</b></p>
+      <input class="textLine" [(ngModel)]="companyEmailInput"><br>
+      <p><b>Link to one of your podcasts:</b></p>
+      <input class="textLine" [(ngModel)]="podcastLinkInput"><br>
+      <p><b>Network description:</b></p>
+      <textarea class="descTextArea" [(ngModel)]="networkDescriptionInput"></textarea><br><br>
+      <a href="mailto:harrison.croaker@hotmail.com?subject=look at this website&body=Hi,I'm interested in joining the Media8 podcast network%0AOur Network Name: {{ contactNetworkName }}%0AOur target audience: {{ targetAudienceInput }}%0AOur company email: {{ companyEmailInput }}%0AOur link to one of our podcasts: {{ podcastLinkInput }}%0AOur network description: {{ networkDescriptionInput }}">
+      <button class="submitPageButton" value="Send">Send</button></a>
 
-      <h3>Social Media Links</h3>
-      <i class="icon icon-facebook"></i>       <a href="facebook.com"><p>Facebook</p>      </a> <br />
-      <i class="icon icon-youtube"></i>       <a href="youtube.com"><p>Youtube</p>      </a> <br />
-      <i class="icon icon-spotify"></i>       <a href="spotify.com"><p>Spotify</p>      </a> <br />
-      <i class="icon icon-twitter"></i>       <a href="twitter.com"><p>Twitter</p>      </a> <br />
-      <i class="icon icon-itunes"></i>       <a href="itunes.com"><p>Itunes</p>      </a> <br />
     </div>
 
     <div class="col">
-      <h2>Submit your podcast for review</h2><br/>
-
-      <form action="mailto:someone@example.com" method="post" enctype="text/plain">
-      <p><b>Network name:</b></p>
-      <input class="textLine" type="text" name="name"><br>
-      <p><b>Target Audience:</b></p>
-      <input class="textLine" type="text" name="audience"><br>
-      <p><b>Network/Company Email:</b></p>
-      <input class="textLine" type="text" name="mail"><br>
-      <p><b>Link to one of your podcasts:</b></p>
-      <input class="textLine" type="text" name="link"><br>
-      <p><b>Network description:</b></p>
-      <input class="descTextArea" type="text" name="description" size="50"><br><br>
-      <input class="submitPageButton" type="submit" value="Send">
-      </form>
-
-    </div>
+    <h2>Podcast submission</h2>
+    <p>When submitting a podcast please provide the following...
+    </p>
+    <ol>
+      <li>Podcast Title</li><br/>
+      <li>Season Number</li><br/>
+      <li>Episode Number</li><br/>
+      <li>Podcast Description</li><br/>
+      <li>Podcast Notes</li><br/>
+      <li>Category of podcast from options below:
+          a. Arts, Comedy, Education, Games and Hobbies, Government and organisations,
+          Health, Kids and family, Music, News and politics, Religion and Spirituality,
+          Science and Medicine, Society and Culture, Sports and Recreation, Technology and Business,
+          Tv and film.</li><br/>
+      <li>Link to podcast (One of the following):
+        Youtube
+        Soundcloud
+        Spotify
+      </li>
+    </ol>
+    <br/>
+    <br/>
+    <p><b>Email</b></p>
+    <p>media8@gmail.com</p>
+    <p><b>Phone</b></p>
+    <p>+61 404 404 404</p>
   </div>
-  <div class="row">
-    <img class="submitLogo" src="../assets/media8Logo.png">
+
   </div>
   </div>
 </div>
