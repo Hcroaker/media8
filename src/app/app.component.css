@@ -45,14 +45,14 @@
 }
 
 .viewPodcastPage .podcastViewer{
-  margin-left: 5%;
+  /* margin-left: 5%; */
   margin-top: 75px;
-  width: 600px;
+  width: 800px;
   height: 45vh;
 }
 
 .viewPodcastPage .infoSeasonEp{
-  margin-left: 5%;
+  /* margin-left: 5%; */
   margin-top:25px;
   width: 85px;
   border-radius: 8px;
@@ -165,7 +165,7 @@
 }
 
 .viewPodcastPageSidenav .sidenavLogo{
-  width:20px;
+  width:120px;
 }
 
 .viewPodcastPage .viewPodcastGrid{
@@ -189,6 +189,98 @@
   border: 1px solid white;
 }
 
+/* SUBMIT PAGE */
+.submitPage .submitPageGrid .row{
+  border: 1px solid white;
+}
+
+.submitPage .submitPageGrid .col{
+  border: 1px solid white;
+}
+
+.submitPage .submitLogo{
+  margin-left:30%;
+  width:40%;
+}
+
+.submitPage h1{
+  color: white;
+  margin-top: 1vh;
+  padding-right: 30vw;
+}
+
+.submitPage h3{
+  color: white;
+  margin-top: 5vh;
+}
+
+.submitPage p{
+  color: white;
+}
+
+/* SUBMIT PAGE NAVBAR */
+.submitpage a{
+    color: #808080;
+    margin-right: 2vw;
+}
+
+.submitPage .nav-link{
+  margin-right: 2vw;
+}
+
+.submitPage .navbarLogo{
+  margin-right: 1.2vw;
+}
+
+/* ABOUT PAGE */
+.aboutPage .aboutPageGrid .row{
+  border: 1px solid white;
+}
+
+.aboutPage .aboutPageGrid .col{
+  border: 1px solid white;
+}
+
+.aboutPage .aboutLogo{
+  margin-left:30%;
+  width:40%;
+}
+
+.aboutPage h1{
+  color: white;
+  margin-top: 1vh;
+  padding-left: 35%
+}
+
+.aboutPage h3{
+  color: white;
+  margin-top: 5vh;
+  padding-left: 30%
+}
+
+.aboutPage p{
+  color: white;
+}
+
+.aboutPage .profilePic{
+  width:15%;
+  float:right;
+}
+
+/* ABOUT PAGE NAVBAR */
+.aboutpage a{
+    color: #808080;
+    margin-right: 2vw;
+}
+
+.aboutPage .nav-link{
+  margin-right: 2vw;
+}
+
+.aboutPage .navbarLogo{
+  margin-right: 1.2vw;
+}
+
 /* HOME PAGE */
 
 .resultsTxt{
@@ -200,7 +292,7 @@
   margin-right: auto;
   left:0;
   right:0;
-  width:98%;
+  width:99%;
 }
 
 /* nav bar */
@@ -818,13 +910,15 @@
 }
 
 
-/* MEDIA QUERIES */
+/* MEDIA QUERIES  */
 
 /* smart phones */
-@media only screen and (max-width: 1024px){
+ @media only screen and (max-width: 1024px){
 
 .viewPodcastPage .podcastContainer{
-  width: 75vw;
+  width: 85vw;
+  margin-top: 4vh;
+  margin-left: 7.5vw;
 }
 
 .viewPodcastPage .podcastContainer iframe{
@@ -834,7 +928,7 @@
 
 
 .viewPodcastPage .seasonContainer{
-  width: 85vw;
+  width: 100vw;
   margin-left: 0%;
   margin-top: 0%;
 }
@@ -844,30 +938,64 @@
 
 }
 
-
 .viewPodcastPage .viewPodcastPageSidenav{
-  height:190%;
-  width:15vw;
+  height:110px;
+  width:100%;
+}
+
+.viewPodcastPage .viewPodcastGrid{
+  margin-left: 0vw;
+  width: 100vw !important;
+  margin-top: 4vh;
 }
 
 .viewPodcastPage .btn-dark{
-  width:25vw;
+  width:40vw;
+  margin-bottom: 4vh;
+  margin-right: 10vw;
 }
 
+.viewPodcastPage .networkPicture{
+  width:35px;
+  height:35px;
 }
 
-/* ipads and tablets */
-@media only screen and (min-width: 768px){
-.viewPodcastPage .seasonContainer{
-  width: 85vw;
-  margin-left: 2%;
-  margin-top: 0%;
+.viewPodcastPage .networkName{
+  margin-bottom: 0vh;
 }
 
+<<<<<<< HEAD
 .viewPodcastPage .viewPodcastPageSidenav{
   height:150%;
   width:15vw;
+=======
+>>>>>>> 3d614ab42fcccf593b5fb8827c01180da84d1591
 }
 
+/* ipads and tablets */
+/* @media only screen and (max-width: 768px){
 
+.viewPodcastPage .viewPodcastPageSidenav{
+  height:10%;
+  width:100%;
 }
+} */
+
+
+/* iphone x */
+/* @media only screen and (max-height: 812px){
+  .viewPodcastPage .viewPodcastPageSidenav{
+  height:20%;
+  width:100%;
+
+  }
+} */
+
+/* iphone 5 */
+/* @media only screen and (max-height: 568px){
+  .viewPodcastPage .viewPodcastPageSidenav{
+  height:25%;
+  width:100%;
+
+  }
+} */

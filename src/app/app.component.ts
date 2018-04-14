@@ -399,4 +399,18 @@ export class AppComponent {
     });
   }
 
+  // VIEW ABOUT PAGE
+
+  goToAboutPage(){
+    this.page="aboutPage"
+  }
+
+
+  // VIEW SUBMIT PAGE
+
+  goToSubmitPage(){
+    this.page="submitPage"
+  }
+
+
 }

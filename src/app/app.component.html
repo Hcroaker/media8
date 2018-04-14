@@ -133,17 +133,168 @@ A page that showcases all the details for a given network.
             </div>
           </div>
       </div>
+    </div>
+  </div>
+</div>
 
+
+<!-- ABOUTPAGE -->
+<div class="container-fluid aboutPage" *ngIf="page=='aboutPage'" href="#About">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#Home"><img class="navbarLogo" src="../assets/media8Logo.png" /></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="#Home" (click)="goToHomePage()">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#About" (click)="goToAboutPage()">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#Submit" (click)="goToSubmitPage()">Submit</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="aboutPageGrid">
+    <div class="row">
+      <img class="aboutLogo" src="../assets/media8Logo.png">
+    </div>
+
+    <div class="row">
+    <div class="col">
+      <h1>Description of what Media8 is</h1>
+      <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
+
+      <h1>Media8's Goal</h1>
+      <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
+
+        <h3>Social Media Links</h3>
+        <i class="icon icon-facebook"></i>       <a href="facebook.com"><p>Facebook</p>      </a> <br />
+        <i class="icon icon-youtube"></i>       <a href="youtube.com"><p>Youtube</p>      </a> <br />
+        <i class="icon icon-spotify"></i>       <a href="spotify.com"><p>Spotify</p>      </a> <br />
+        <i class="icon icon-twitter"></i>       <a href="twitter.com"><p>Twitter</p>      </a> <br />
+        <i class="icon icon-itunes"></i>       <a href="itunes.com"><p>Itunes</p>      </a> <br />
+    </div>
+
+    <div class="col">
+      <h1>Media 8's team</h1>
+    <div>
+      <p>
+        <b>Manager</b><br/>
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
+        <img class="profilePic" src="../assets/media8Set.png">
+    </div>
+
+    <div>
+      <p>
+        <b>Designer</b><br/>
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
+        <img class="profilePic" src="../assets/media8Set.png">
+    </div>
+
+    <div>
+      <p>
+        <b>Engineer</b><br/>
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
+        <img class="profilePic" src="../assets/media8Set.png">
+    </div>
+
+    </div>
+
+    </div>
+    <div class="row">
+      <h1>Contact us</h1><br/>
+      <p><b>Email</b></p>
+      <p>media8@gmail.com</p>
+      <p><b>Phone</b></p>
+      <p>+61 404 404 404</p>
+      <img src="../assets/media8Logo.png">
+    </div>
+  </div>
+</div>
+
+<!-- SUBMIT PAGE -->
+
+<div class="container-fluid submitPage" *ngIf="page=='submitPage'" href="#Submit">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#Home"><img class="navbarLogo" src="../assets/media8Logo.png" /></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="#Home" (click)="goToHomePage()">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#About" (click)="goToAboutPage()">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#Submit" (click)="goToSubmitPage()">Submit</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="submitPageGrid">
+    <div class="row">
+      <img class="submitLogo" src="../assets/media8Logo.png">
+    </div>
+
+    <div class="row">
+      <div class="col">
+      <h1>Contact us</h1><br/>
+      <p><b>Email</b></p>
+      <p>media8@gmail.com</p>
+      <p><b>Phone</b></p>
+      <p>+61 404 404 404</p>
+
+      <h3>Social Media Links</h3>
+      <i class="icon icon-facebook"></i>       <a href="facebook.com"><p>Facebook</p>      </a> <br />
+      <i class="icon icon-youtube"></i>       <a href="youtube.com"><p>Youtube</p>      </a> <br />
+      <i class="icon icon-spotify"></i>       <a href="spotify.com"><p>Spotify</p>      </a> <br />
+      <i class="icon icon-twitter"></i>       <a href="twitter.com"><p>Twitter</p>      </a> <br />
+      <i class="icon icon-itunes"></i>       <a href="itunes.com"><p>Itunes</p>      </a> <br />
+    </div>
+
+    <div class="col">
+      <h1>Make and Enquiry</h1><br/>
+      <textarea></textarea>
+    </div>
 
 
     </div>
 
+
+
   </div>
 
 
-
-
 </div>
+
+
 
 <!-- HOME PAGE-->
 <div class="container-fluid homePage1" *ngIf="page=='homePage'" href="#/home">
@@ -159,10 +310,10 @@ A page that showcases all the details for a given network.
         <a class="nav-link" href="#Home">Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#About">About</a>
+        <a class="nav-link" href="#About" (click)="goToAboutPage()">About</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#Contact">Contact</a>
+        <a class="nav-link" href="#Submit" (click)="goToSubmitPage()">Submit</a>
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
