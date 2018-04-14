@@ -1,4 +1,4 @@
-import { Podcast } from './classes/podcast';
+import { Podcast } from './podcast';
 
 export class SeasonStorage {
   podcasts: Array<Podcast>;
