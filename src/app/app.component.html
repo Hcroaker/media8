@@ -118,7 +118,7 @@ A page that showcases all the details for a given network.
         <div class="animated fadeIn container seasonContainer">
           <h3>Season {{podcastViewed.season}}</h3>
               <ul class="list-group" *ngFor="let relatedPodcast of relatedPodcasts; trackBy: trackByFn">
-              <li class="list-group-item" *ngIf="relatedPodcast.episode!=podcastViewed.episode" (click)="increaseViews(relatedPodcast)"> 
+              <li class="list-group-item" *ngIf="relatedPodcast.episode!=podcastViewed.episode" (click)="increaseViews(relatedPodcast)">
               <iframe class="listItemIframe" [src]="relatedPodcast.linkValue | noSanitize" src="../assets/load.png"></iframe>
               <p class="listItemInfo">Season {{relatedPodcast.season}}, Episode {{relatedPodcast.episode}} </p>
             </li>
@@ -187,59 +187,72 @@ A page that showcases all the details for a given network.
   </nav>
 
   <div class="aboutPageGrid">
-
+    <div class="row">
+      <!-- <img class="bannerLogo" src="../assets/media8Logo.png"/> -->
+      <!-- <img class="aboutLogo" src="../assets/podcastMic.png"/> -->
+      <img class="bannerLogo" src="../assets/podcastHeadphones.png"/>
+    </div>
     <div class="row">
     <div class="col">
-      <h1>Description of what Media8 is</h1>
-      <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
+      <h1><u>Description of what Media8 is</u></h1>
+      <p>Media8 is a new age storytelling agency.
+          Storytelling through the media of Voice, Video & Influencer Marketing.</p><br/>
 
-      <h1>Media8's Goal</h1>
-      <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
+
+      <h1><u>Media8's Goal</u></h1>
+      <p>To provide a platform for Podcasters and Vloggers to reach an audience of millions.
+         To assist companies advertise direct to customers via storytelling, podcasting and influencer marketing.</p><br/>
 
         <h3>Social Media Links</h3>
-        <i class="icon icon-facebook"></i>       <a href="facebook.com"><p>Facebook</p>      </a> <br />
-        <i class="icon icon-youtube"></i>       <a href="youtube.com"><p>Youtube</p>      </a> <br />
+        <i class="icon icon-facebook"></i>       <a href="https://www.facebook.com/media8.com.au/"><p>https://www.facebook.com/media8.com.au/</p>      </a> <br />
+        <i class="icon icon-soundcloud"></i>    <a href="https://soundcloud.com/user-265125040"><p>https://soundcloud.com/user-265125040</p></a> <br/>
+        <!-- <i class="icon icon-youtube"></i>       <a href="youtube.com"><p>Youtube</p>      </a> <br />
         <i class="icon icon-spotify"></i>       <a href="spotify.com"><p>Spotify</p>      </a> <br />
         <i class="icon icon-twitter"></i>       <a href="twitter.com"><p>Twitter</p>      </a> <br />
-        <i class="icon icon-itunes"></i>       <a href="itunes.com"><p>Itunes</p>      </a> <br />
+        <i class="icon icon-itunes"></i>       <a href="itunes.com"><p>Itunes</p>      </a> <br /> -->
     </div>
 
     <div class="col">
-      <h1>Media 8's team</h1>
-    <div>
-      <p>
-        <b>Manager</b><br/>
-        <img class="profilePic" src="../assets/media8Set.png">
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
+      <h1><u>Media 8's team, talent and their shows</u></h1>
+    <div class="showInfo">
+      <p><img class="profilePic" src="https://pbs.twimg.com/media/DZ1FiJ0VoAEPGhl.jpg"/>
+        <b><u>Awesome Humans</u></b><br/>
+        Hosted by- <b>Brett McCallum</b><br/>
+        "There are a lot of amazing people in this world and each week I get to interview one of them.
+        This is Awesome Humans"</p><br/>
     </div>
 
-    <div>
+    <div class="showInfo">
       <p>
-        <b>Designer</b><br/>
-        <img class="profilePic" src="../assets/media8Set.png">
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
+        <b><u>The Third Beer</u></b><br/>
+        Hosted by- <b>Chris Dickson and Brett McCallum</b><br/>
+        "The Third Beer is a regular Podcast hosted by Psychologist Chris Dickson and Brett McCallum each week they get a special guest to talk about mens health, mental health and well being whilst sharing a beer.
+        The Beer along with those subjects that blokes find it hard to talk about.
+        Brett has already shared a year long journey with Chris and although he is still a work in progress, Brett has come out the other end a better Human Being.
+        The boys will be interviewing the third beer the new guest each week to discuss issues that affect us all mental health and well being.
+        While this will take place in a very informal setting it is taken 100% serious. Breaking down the personal and world issue one beer at a time."</p><br/>
     </div>
 
-    <div>
+    <div class="showInfo">
       <p>
-        <b>Engineer</b><br/>
-        <img class="profilePic" src="../assets/media8Set.png">
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
+        <b><u>Maxi and Me</u></b><br/>
+        Hosted by- <b>Mark Henderson and Luke Marrinan</b><br/>
+        "Mark and Maxi answer the questions and tell stories about there amazing lives."</p><br/>
+    </div>
+
+    <div class="showInfo">
+      <p>
+        <b><u>The Crazy Ones</u></b><br/>
+        Hosted by- <b>Brett McCallum and Mark Henderson</b><br/>
+        "There are two types of people on this world. Doers and Gunners. Gunners are always Gunna do this and Gunna do that but never achieve anything. Then there are the doers, the people who get off there arse and actually have a crack at life. The Entrepreneurs who make things, create things and break things but all to make a better world we live in. The Startup Culture, the working 18 hour days for yourself to help others. This Podcast is a place for these people to discuss life, Startups and being what an Entrepreneur actually is. This is gunna be a fun ride with a wide range of people of all walks of life!"</p><br/>
+    </div>
+
+    <div class="showInfo">
+      <p>
+        <b><u>The Cripple Chronicles</u></b><br/>
+        Hosted by- <b>Mark Henderson and Special guest Maxi</b><br/>
+        "There is so much wrong with the medical industry in this country and wehave seen the best and the worse of it.
+        On this straight to the point podcast the boys call out the issues with todays medical practices and what the F$%k is happening to this country."</p><br/>
     </div>
     </div>
     </div>
