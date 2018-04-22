@@ -160,7 +160,7 @@
 
 /* PAGE SIDENAV */
 .viewPodcastPage .viewPodcastPageSidenav{
-  height:100%;
+  height:110%;
   width:11%;
   background-color: #1D2022;
   position: absolute;
@@ -306,10 +306,16 @@
   border: 1px solid white;
 } */
 
-.aboutPage .aboutLogo{
-  margin-left:35%;
-  width:30%;
-  height:15%;
+
+.aboutPage .bannerLogo{
+  width:80%;
+  height: 8%;
+  margin-left: 10%;
+  margin-top: 5vh;
+  margin-bottom: 5vh;
+  border-radius: 8px;
+  opacity: 0.8;
+  box-shadow:  5px 2px -2px #191919;
 }
 
 .aboutPage h1{
@@ -326,6 +332,10 @@
 
 .aboutPage p{
   color: #5f6b77;
+}
+
+.aboutpage .showInfo{
+  margin-bottom:15vh;
 }
 
 .aboutPage .profilePic{
@@ -1203,7 +1213,7 @@
 }
 
 .aboutPage .profilePic{
-  width:40%;
+  width:30%;
 }
 }
 
