@@ -310,6 +310,7 @@
   margin-bottom: 5vh;
   border-radius: 8px;
   opacity: 0.8;
+  box-shadow:  5px 2px -2px #191919;
 }
 
 .aboutPage h1{
