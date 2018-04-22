@@ -51,6 +51,9 @@ export class AppComponent {
   linkType: string;
   linkValue: string;
 
+  linkTested: boolean;
+  testedLink: string;
+
   //Page 5 - Home Page
   podcasts: Observable<Array<Podcast>>;
 
@@ -273,6 +276,25 @@ export class AppComponent {
     this.season.increaseEpCount();
   }
 
+  testLink(){
+    if (this.linkValue){
+      this.linkTested = true;
+      var iframeString = this.linkValue;
+      const regex = new RegExp('src=.+?(?=")')
+      var iframeSrc = regex.exec(iframeString)[0]
+      var newregex = new RegExp('(?<=\").*')
+      var newIframeSrc = newregex.exec(iframeSrc)[0]
+      if(newIframeSrc){
+        console.log(newIframeSrc);
+        this.testedLink = newIframeSrc;
+      }
+      else{
+        this.linkValue = null
+      }
+    }
+
+  }
+
   //Submits the podcast and uploads it to the firebase
   submitToExistingNetwork(episodetitle,podcastdesc,podcastnotes){
     if(this.network && this.season && this.category && episodetitle.value && podcastdesc.value && podcastnotes.value && this.linkType && this.linkValue){
@@ -351,6 +373,20 @@ export class AppComponent {
       console.log(podcasts)
       this.podcasts = podcasts
     })
+  }
+
+  //Function to search
+  searchSubmitted(search){
+    if(search=="Open Admin"){
+      console.log("Open Admin")
+      this.page="adminPage1"
+    }
+    else{
+      this.PodcastService.getPodcastsForNetworkGivenName(search).then(podcasts =>{
+        console.log(podcasts)
+        this.podcasts = podcasts;
+      })
+    }
   }
 
   //A function that is called when a podcast is clicked

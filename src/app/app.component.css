@@ -5,6 +5,11 @@
   background-repeat: no-repeat;
 } */
 
+.navbar-toggler-icon {
+    background-color: white;
+    border-radius: 3px;
+}
+
 .nav-link{
   margin-right: 2vw;
 }
@@ -577,7 +582,7 @@
 /* PAGE 3 - Add a new network */
 
 .adminPanelPage3{
-  height: 110vh;
+  height: 100%;
   background-color: #ededed;
   text-align: center;
 }
@@ -609,6 +614,22 @@
   height: 20vh;
   border-radius: 2px;
   margin-top: 5vh;
+}
+
+.adminPanelPage3 .basicTxt, .profileTxt, .socialTxt{
+  width: 300px;
+  margin-left: auto;
+  margin-right: auto;
+  left:0;
+  right:0;
+  text-align: center;
+}
+
+.adminPanelPage3 .backBtn{
+  position: absolute;
+  top:10px;
+  left:10px;
+  text-decoration: underline;
 }
 
 .adminPanelPage3 button{
@@ -680,6 +701,13 @@
   height:100%;
   background: #ededed;
   text-align: center;
+}
+
+.adminPanelPage4 .backBtn{
+  position: absolute;
+  top:10px;
+  left:10px;
+  text-decoration: underline;
 }
 
 .adminPanelPage4 .successModal {
@@ -867,6 +895,40 @@
 
 .adminPanelPage4 .seasonSelect{
   width: 198px;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  height: 100px;
+  width: 100px;
+  outline: black;
+  background-size: 100%, 100%;
+  background-image: none;
+}
+
+.carousel-control-next-icon:after
+{
+  content: '>';
+  font-size: 55px;
+  color: black;
+}
+
+.carousel-control-prev-icon:after {
+  content: '<';
+  font-size: 55px;
+  color: black;
+}
+
+.carousel-indicators{
+  display: none !important;
+}
+
+.adminPanelPage4 iframe{
+  width: 300px;
+}
+
+.adminPanelPage4 ul{
+  text-align: left;
 }
 
 
