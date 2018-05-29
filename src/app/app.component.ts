@@ -9,6 +9,7 @@ import { Network } from './classes/network';
 import { PodcastService } from './services/podcast.service';
 import { Podcast } from './classes/podcast';
 import { Season } from './classes/season';
+import { SeasonStorage } from './classes/seasonStorage';
 
 import { DomSanitizer } from '@angular/platform-browser';
 import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
@@ -50,6 +51,9 @@ export class AppComponent {
   linkType: string;
   linkValue: string;
 
+  linkTested: boolean;
+  testedLink: string;
+
   //Page 5 - Home Page
   podcasts: Observable<Array<Podcast>>;
 
@@ -62,6 +66,7 @@ export class AppComponent {
   //Page 7 - View NETWORK
   networkViewing: Network;
   networkViewingTotalViews: number;
+  seasonedPodcasts: Array<SeasonStorage>;
 
 
   constructor (db: AngularFirestore, public afAuth: AngularFireAuth, public NetworkService: NetworkService, public PodcastService: PodcastService, public sanitizer: DomSanitizer, private spinnerService: Ng4LoadingSpinnerService){
@@ -271,6 +276,25 @@ export class AppComponent {
     this.season.increaseEpCount();
   }
 
+  testLink(){
+    if (this.linkValue){
+      this.linkTested = true;
+      var iframeString = this.linkValue;
+      const regex = new RegExp('src=.+?(?=")')
+      var iframeSrc = regex.exec(iframeString)[0]
+      var newregex = new RegExp('(?<=\").*')
+      var newIframeSrc = newregex.exec(iframeSrc)[0]
+      if(newIframeSrc){
+        console.log(newIframeSrc);
+        this.testedLink = newIframeSrc;
+      }
+      else{
+        this.linkValue = null
+      }
+    }
+
+  }
+
   //Submits the podcast and uploads it to the firebase
   submitToExistingNetwork(episodetitle,podcastdesc,podcastnotes){
     if(this.network && this.season && this.category && episodetitle.value && podcastdesc.value && podcastnotes.value && this.linkType && this.linkValue){
@@ -351,6 +375,20 @@ export class AppComponent {
     })
   }
 
+  //Function to search
+  searchSubmitted(search){
+    if(search=="Open Admin"){
+      console.log("Open Admin")
+      this.page="adminPage1"
+    }
+    else{
+      this.PodcastService.getPodcastsForNetworkGivenName(search).then(podcasts =>{
+        console.log(podcasts)
+        this.podcasts = podcasts;
+      })
+    }
+  }
+
   //A function that is called when a podcast is clicked
   increaseViews(podcastClicked: Podcast) {
     console.log("PODCAST CLICKED")
@@ -397,6 +435,40 @@ export class AppComponent {
     this.PodcastService.getTotalViewsForNetwork(network.id).then(result=>{
       this.networkViewingTotalViews = result
     });
+
+    this.PodcastService.getNetworksPodcasts(network.id).then(result=>{
+      console.log(result);
+      var seasons: Array<SeasonStorage> = [];
+      result.forEach(function(pod){
+        var found = false
+        for(var i=0; i<seasons.length; i+=1){
+          if(seasons[i].seasonNum==pod.season){
+            seasons[i].addPodcast(pod)
+            found = true
+          }
+        }
+        if(found==false){
+          var newSeason = new SeasonStorage(pod.season, pod);
+          seasons.push(newSeason)
+        }
+      })
+      this.seasonedPodcasts = seasons
+      console.log(this.seasonedPodcasts)
+    })
   }
+
+  // VIEW ABOUT PAGE
+
+  goToAboutPage(){
+    this.page="aboutPage"
+  }
+
+
+  // VIEW SUBMIT PAGE
+
+  goToSubmitPage(){
+    this.page="submitPage"
+  }
+
 
 }

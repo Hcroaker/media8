@@ -59,7 +59,7 @@ export class PodcastService {
   getNetworksPodcasts(networkID: string): any{
   console.log(networkID)
     return(
-      this.podcastsCollection.ref.where('networkID', '==', networkID).get().then(querySnapshot => {
+      this.podcastsCollection.ref.where('networkID', '==', networkID).orderBy('season', 'asc').orderBy('episode', 'asc').get().then(querySnapshot => {
 
         var newPodcasts = Array<Podcast>();
 
@@ -80,6 +80,29 @@ export class PodcastService {
 
 
 
+  }
+
+  getPodcastsForNetworkGivenName(networkName: string): any{
+    console.log(networkName)
+      return(
+        this.podcastsCollection.ref.where('networkName', '==', networkName).orderBy('season', 'asc').orderBy('episode', 'asc').get().then(querySnapshot => {
+
+          var newPodcasts = Array<Podcast>();
+
+          querySnapshot.forEach(function(doc) {
+              // doc.data() is never undefined for query doc snapshots
+              const data2 = doc.data() as Podcast;
+              data2.id = doc.id;
+              console.log(data2)
+              newPodcasts.push(data2)
+          });
+
+          return newPodcasts
+        })
+        .catch(function(error) {
+            console.log("Error getting documents: ", error);
+        })
+      )
   }
 
   //Returns the seasons and number of episodes for each season given a networks podcasts
